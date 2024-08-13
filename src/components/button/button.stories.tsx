@@ -1,6 +1,5 @@
 import { Button } from "./button";
 import { Meta, StoryObj } from "@storybook/react";
-import s from "./button.module.css";
 
 const meta = {
   component: Button,
@@ -31,19 +30,18 @@ export const FullWidth: Story = {
     children: "Full Width",
     variant: "secondary",
   },
-
 };
 
 export const AsLink: Story = {
   args: {
-    variant: "secondary",
+    variant: "primary",
     children: "Link",
   },
   render: (args) => {
     return (
         <div>
-          <Button {...args} asChild>
-              <a href="https://google.com" target="_blank">
+          <Button {...args} asChild >
+              <a href="https://google.com" target="_blank" style={{display: 'inline'}}>
                 Go to google
               </a>
           </Button>

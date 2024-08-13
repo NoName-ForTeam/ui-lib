@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
-import s from "./button.module.css";
+import s from "./button.module.scss";
 import clsx from "clsx";
 import { Slot } from "@radix-ui/react-slot";
 
@@ -16,12 +16,7 @@ export const Button = forwardRef<ElementRef<"button">, Props>(
       <Comp
         {...props}
         ref={ref}
-        className={clsx(
-          s.buttonRoot,
-          s[variant],
-          fullWidth && s.fullWidth,
-          className,
-        )}
+        className={`${s.buttonRoot} ${s[variant]} ${fullWidth && s.fullWidth} ${className} `}
       />
     );
   },
