@@ -1,10 +1,10 @@
 'use client'
 
-import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
+import * as React from 'react'
 
-import { ChevronDown } from '../../../assets/icons/chevron-down.tsx'
-import { cn } from '../../../lib/utils.ts'
+import { ArrowIosDownOutline } from '@/assets'
+import { cn } from '@/lib/utils.ts'
 import { ComponentPropsWithoutRef } from 'react'
 
 const Select = ({
@@ -42,7 +42,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <ChevronDown className="h-4 w-4 opacity-50" />
+      <ArrowIosDownOutline />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))
@@ -107,4 +107,4 @@ const SelectItem = React.forwardRef<
 ))
 SelectItem.displayName = SelectPrimitive.Item.displayName
 
-export { Select, SelectGroup, SelectValue, SelectTrigger, SelectContent, SelectLabel, SelectItem }
+export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue }
