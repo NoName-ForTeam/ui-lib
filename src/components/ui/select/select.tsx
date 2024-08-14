@@ -3,8 +3,8 @@
 import * as React from 'react'
 import * as SelectPrimitive from '@radix-ui/react-select'
 
-import { ChevronDown } from '../../assets/icons/chevron-down.tsx'
-import { cn } from '../../lib/utils.ts'
+import { ChevronDown } from '../../../assets/icons/chevron-down.tsx'
+import { cn } from '../../../lib/utils.ts'
 import { ComponentPropsWithoutRef } from 'react'
 
 const Select = ({
