@@ -1,29 +1,33 @@
 .buttonRoot {
-    all: unset;
-    background: unset;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    box-sizing: border-box;
-    padding: 0.5rem 1rem;
-    border-radius: 0.25rem;
+  all: unset;
 
-    &.primary {
-        background-color: blue;
-        color: white;
-    }
+  cursor: pointer;
 
-    &.secondary {
-        background-color: gray;
-        color: blue;
-    }
+  display: flex;
+  align-items: center;
 
-    &.fullWidth {
-        width: 100%;
-        justify-content: center;
-    }
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
 
-    &:focus-visible {
-        outline: 2px solid blue;
-    }
+  background: unset;
+  border-radius: 0.25rem;
+
+  &.primary {
+    color: white;
+    background-color: blue;
+  }
+
+  &.secondary {
+    color: blue;
+    background-color: gray;
+  }
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
+
+  &:focus-visible {
+    outline: 2px solid blue;
+  }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -40,6 +41,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
+    "@it-incubator/prettier-config": "^0.1.2",
+    "@it-incubator/stylelint-config": "^2.0.0",
     "@ladle/react": "^4.1.0",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-interactions": "^8.2.7",
@@ -61,6 +64,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "prettier": "^3.3.3",
     "storybook": "^8.2.7",
+    "stylelint": "^16.8.1",
     "typescript": "5.4.2",
     "vite": "^5.3.4",
     "vite-plugin-dts": "4.0.0-beta.2"

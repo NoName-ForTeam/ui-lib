@@ -19,4 +19,4 @@ export const ChevronDown = (props: React.SVGProps<SVGSVGElement>) => (
       </clipPath>
     </defs>
   </svg>
-);
+)
