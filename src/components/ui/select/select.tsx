@@ -3,9 +3,9 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import * as React from 'react'
 
-import { ArrowIosDownOutline } from '@/assets'
 import { cn } from '@/lib/utils.ts'
 import { ComponentPropsWithoutRef } from 'react'
+import { ArrowIosDownOutline } from '@/assets'
 
 const Select = ({
   children,

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build ",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "preview": "vite preview",
