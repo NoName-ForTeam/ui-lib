@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-      // eslint-disable-next-line lines-around-comment
+       
       // don`t let me build the project
       // rollupTypes: true,
 
