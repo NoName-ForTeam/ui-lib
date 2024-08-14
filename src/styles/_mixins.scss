@@ -1,0 +1,10 @@
+@mixin font(
+  $size: var(--font-size-m),
+  $line-height: var(--line-height-m),
+  $weight: var(--font-weight-regular)
+) {
+  margin: 0;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}

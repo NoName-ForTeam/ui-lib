@@ -29,6 +29,7 @@
     "./style.css": "./dist/style.css"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.0.20",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "clsx": "^2.1.1",
@@ -41,12 +42,12 @@
     "@it-incubator/prettier-config": "^0.1.2",
     "@it-incubator/stylelint-config": "^2.0.0",
     "@ladle/react": "^4.1.0",
-    "@storybook/preset-scss": "^1.0.3",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-interactions": "^8.2.7",
     "@storybook/addon-links": "^8.2.7",
     "@storybook/addon-onboarding": "^8.2.7",
     "@storybook/blocks": "^8.2.7",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^8.2.7",
     "@storybook/react-vite": "^8.2.7",
     "@storybook/test": "^8.2.7",
@@ -61,12 +62,12 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
     "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "sass-loader": "^16.0.0",
     "storybook": "^8.2.7",
     "stylelint": "^16.8.1",
     "typescript": "5.4.2",
     "vite": "^5.3.4",
-    "vite-plugin-dts": "4.0.0-beta.2",
-    "sass": "^1.77.8",
-    "sass-loader": "^16.0.0"
+    "vite-plugin-dts": "4.0.0-beta.2"
   }
 }
