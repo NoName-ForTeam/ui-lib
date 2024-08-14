@@ -19,7 +19,9 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
+
       // Exclude peer dependencies from the bundle to reduce bundle size
+
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(devDependencies),

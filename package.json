@@ -10,7 +10,10 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "renameSvgFiles": "node scripts/renameSvgIcons.js",
+    "updateSvg": "node scripts/updateSvgFill.js",
+    "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
