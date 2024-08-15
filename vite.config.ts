@@ -9,9 +9,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-       
-      // don`t let me build the project
-      // rollupTypes: true,
+      rollupTypes: true,
 
       insertTypesEntry: true,
       include: ['src'],
