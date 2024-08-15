@@ -15,7 +15,7 @@
     "renameSvgFiles": "node scripts/renameSvgIcons.js",
     "updateSvg": "node scripts/updateSvgFill.js",
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
-    "comp": "node scripts/create-components.cjs",
+    "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
     "pre-push": "pnpm format && pnpm run lint && pnpm run build"
   },
