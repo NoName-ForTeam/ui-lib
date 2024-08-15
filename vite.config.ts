@@ -1,35 +1,53 @@
-import { join, resolve } from "node:path";
-import react from "@vitejs/plugin-react-swc";
-import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
+import { join, resolve } from 'node:path'
+import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
-import { dependencies, devDependencies } from "./package.json";
+import { dependencies, devDependencies } from './package.json'
 
 export default defineConfig({
   plugins: [
     react(),
-    dts({ rollupTypes: true }), // Output .d.ts files
+    dts({
+       
+      // don`t let me build the project
+      // rollupTypes: true,
+
+      insertTypesEntry: true,
+      include: ['src'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],
+      beforeWriteFile: (filePath, content) => {
+        return {
+          filePath: filePath.replace(/dist\/src/, 'dist'),
+          content,
+        }
+      },
+    }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'), // add alias '@' для директории 'src'
+    },
+  },
   build: {
-    target: "esnext",
+    target: 'esnext',
     minify: false,
     lib: {
-      entry: resolve(__dirname, join("src", "index.ts")),
-      fileName: "index",
-      formats: ["es", "cjs"],
+      entry: resolve(__dirname, join('src', 'index.ts')),
+      fileName: 'index',
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      // Exclude peer dependencies from the bundle to reduce bundle size
       external: [
         ...Object.keys(dependencies),
         ...Object.keys(devDependencies),
-        "react/jsx-runtime",
+        'react/jsx-runtime',
       ],
       output: {
-        dir: "dist",
-        entryFileNames: "[name].cjs",
-        format: "cjs",
+        dir: 'dist',
+        entryFileNames: '[name].cjs',
+        format: 'cjs',
       },
     },
   },
-});
+})

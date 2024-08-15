@@ -52,6 +52,10 @@
 
     // Enfore "type" modifier for type imports.
     "verbatimModuleSyntax": false,
+    // use alias in paths
+    "paths": {
+      "@/*": ["./src/*"]
+    },
 
     // Ensure the public class field initialization is transpiled correctly to match the future JS standard.
     "useDefineForClassFields": true,
@@ -67,6 +71,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true
   },
+
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["./src/**/*.stories.*"]
 }
