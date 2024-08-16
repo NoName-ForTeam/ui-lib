@@ -1,4 +1,4 @@
-import { ElementRef, forwardRef, useId } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import clsx from 'clsx'
@@ -7,29 +7,27 @@ import styles from './Checkbox.module.scss'
 import { CheckmarkOutline } from '@/assets'
 
 type CheckboxProps = {
-  checked?: boolean
-  className?: string
-  disabled?: boolean
-  id?: string
   label?: string | null
-  onChange?: (checked: boolean) => void
-}
+
+  onChange?: (checked: CheckboxRadix.CheckedState) => void
+} & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 /**
- * Checkbox component
+ * Custom checkbox component using Radix UI
  *
- * @param {CheckboxProps} props - The props for the Checkbox component
- * @param {boolean} [props.checked] - The checked state of the checkbox
- * @param {string} [props.className] - Additional CSS classes to apply to the container
+ * @component
+ * @param {Object} props - The component props
+ * @param {CheckboxRadix.CheckedState} [props.checked] - The checked state of the checkbox
  * @param {boolean} [props.disabled] - Whether the checkbox is disabled
- * @param {string} [props.id] - The unique identifier for the checkbox
- * @param {string} [props.label] - The label text for the checkbox
- * @param {(checked: boolean) => void} [props.onChange] - The callback function to be called when the checkbox state changes
- * @returns {JSX.Element} - The Checkbox component
+ * @param {string} [props.id] - The id for the checkbox input
+ * @param {string|null} [props.label] - The label text for the checkbox
+ * @param {(checked: CheckboxRadix.CheckedState) => void} [props.onChange] - Callback function when the checkbox state changes
+ * @param {React.Ref<HTMLButtonElement>} ref - The ref to the underlying button element
+ * @returns {JSX.Element} The Checkbox component
  */
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
-  ({ checked, disabled, id, label, onChange }: CheckboxProps, ref) => {
+  ({ checked, disabled, id, label, onChange, ...rest }, ref) => {
     const innerId = useId()
     const finalId = id ?? innerId
     const classNames = {
@@ -51,9 +49,12 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             id={finalId}
             onCheckedChange={onChange}
             ref={ref}
+            {...rest}
           >
             <CheckboxRadix.Indicator className={clsx(classNames.indicator)} forceMount>
-              {checked && <CheckmarkOutline className={classNames.icon} />}
+              {(checked === true || checked === 'indeterminate') && (
+                <CheckmarkOutline className={classNames.icon} />
+              )}
             </CheckboxRadix.Indicator>
           </CheckboxRadix.Root>
         </div>

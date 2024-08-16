@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Checkbox } from './checkbox'
+import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import React from 'react'
+import { Checkbox } from './checkbox'
 
 const meta = {
   args: {
@@ -36,9 +37,9 @@ export const DisabledUnchecked: Story = {
 }
 export const ControlCheckbox: Story = {
   render: args => {
-    const [checked, setChecked] = React.useState(false)
+    const [checked, setChecked] = React.useState<CheckboxRadix.CheckedState>(false)
 
-    return <Checkbox {...args} checked={checked} onChange={setChecked} />
+    return <Checkbox {...args} checked={checked} onCheckedChange={setChecked} />
   },
 }
 export const CheckedWithLabel: Story = {
@@ -63,8 +64,8 @@ export const ControlCheckboxWithLabel: Story = {
     label: 'controlled  checkbox',
   },
   render: args => {
-    const [checked, setChecked] = React.useState(false)
+    const [checked, setChecked] = React.useState<CheckboxRadix.CheckedState>(false)
 
-    return <Checkbox {...args} checked={checked} onChange={setChecked} />
+    return <Checkbox {...args} checked={checked} onCheckedChange={setChecked} />
   },
 }
