@@ -63,15 +63,17 @@
   }
 }
 
+.withoutLabel {
+  color: var(--light-900);
+}
+
 .paginationTrigger {
+  color: var(--light-100);
   column-gap: 1px;
   justify-content: space-between;
   padding: 0 2px 0 6px;
 }
 
-.withoutLabel {
-  color: var(--light-900);
-}
 
 .disabled {
   pointer-events: none;
