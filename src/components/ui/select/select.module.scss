@@ -64,9 +64,9 @@
 }
 
 .paginationTrigger {
-  padding: 0 2px 0 6px;
   column-gap: 1px;
   justify-content: space-between;
+  padding: 0 2px 0 6px;
 }
 
 .withoutLabel {
@@ -88,6 +88,12 @@
   }
 }
 
+.item {
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+}
+
 .content {
   width: var(--radix-select-trigger-width);
 
@@ -98,10 +104,7 @@
   border-radius: 0 0 2px 2px;
 
   .item {
-    cursor: pointer;
     padding: 6px 12px;
-    outline: none;
-    transition: 0.2s;
 
     &:hover,
     &:focus-visible,
@@ -114,10 +117,6 @@
 
 .paginationContent {
   .item {
-    cursor: pointer;
-    outline: none;
-    transition: 0.2s;
-
     &:hover,
     &:focus-visible,
     &[data-state='checked'] {
@@ -126,3 +125,4 @@
     }
   }
 }
+
