@@ -1,9 +1,15 @@
 .label {
-  color: var(--light-900);
   font-size: 14px;
+  color: var(--light-900);
 }
+
 .container {
   width: fit-content;
+}
+
+.icon {
+  color: var(--light-100);
+  fill: var(--light-100);
 }
 
 .trigger {
@@ -11,17 +17,27 @@
   column-gap: 79px;
   align-items: center;
   justify-content: space-between;
+
   max-width: 100%;
-  padding: 6px 12px;
-  font-size: 16px;
   min-height: 36px;
+  padding: 6px 12px;
+
+  font-size: 16px;
+  color: var(--light-100);
+
   background: var(--dark-500);
   border: 1px solid var(--dark-100);
-  color: var(--light-100);
 
   .icon {
     fill: var(--light-100);
     transition: 0.2s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--light-900);
+    background-color: var(--dark-500);
+    border-color: var(--light-900);
   }
 
   &:focus-visible:not([data-disabled]) {
@@ -31,38 +47,25 @@
   }
 
   &[data-state='open'] {
+    color: var(--light-900);
     border-color: var(--light-100);
     border-radius: 2px 2px 0 0;
-    color: var(--light-900);
 
     .icon {
       transform: rotate(180deg);
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    color: var(--light-900);
-    border-color: var(--light-900);
-    background-color: var(--dark-500);
-  }
-
-
   &[data-disabled] {
     cursor: not-allowed;
     color: var(--dark-100);
     border-color: var(--dark-100);
-
-    .withoutLabel {
-      color: var(--dark-100)
-    }
   }
 }
 
 .withoutLabel {
-  color: var(--light-900)
+  color: var(--light-900);
 }
-
 
 .disabled {
   pointer-events: none;
@@ -79,15 +82,10 @@
   }
 }
 
-
-.icon {
-  color: var(--light-100);
-  fill: var(--light-100);
-}
-
 .content {
-  color: var(--light-900);
   width: var(--radix-select-trigger-width);
+
+  color: var(--light-900);
 
   background-color: var(--dark-700);
   border: 1px solid var(--light-100);
