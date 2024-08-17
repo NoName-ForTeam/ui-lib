@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { Option, Select } from './select'
+import {Select, SelectItem} from './select'
 
 const meta = {
   component: Select,
@@ -10,26 +10,50 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-const items: Option[] = [
-  { value: '1', content: 'One' },
-  { value: '2', content: 'Two' },
-  { value: '3', content: 'Three' },
-  { value: '4', content: 'Four' },
-  { value: '5', content: 'Five' },
-]
-
 export const Primary: Story = {
   args: {
     placeholder: 'Select',
     label: 'Select-box',
-    options: items,
+    children: (
+        <>
+          <SelectItem value={'1'}>One</SelectItem>
+          <SelectItem value={'2'}>Two</SelectItem>
+          <SelectItem value={'3'}>Three</SelectItem>
+          <SelectItem value={'4'}>Four</SelectItem>
+          <SelectItem value={'5'}>Five</SelectItem>
+        </>
+    )
   },
 }
 
 export const WithoutLabel: Story = {
   args: {
     placeholder: 'Select',
-    options: items,
+    children: (
+        <>
+          <SelectItem value={'1'}>One</SelectItem>
+          <SelectItem value={'2'}>Two</SelectItem>
+          <SelectItem value={'3'}>Three</SelectItem>
+          <SelectItem value={'4'}>Four</SelectItem>
+          <SelectItem value={'5'}>Five</SelectItem>
+        </>
+    )
+  },
+}
+
+export const PaginationSelect: Story = {
+  args: {
+    defaultValue: '5',
+    pagination: true,
+    children: (
+        <>
+          <SelectItem value={'1'}>10</SelectItem>
+          <SelectItem value={'2'}>20</SelectItem>
+          <SelectItem value={'3'}>30</SelectItem>
+          <SelectItem value={'4'}>50</SelectItem>
+          <SelectItem value={'5'}>100</SelectItem>
+        </>
+    )
   },
 }
 
@@ -37,6 +61,5 @@ export const Disabled: Story = {
   args: {
     placeholder: 'Disabled',
     disabled: true,
-    options: items,
   },
 }

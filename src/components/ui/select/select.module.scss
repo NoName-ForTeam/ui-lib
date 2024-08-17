@@ -22,7 +22,7 @@
   min-height: 36px;
   padding: 6px 12px;
 
-  font-size: 16px;
+  font-size: var(--font-size-m);
   color: var(--light-100);
 
   background: var(--dark-500);
@@ -61,6 +61,12 @@
     color: var(--dark-100);
     border-color: var(--dark-100);
   }
+}
+
+.paginationTrigger {
+  padding: 0 2px 0 6px;
+  column-gap: 1px;
+  justify-content: space-between;
 }
 
 .withoutLabel {
@@ -102,6 +108,21 @@
     &[data-state='checked'] {
       color: var(--accent-500);
       background-color: var(--dark-300);
+    }
+  }
+}
+
+.paginationContent {
+  .item {
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+
+    &:hover,
+    &:focus-visible,
+    &[data-state='checked'] {
+      color: var(--light-100);
+      background-color: var(--dark-100);
     }
   }
 }
