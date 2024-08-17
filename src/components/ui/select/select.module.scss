@@ -68,12 +68,11 @@
 }
 
 .paginationTrigger {
-  color: var(--light-100);
   column-gap: 1px;
   justify-content: space-between;
   padding: 0 2px 0 6px;
+  color: var(--light-100);
 }
-
 
 .disabled {
   pointer-events: none;
