@@ -10,12 +10,23 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
+    "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "renameSvgFiles": "node scripts/renameSvgIcons.js",
     "updateSvg": "node scripts/updateSvgFill.js",
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
+    "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
     "pre-push": "pnpm format && pnpm run lint && pnpm run build"
+  },
+  "comments": {
+    "//": "script description",
+    "scripts": {
+      "sb": "storybook",
+      "/": "usage: pnpm comp <folderName> <componentName> true",
+      "comp": "generate folder with tsx,stories,scss templates",
+      "generate-svg-components": "generate tsx from svg"
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -35,6 +46,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.20",
+    "@radix-ui/react-checkbox": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "clsx": "^2.1.1",

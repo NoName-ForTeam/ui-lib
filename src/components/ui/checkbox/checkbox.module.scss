@@ -1,0 +1,100 @@
+.wrapper,
+.root,
+.label {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  background-color: transparent;
+  border-radius: 50%;
+
+  &:not(.disabled) {
+    &:hover {
+      background-color: var(--dark-300);
+    }
+
+    &:active {
+      background-color: var(--dark-100);
+    }
+  }
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+
+  background-color: var(--light-100);
+  border: 2px solid var(--light-500);
+
+  &[data-state='unchecked'] {
+    background-color: var(--dark-700);
+
+    &:hover {
+      background-color: var(--dark-300);
+    }
+
+    &:active {
+      background-color: var(--dark-300);
+    }
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    border-color: var(--dark-100);
+
+    &[data-state='unchecked'] {
+      background-color: var(--dark-900);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+
+  &[data-state='checked'] {
+    background-color: var(--light-100);
+
+    &[data-disabled] {
+      background-color: var(--dark-100);
+    }
+  }
+}
+
+.label {
+  display: inline-block;
+  padding-bottom: 2px;
+  font-size: 14px;
+
+  &.disabled {
+    cursor: not-allowed;
+    color: var(--light-900);
+  }
+}
+
+.icon {
+  width: 18px;
+  color: var(--dark-900);
+
+  &.disabled {
+    color: var(--light-100);
+  }
+}
