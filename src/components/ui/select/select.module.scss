@@ -1,0 +1,128 @@
+.label {
+  font-size: var(--font-size-s);
+  color: var(--light-900);
+}
+
+.container {
+  width: fit-content;
+}
+
+.icon {
+  color: var(--light-100);
+  fill: var(--light-100);
+}
+
+.trigger {
+  display: flex;
+  column-gap: 79px;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 100%;
+  min-height: 36px;
+  padding: 6px 12px;
+
+  font-size: var(--font-size-m);
+  color: var(--light-100);
+
+  background: var(--dark-500);
+  border: 1px solid var(--dark-100);
+
+  .icon {
+    fill: var(--light-100);
+    transition: 0.2s;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: var(--light-900);
+    background-color: var(--dark-500);
+    border-color: var(--light-900);
+  }
+
+  &:focus-visible:not([data-disabled]) {
+    color: var(--light-900);
+    border: 2px solid var(--accent-500);
+    outline: none;
+  }
+
+  &[data-state='open'] {
+    color: var(--light-900);
+    border-color: var(--light-100);
+    border-radius: 2px 2px 0 0;
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    color: var(--dark-100);
+    border-color: var(--dark-100);
+  }
+}
+
+.withoutLabel {
+  color: var(--light-900);
+}
+
+.paginationTrigger {
+  column-gap: 1px;
+  justify-content: space-between;
+  padding: 0 2px 0 6px;
+  color: var(--light-100);
+}
+
+.disabled {
+  pointer-events: none;
+  color: var(--dark-100);
+  border-color: var(--dark-100);
+
+  .withoutLabel {
+    color: var(--dark-100);
+  }
+
+  &:hover {
+    color: var(--dark-100);
+    border-color: var(--dark-100);
+  }
+}
+
+.item {
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+}
+
+.content {
+  width: var(--radix-select-trigger-width);
+
+  color: var(--light-900);
+
+  background-color: var(--dark-700);
+  border: 1px solid var(--light-100);
+  border-radius: 0 0 2px 2px;
+
+  .item {
+    padding: 6px 12px;
+
+    &:hover,
+    &:focus-visible,
+    &[data-state='checked'] {
+      color: var(--accent-500);
+      background-color: var(--dark-300);
+    }
+  }
+}
+
+.paginationContent {
+  .item {
+    &:hover,
+    &:focus-visible,
+    &[data-state='checked'] {
+      color: var(--light-100);
+      background-color: var(--dark-100);
+    }
+  }
+}
