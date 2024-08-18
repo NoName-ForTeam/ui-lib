@@ -1,0 +1,60 @@
+@use '@/styles' as *;
+
+.textLarge {
+  @include font(var(--font-size-xxl), var(--line-height-l), var(--font-weight-semibold));
+}
+
+.h1 {
+  @include font(var(--font-size-xl), var(--line-height-l), var(--font-weight-bold));
+}
+
+.h2 {
+  @include font(var(--font-size-l), var(--line-height-m), var(--font-weight-bold));
+}
+
+.h3 {
+  @include font(var(--font-size-m), var(--line-height-m), var(--font-weight-semibold));
+}
+
+.text16 {
+  @include font(var(--font-size-m), var(--line-height-m), var(--font-weight-regular));
+}
+
+.textBold16 {
+  @include font(var(--font-size-m), var(--line-height-m), var(--font-weight-bold));
+}
+
+.text14 {
+  @include font(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
+}
+
+.textMedium14 {
+  @include font(var(--font-size-s), var(--line-height-m), var(--font-weight-medium));
+}
+
+.textBold14 {
+  @include font(var(--font-size-s), var(--line-height-s), var(--font-weight-bold));
+}
+
+.textSmall {
+  @include font(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
+}
+
+.textSmallBold {
+  @include font(var(--font-size-xs), var(--line-height-s), var(--font-weight-semibold));
+}
+
+.link,
+.linkSmall {
+  cursor: pointer;
+  color: var(--accent-500);
+  text-decoration: underline;
+}
+
+.link {
+  @include font(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
+}
+
+.linkSmall {
+  @include font(var(--font-size-xs), var(--line-height-s), var(--font-weight-regular));
+}
