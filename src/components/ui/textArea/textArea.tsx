@@ -53,7 +53,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           ref={ref}
           {...rest}
         />
-        {error && <div className={classNames.error}>{error}</div>}
+        {error && (
+          <div className={classNames.error} id={errorId}>
+            {error}
+          </div>
+        )}
       </div>
     )
   }
