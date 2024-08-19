@@ -1,15 +1,36 @@
+import { Slot } from '@radix-ui/react-slot'
+import clsx from 'clsx'
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import styles from './button.module.scss'
 
-  import clsx from 'clsx'
+/**
+ * Props for the Button component
+ * @typedef {Object} ButtonProps
+ * @property {boolean} [asChild] - If true, the component will render its children directly
+ * @property {'primary' | 'secondary' | 'outlined' | 'link'} [variant='primary'] - The visual style variant of the button
+ * @property {boolean} [fullWidth] - If true, the button will take up the full width of its container
+ */
 
-  import styles from './button.module.scss'
+type ButtonProps = {
+  asChild?: boolean
+  variant?: 'primary' | 'secondary' | 'outlined' | 'link'
+  fullWidth?: boolean
+} & ComponentPropsWithoutRef<'button'>
 
-  export type ButtonProps = {}
+/**
+ * A customizable button component with various style variants
+ * @param {ButtonProps} props - The props for the Button component
+ * @param {React.Ref<HTMLButtonElement>} ref - The ref to be forwarded to the button element
+ * @returns {React.ReactElement} A Button component
+ */
 
-  export const Button = ({}:ButtonProps) => {
-   const classNames = {
-    root: styles.root,
-  } as const
-
-  return <div className={clsx(classNames.root)}></div>
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = 'primary', asChild = false, fullWidth, ...rest }, ref) => {
+    const Comp = asChild ? Slot : 'button'
+    const classNames = {
+      button: clsx(styles[variant], fullWidth && styles.fullWidth, className),
+    } as const
+    return <Comp className={classNames.button} ref={ref} {...rest} />
   }
-  
+)
+Button.displayName = 'Button'
