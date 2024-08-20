@@ -35,10 +35,14 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.20",
+    "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
     "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
     "react": "^18.3.1",
+    "react-datepicker": "^7.3.0",
+    "react-day-picker": "^9.0.8",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
