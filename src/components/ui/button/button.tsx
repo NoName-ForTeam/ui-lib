@@ -7,13 +7,13 @@ import styles from './button.module.scss'
  * Props for the Button component
  * @typedef {Object} ButtonProps
  * @property {boolean} [asChild] - If true, the component will render its children directly
- * @property {'primary' | 'secondary' | 'outlined' | 'link'} [variant='primary'] - The visual style variant of the button
+ * @property {'primary' | 'secondary' | 'outlined' | 'ghost' | 'link'} [variant='primary'] - The visual style variant of the button
  * @property {boolean} [fullWidth] - If true, the button will take up the full width of its container
  */
 
 type ButtonProps = {
   asChild?: boolean
-  variant?: 'primary' | 'secondary' | 'outlined' | 'link'
+  variant?: 'primary' | 'secondary' | 'outlined' | 'link' | 'ghost'
   fullWidth?: boolean
 } & ComponentPropsWithoutRef<'button'>
 

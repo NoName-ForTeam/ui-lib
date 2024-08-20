@@ -8,6 +8,9 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   title: 'Components/Button',
+  args: {
+    disabled: false
+  },
   argTypes: {
     variant: {
       control: 'select',
@@ -43,6 +46,13 @@ export const Outlined: Story = {
   args: {
     variant: 'outlined',
     children: 'Outlined Button',
+  },
+}
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    children: 'Ghost Button',
   },
 }
 
