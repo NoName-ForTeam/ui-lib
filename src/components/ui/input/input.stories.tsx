@@ -35,22 +35,20 @@ export const Disabled: Story = {
 
 export const Password: Story = {
   args: {
-    type: 'password',
+    variant: 'password',
   },
 }
 
 export const Search: Story = {
-  args: {
-    search: true,
-  },
+  args: {},
 
   render: args => {
-    const { disabled, errorMessage, search } = args
+    const { disabled, errorMessage } = args
     const [value, setValue] = useState('')
 
     return (
       <Input
-        search={search}
+        variant={'search'}
         disabled={disabled}
         errorMessage={errorMessage}
         value={value}

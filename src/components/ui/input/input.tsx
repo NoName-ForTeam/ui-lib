@@ -6,10 +6,9 @@ import { EyeOutline, EyeOffOutline, SearchOutline } from '@/assets'
 import { Typography } from '@/components'
 
 export type InputProps = {
-  className?: string
   errorMessage?: string
   label?: string
-  search?: boolean
+  variant?: 'text' | 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
 
 /**
@@ -29,73 +28,93 @@ export type InputProps = {
  * @returns {JSX.Element} The Input component.
  */
 
-export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) => {
-  const { label, search, errorMessage, className, onChange, disabled, value, type, ...rest } = props
-  const [showPassword, setShowPassword] = useState(false)
-  const isPassword = type === 'password'
-  const changeType = isPassword && !showPassword ? 'password' : 'text'
+export const Input = forwardRef<ElementRef<'input'>, InputProps>(
+  (
+    {
+      label,
+      variant = 'text',
+      errorMessage,
+      className,
+      onChange,
+      disabled,
+      value,
+      placeholder,
+      ...rest
+    },
+    ref
+  ) => {
+    const [showPassword, setShowPassword] = useState(false)
+    const isPassword = variant === 'password'
+    const changeType = isPassword && !showPassword ? 'password' : 'text'
+    const isSearch = variant === 'search'
 
-  const classNames = {
-    wrapper: styles.wrapper,
-    label: clsx(styles.label, disabled && styles.disabledLabel),
-    container: styles.container,
-    input: clsx(
-      styles.input,
-      errorMessage && styles.error,
-      search && styles.search,
-      isPassword && styles.password,
-      className
-    ),
-    eyeBtn: styles.eyeButton,
-    search: clsx(
-      styles.searchIcon,
-      disabled && styles.disabledSearch,
-      errorMessage && styles.errorSearch
-    ),
-  } as const
+    const classNames = {
+      wrapper: styles.wrapper,
+      label: clsx(styles.label, disabled && styles.disabledLabel),
+      container: styles.container,
+      input: clsx(
+        styles.input,
+        errorMessage && styles.error,
+        isSearch && styles.search,
+        isPassword && styles.password,
+        className
+      ),
+      eyeBtn: styles.eyeButton,
+      search: clsx(
+        styles.searchIcon,
+        disabled && styles.disabledSearch,
+        errorMessage && styles.errorSearch
+      ),
+    } as const
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(e)
-  }
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e)
+    }
 
-  return (
-    <div className={classNames.wrapper}>
-      {label && (
-        <Typography className={classNames.label} variant="text14">
-          {label}
-        </Typography>
-      )}
-      <div className={classNames.container}>
-        {search && <SearchOutline height={24} width={24} className={classNames.search} />}
-        <input
-          className={classNames.input}
-          onChange={onChangeHandler}
-          type={changeType}
-          value={value}
-          disabled={disabled}
-          ref={ref}
-          {...rest}
-        />
-        {isPassword && (
-          <button
-            className={classNames.eyeBtn}
+    const showPasswordHandler = () => {
+      setShowPassword(prev => !prev)
+    }
+
+    return (
+      <div className={classNames.wrapper}>
+        {label && (
+          <Typography className={classNames.label} variant="text14">
+            {label}
+          </Typography>
+        )}
+        <div className={classNames.container}>
+          {isSearch && <SearchOutline height={24} width={24} className={classNames.search} />}
+          <input
+            className={classNames.input}
+            onChange={onChangeHandler}
+            placeholder={placeholder}
+            type={changeType}
+            value={value}
             disabled={disabled}
-            onClick={() => setShowPassword(showPassword => !showPassword)}
-            type={'button'}
-          >
-            {showPassword ? (
-              <EyeOffOutline height={24} width={24} />
-            ) : (
-              <EyeOutline height={24} width={24} />
-            )}
-          </button>
+            ref={ref}
+            {...rest}
+          />
+          {isPassword && (
+            <button
+              className={classNames.eyeBtn}
+              disabled={disabled}
+              onClick={showPasswordHandler}
+              type={'button'}
+            >
+              {showPassword ? (
+                <EyeOffOutline height={24} width={24} />
+              ) : (
+                <EyeOutline height={24} width={24} />
+              )}
+            </button>
+          )}
+        </div>
+        {errorMessage && (
+          <Typography variant="text14" color={'var(--danger-500)'}>
+            {errorMessage}
+          </Typography>
         )}
       </div>
-      {errorMessage && (
-        <Typography variant="text14" color={'var(--danger-500)'}>
-          {errorMessage}
-        </Typography>
-      )}
-    </div>
-  )
-})
+    )
+  }
+)
