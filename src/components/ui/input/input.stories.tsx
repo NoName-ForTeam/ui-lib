@@ -28,6 +28,12 @@ export const Default: Story = {
   args: {},
 }
 
+export const Disabled: Story = {
+  args: {
+    disabled: true
+  },
+}
+
 export const Password: Story = {
   args: {
     type: 'password'

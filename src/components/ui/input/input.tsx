@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import styles from './input.module.scss'
 import {ChangeEvent, ComponentPropsWithoutRef, ElementRef, forwardRef, useState} from "react";
 import {EyeOutline, EyeOffOutline, SearchOutline} from "@/assets";
+import {Typography} from "@/components";
 
 export type InputProps = {
     className?: string
@@ -42,7 +43,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
             styles.searchIcon,
             disabled && styles.disabledSearch,
             errorMessage && styles.errorSearch,
-        )
+        ),
     } as const
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -51,9 +52,12 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
 
     return <div className={classNames.wrapper}>
         {label && (
-            <label className={classNames.label}>
+            <Typography
+                className={classNames.label}
+                variant="text14"
+            >
                 {label}
-            </label>
+            </Typography>
         )}
         <div className={classNames.container}>
             {search && (
@@ -80,7 +84,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>((props, ref) =>
             )}
         </div>
         {errorMessage && (
-            <div>{errorMessage}</div>
+            <Typography variant="text14" color={'var(--danger-500)'}>{errorMessage}</Typography>
         )}
     </div>
 })
