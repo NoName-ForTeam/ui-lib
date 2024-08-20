@@ -74,8 +74,8 @@ button.link,
 a.link {
   cursor: pointer;
   color: var(--accent-500);
-  background-color: transparent;
   text-decoration: none;
+  background-color: transparent;
 
   &:hover {
     color: var(--accent-100);
