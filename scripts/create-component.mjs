@@ -47,31 +47,35 @@ async function createComponent(folderName, componentName) {
 
   const dirPath = `./src/components/${folderName}/${capitalizedName}`
   const componentPath = path.join(dirPath, `${capitalizedName}.tsx`)
-  const componentContent = `
-  import clsx from 'clsx'
+  const componentContent =
+  `import clsx from 'clsx'
 
   import styles from './${capitalizedName}.module.scss'
+  import { ComponentPropsWithoutRef } from 'react'
 
-  export type ${capitalizedNameForce}Props = {}
-
-  export const ${capitalizedNameForce} = ({}:${capitalizedNameForce}Props) => {
+  export type ${capitalizedNameForce}Props = ComponentPropsWithoutRef<'div'>
+  export const ${capitalizedNameForce} = ({className}:${capitalizedNameForce}Props) => {
    const classNames = {
     root: styles.root,
   } as const
 
-  return <div className={clsx(classNames.root)}></div>
+  return <div className={clsx(classNames.root,className)}></div>
   }
   `
 
   const sassPath = path.join(dirPath, `${capitalizedName}.module.scss`)
-  const sassContent = ``
+  const sassContent =
+`.root {
+  display: flex;
+}
+  `
 
   const indexPath = path.join(dirPath, `index.ts`)
   const indexContent = `export * from './${capitalizedName}'`
 
   const storyPath = path.join(dirPath, `${capitalizedName}.stories.tsx`)
-  const storyContent = `
-import type { Meta, StoryObj } from '@storybook/react'
+  const storyContent =
+`import type { Meta, StoryObj } from '@storybook/react'
 
 import { ${capitalizedNameForce} } from './${capitalizedName}'
 
