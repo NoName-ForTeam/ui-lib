@@ -9,7 +9,7 @@ const meta = {
   tags: ['autodocs'],
   title: 'Components/Button',
   args: {
-    disabled: false
+    disabled: false,
   },
   argTypes: {
     variant: {
