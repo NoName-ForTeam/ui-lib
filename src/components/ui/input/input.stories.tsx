@@ -1,8 +1,7 @@
-
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Input } from './input'
-import {useState} from "react";
+import { useState } from 'react'
 
 const meta = {
   component: Input,
@@ -16,7 +15,7 @@ const meta = {
   args: {
     disabled: false,
     label: 'Label',
-    value: 'inctagram@gmail.com'
+    value: 'inctagram@gmail.com',
   },
   title: 'Components/Input',
 } satisfies Meta<typeof Input>
@@ -30,19 +29,19 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    disabled: true
+    disabled: true,
   },
 }
 
 export const Password: Story = {
   args: {
-    type: 'password'
-  }
+    type: 'password',
+  },
 }
 
 export const Search: Story = {
   args: {
-    search: true
+    search: true,
   },
 
   render: args => {
@@ -50,19 +49,19 @@ export const Search: Story = {
     const [value, setValue] = useState('')
 
     return (
-        <Input
-            search={search}
-            disabled={disabled}
-            errorMessage={errorMessage}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-        />
+      <Input
+        search={search}
+        disabled={disabled}
+        errorMessage={errorMessage}
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
     )
-  }
+  },
 }
 
 export const InputWithError: Story = {
   args: {
-    errorMessage: 'Error'
-  }
+    errorMessage: 'Error',
+  },
 }
