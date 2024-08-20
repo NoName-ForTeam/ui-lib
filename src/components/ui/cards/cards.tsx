@@ -2,7 +2,7 @@ import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'reac
 
 import clsx from 'clsx'
 
-import s from './cards.module.scss'
+import styles from './cards.module.scss'
 
 type CardProps = ComponentPropsWithoutRef<'div'>
 
@@ -33,10 +33,10 @@ type CardProps = ComponentPropsWithoutRef<'div'>
 
 export const Cards = forwardRef<ElementRef<'div'>, CardProps>(
   ({ children, className, ...rest }: CardProps, ref) => {
-    const classCard = clsx(s.card, className)
+    const classNames = clsx(styles.card, className)
 
     return (
-      <div ref={ref} {...rest} className={classCard}>
+      <div ref={ref} {...rest} className={classNames}>
         {children}
       </div>
     )
