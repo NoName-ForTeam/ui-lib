@@ -17,7 +17,18 @@
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
     "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
-    "pre-push": "pnpm format && pnpm run lint && pnpm run build"
+    "pre-push": "pnpm run build",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less,scss,sass,sss}": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
   },
   "comments": {
     "//": "script description",
@@ -76,6 +87,7 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
     "husky": "^8.0.0",
+    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
     "storybook": "^8.2.7",
