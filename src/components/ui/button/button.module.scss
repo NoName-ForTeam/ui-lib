@@ -1,33 +1,95 @@
-.buttonRoot {
-  all: unset;
+/* stylelint-disable scss/at-mixin-argumentless-call-parentheses */
+@use '@/styles' as *;
 
+.primary,
+.secondary,
+.outlined,
+.link:focus-visible {
+  outline: 2px solid var(--accent-300);
+}
+
+.primary {
+  @include button();
+
+  background-color: var(--accent-500);
+
+  &:hover {
+    color: var(--light-100);
+    background-color: var(--accent-100);
+  }
+
+  &:active {
+    color: var(--light-500);
+    background-color: var(--accent-700);
+  }
+
+  &:disabled {
+    color: var(--light-900);
+    background-color: var(--accent-900);
+  }
+}
+
+.secondary {
+  @include button();
+
+  background-color: var(--dark-300);
+
+  &:hover {
+    background-color: var(--dark-100);
+  }
+
+  &:active {
+    background-color: var(--dark-600);
+  }
+
+  &:disabled {
+    color: var(--light-900);
+    background-color: var(--dark-500);
+  }
+}
+
+.outlined {
+  @include button();
+
+  color: var(--accent-500);
+  outline: 1px solid var(--accent-500);
+
+  &:hover {
+    color: var(--accent-100);
+    outline: 1px solid var(--accent-100);
+  }
+
+  &:active {
+    color: var(--accent-700);
+    outline: 1px solid var(--accent-700);
+  }
+
+  &:disabled {
+    color: var(--accent-900);
+    outline: 1px solid var(--accent-900);
+  }
+}
+
+button.link,
+a.link {
   cursor: pointer;
+  color: var(--accent-500);
+  text-decoration: none;
+  background-color: transparent;
 
-  display: flex;
-  align-items: center;
-
-  box-sizing: border-box;
-  padding: 0.5rem 1rem;
-
-  background: unset;
-  border-radius: 0.25rem;
-
-  &.primary {
-    color: white;
-    background-color: blue;
+  &:hover {
+    color: var(--accent-100);
   }
 
-  &.secondary {
-    color: blue;
-    background-color: gray;
+  &:active {
+    color: var(--accent-700);
   }
 
-  &.fullWidth {
-    justify-content: center;
-    width: 100%;
+  &:disabled {
+    color: var(--accent-900);
   }
+}
 
-  &:focus-visible {
-    outline: 2px solid blue;
-  }
+.fullWidth {
+  width: 100%;
 }
