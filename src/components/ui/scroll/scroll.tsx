@@ -16,25 +16,16 @@ type ScrollbarType = ComponentPropsWithoutRef<typeof ScrollArea.Root>
 export const Scroll = forwardRef<HTMLDivElement, ScrollbarType>(
   ({ children, type = 'auto', ...restProps }, ref) => {
     const classNames = {
-      maxWidth: styles.maxWidth,
-      maxHeight: styles.maxHeight,
+      scrollbar: styles.scrollbar,
     }
     return (
       <ScrollArea.Root asChild type={type} ref={ref}>
         <div className={styles.root} {...restProps}>
           <ScrollArea.Viewport className={styles.viewport}>{children}</ScrollArea.Viewport>
-          <ScrollArea.Scrollbar
-            className={styles.scrollbar}
-            orientation={'vertical'}
-            style={classNames}
-          >
+          <ScrollArea.Scrollbar className={classNames.scrollbar} orientation={'vertical'}>
             <ScrollArea.Thumb className={styles.thumb} />
           </ScrollArea.Scrollbar>
-          <ScrollArea.Scrollbar
-            className={styles.scrollbar}
-            orientation={'horizontal'}
-            style={classNames}
-          >
+          <ScrollArea.Scrollbar className={classNames.scrollbar} orientation={'horizontal'}>
             <ScrollArea.Thumb className={styles.thumb} />
           </ScrollArea.Scrollbar>
         </div>
