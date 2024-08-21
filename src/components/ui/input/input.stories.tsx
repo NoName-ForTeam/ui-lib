@@ -7,9 +7,9 @@ const meta = {
   component: Input,
   tags: ['autodocs'],
   argTypes: {
-    type: {
+    variant: {
       control: { type: 'select' },
-      options: ['password', 'text'],
+      options: ['password', 'text', 'search'],
     },
   },
   args: {
@@ -35,7 +35,23 @@ export const Disabled: Story = {
 
 export const Password: Story = {
   args: {
-    variant: 'password',
+  },
+
+  render: args => {
+    const { disabled, errorMessage, variant = 'password' } = args
+    const [value, setValue] = useState('')
+
+    return (
+        <Input
+            placeholder={'Password'}
+            variant={variant}
+            disabled={disabled}
+            label={'Label'}
+            errorMessage={errorMessage}
+            value={value}
+            onChange={e => setValue(e.target.value)}
+        />
+    )
   },
 }
 
@@ -50,6 +66,7 @@ export const Search: Story = {
       <Input
         variant={'search'}
         disabled={disabled}
+        label={'Label'}
         errorMessage={errorMessage}
         value={value}
         onChange={e => setValue(e.target.value)}
