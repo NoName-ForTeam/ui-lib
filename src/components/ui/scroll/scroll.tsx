@@ -1,8 +1,8 @@
-import * as ScrollArea from "@radix-ui/react-scroll-area";
+import * as ScrollArea from '@radix-ui/react-scroll-area'
 import styles from './scroll.module.scss'
-import {ComponentPropsWithoutRef, forwardRef} from "react";
+import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
-type ScrollbarType=ComponentPropsWithoutRef<typeof ScrollArea.Root>
+type ScrollbarType = ComponentPropsWithoutRef<typeof ScrollArea.Root>
 
 /**
 
@@ -14,22 +14,32 @@ type ScrollbarType=ComponentPropsWithoutRef<typeof ScrollArea.Root>
  @returns {JSX.Element} The scroll area element. */
 
 export const Scroll = forwardRef<HTMLDivElement, ScrollbarType>(
-    ({children, type='auto', ...restProps}, ref) => {
-        const stylesForScrollbar = {maxWidth: '100%', maxHeight: '100%'}
-    return(
-        <ScrollArea.Root asChild type={type} ref={ref}>
-            <div className={styles.root} {...restProps}>
-            <ScrollArea.Viewport className={styles.viewport}>
-                {children}
-            </ScrollArea.Viewport>
-            <ScrollArea.Scrollbar className={styles.scrollbar} orientation={'vertical'} style={stylesForScrollbar}>
-                <ScrollArea.Thumb className={styles.thumb} />
-            </ScrollArea.Scrollbar>
-            <ScrollArea.Scrollbar className={styles.scrollbar} orientation={'horizontal'} style={stylesForScrollbar}>
-                <ScrollArea.Thumb className={styles.thumb} />
-            </ScrollArea.Scrollbar>
-            </div>
-        </ScrollArea.Root>
-    );
-})
+  ({ children, type = 'auto', ...restProps }, ref) => {
+    const classNames = {
+      maxWidth: styles.maxWidth,
+      maxHeight: styles.maxHeight,
+    }
+    return (
+      <ScrollArea.Root asChild type={type} ref={ref}>
+        <div className={styles.root} {...restProps}>
+          <ScrollArea.Viewport className={styles.viewport}>{children}</ScrollArea.Viewport>
+          <ScrollArea.Scrollbar
+            className={styles.scrollbar}
+            orientation={'vertical'}
+            style={classNames}
+          >
+            <ScrollArea.Thumb className={styles.thumb} />
+          </ScrollArea.Scrollbar>
+          <ScrollArea.Scrollbar
+            className={styles.scrollbar}
+            orientation={'horizontal'}
+            style={classNames}
+          >
+            <ScrollArea.Thumb className={styles.thumb} />
+          </ScrollArea.Scrollbar>
+        </div>
+      </ScrollArea.Root>
+    )
+  }
+)
 Scroll.displayName = 'Scroll'
