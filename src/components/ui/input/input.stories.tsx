@@ -34,23 +34,22 @@ export const Disabled: Story = {
 }
 
 export const Password: Story = {
-  args: {
-  },
+  args: {},
 
   render: args => {
     const { disabled, errorMessage, variant = 'password' } = args
     const [value, setValue] = useState('')
 
     return (
-        <Input
-            placeholder={'Password'}
-            variant={variant}
-            disabled={disabled}
-            label={'Label'}
-            errorMessage={errorMessage}
-            value={value}
-            onChange={e => setValue(e.target.value)}
-        />
+      <Input
+        placeholder={'Password'}
+        variant={variant}
+        disabled={disabled}
+        label={'Label'}
+        errorMessage={errorMessage}
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
     )
   },
 }
