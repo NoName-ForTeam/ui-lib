@@ -11,6 +11,7 @@ export default defineConfig({
     dts({
        
       // don`t let me build the project
+
       rollupTypes: true,
 
       insertTypesEntry: true,

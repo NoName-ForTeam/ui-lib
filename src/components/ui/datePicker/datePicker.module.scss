@@ -1,8 +1,8 @@
 .root {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
 }
 
 .calendar {
@@ -24,29 +24,37 @@
 }
 
 .icon {
-  cursor: pointer;
   pointer-events: none;
+  cursor: pointer;
+
   position: absolute;
+
   //top: 6px;
   top: 70%;
   right: 12px;
   transform: translateY(-50%);
+
   color: var(--light-100);
+
   &.error {
     fill: var(--danger-500);
   }
 }
 
 .input {
-  position: relative;
   cursor: pointer;
+
+  position: relative;
+
   width: 100%;
   padding-right: 40px;
-  background-color: var(--dark-500);
-  color: var(--light-100);
+
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
+  color: var(--light-100);
+
+  background-color: var(--dark-500);
 
   &.error {
     color: var(--danger-500);
@@ -97,13 +105,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-m);
+
   width: 36px;
   height: 24px;
   margin: 0;
 
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
   color: var(--light-900);
 }
 
@@ -113,11 +122,13 @@
 
 :global(.react-datepicker__header) {
   padding: 0;
-  background-color: transparent;
-  border-bottom: none;
+
   font-size: var(--) font-size-m;
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
+
+  background-color: transparent;
+  border-bottom: none;
 }
 
 :global(.react-datepicker__month) {
@@ -143,6 +154,7 @@
   width: 36px;
   height: 36px;
   margin: 0;
+
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-m);
