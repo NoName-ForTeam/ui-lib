@@ -1,12 +1,6 @@
 .root {
   width: max-content;
 
-  &:has(:focus-visible) {
-    border-radius: 2px;
-    outline: 2px solid var(--accent-700);
-    outline-offset: 1px;
-  }
-
   .trigger {
     all: unset;
 
@@ -34,6 +28,12 @@
       height: 2px;
 
       background-color: var(--dark-100);
+    }
+
+    &:focus-visible {
+      border-radius: 2px;
+      outline: 2px solid var(--accent-700);
+      outline-offset: 1px;
     }
 
     &:hover {
@@ -67,6 +67,12 @@
       &:active {
         background-color: transparent;
       }
+    }
+  }
+
+  .content {
+    &:focus-visible {
+      outline: none;
     }
   }
 }

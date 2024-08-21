@@ -24,7 +24,8 @@
                                                                                    }, ref) => {
    const classNames = {
     root: clsx(styles.root, className),
-     trigger: styles.trigger
+     trigger: styles.trigger,
+       content: styles.content
   } as const
 
         return (
@@ -50,7 +51,7 @@
               {tabs.map(tab => {
                 return (
                     tab.content && (
-                        <TabsSwitcher.Content key={tab.value} value={tab.value}>
+                        <TabsSwitcher.Content className={styles.content} key={tab.value} value={tab.value}>
                           {tab.content}
                         </TabsSwitcher.Content>
                     )
