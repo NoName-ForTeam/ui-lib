@@ -6,9 +6,6 @@ const meta = {
   component: ReCaptcha,
   tags: ['autodocs'],
   title: 'Components/ReCaptcha',
-  argTypes: {
-    siteKey: { control: 'text' },
-  },
 } satisfies Meta<typeof ReCaptcha>
 
 export default meta

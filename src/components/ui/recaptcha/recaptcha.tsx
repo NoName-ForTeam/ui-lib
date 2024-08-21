@@ -9,7 +9,7 @@ type ReCaptchaProps = {
 } & ComponentPropsWithoutRef<'div'>
 
 /**
- * Recaptcha component for user verification.
+ * ReCaptcha component for user verification.
  *
  * @component
  * @param {Object} props - The component props.
@@ -18,22 +18,20 @@ type ReCaptchaProps = {
  * @returns {JSX.Element} The rendered Recaptcha component.
  *
  * @example
- * <Recaptcha siteKey="your-site-key" error={false} />
+ * <ReCaptcha siteKey="your-site-key" error={false} />
  */
 
 export const ReCaptcha = ({ siteKey, isError, ...rest }: ReCaptchaProps) => {
-  const [status, setStatus] = useState<RecaptchaStatus>('default')
-  const recaptchaRef = useRef<ReCAPTCHAComponent>(null)
+  const [status, setStatus] = useState<ReCaptchaStatus>('default')
+  const reCaptchaRef = useRef<ReCAPTCHAComponent>(null)
 
   /**
    *may be needed to stylize the .container for different status in the future
    */
 
-  type RecaptchaStatus = 'default' | 'hover' | 'checked' | 'loading' | 'errorStatus' | 'expired'
+  type ReCaptchaStatus = 'default' | 'hover' | 'checked' | 'loading' | 'errorStatus' | 'expired'
 
   const handleChange = (value: string | null) => {
-    console.log(value)
-
     if (value) {
       setStatus('checked')
     } else {
@@ -50,7 +48,7 @@ export const ReCaptcha = ({ siteKey, isError, ...rest }: ReCaptchaProps) => {
       <ReCAPTCHAComponent
         size={'normal'}
         theme="dark"
-        ref={recaptchaRef}
+        ref={reCaptchaRef}
         sitekey={siteKey}
         onChange={handleChange}
       />
