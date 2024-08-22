@@ -20,10 +20,12 @@ type TabsProps = ComponentPropsWithoutRef<typeof TabsRadix.Root>
 
 export const Tabs = forwardRef<ElementRef<typeof TabsRadix.Root>, TabsProps>(
   ({ onValueChange, children, className, ...rest }, ref) => {
-    const classNames = clsx(styles.root, className)
+    const classNames = {
+        root: clsx(styles.root, className)
+    } as const
 
     return (
-      <TabsRadix.Root className={classNames} onValueChange={onValueChange} ref={ref} {...rest}>
+      <TabsRadix.Root className={classNames.root} onValueChange={onValueChange} ref={ref} {...rest}>
         {children}
       </TabsRadix.Root>
     )
@@ -67,8 +69,11 @@ export type TabsTriggerProps = ComponentPropsWithoutRef<typeof TabsRadix.Trigger
  */
 
 export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, TabsTriggerProps>(
-  ({ value, ...rest }, ref) => {
-    return <TabsRadix.Trigger value={value} className={styles.trigger} ref={ref} {...rest} />
+  ({ value, className, ...rest }, ref) => {
+      const classNames = {
+          trigger: clsx(styles.trigger, className)
+      }
+    return <TabsRadix.Trigger value={value} className={classNames.trigger} ref={ref} {...rest} />
   }
 )
 
@@ -86,11 +91,19 @@ export type TabsContentProps = ComponentPropsWithoutRef<typeof TabsRadix.Content
  */
 
 export const TabsContent = forwardRef<ElementRef<typeof TabsRadix.Content>, TabsContentProps>(
-  ({ children, ...rest }, ref) => {
-    return (
-      <TabsRadix.Content className={styles.content} ref={ref} {...rest}>
+  ({ children, className,  ...rest }, ref) => {
+        const classNames = {
+            content: clsx(styles.content, className)
+        }
+
+      return (
+      <TabsRadix.Content className={classNames.content} ref={ref} {...rest}>
         {children}
       </TabsRadix.Content>
     )
   }
 )
+
+Tabs.displayName = 'Tabs'
+TabsList.displayName = 'TabsList'
+TabsContent.displayName = 'TabsContent'
