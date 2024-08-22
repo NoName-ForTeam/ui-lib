@@ -1,0 +1,27 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 12px 64px;
+
+  .logo {
+    text-decoration: none;
+    font-size: var(--font-size-xxl);
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.select {
+  width: 40px;
+}
+
+.selectItem {
+  display: flex;
+  gap: 12px;
+}
