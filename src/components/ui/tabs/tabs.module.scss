@@ -7,7 +7,6 @@
     cursor: pointer;
 
     position: relative;
-    z-index: 1;
 
     padding: 8px 24px;
 
@@ -49,6 +48,23 @@
 
       &::before {
         background-color: var(--accent-500);
+      }
+
+      &[data-disabled] {
+        cursor: initial;
+        color: var(--accent-900);
+
+        &::before {
+          background-color: var(--accent-900);
+        }
+
+        &:hover {
+          background-color: transparent;
+        }
+
+        &:active {
+          background-color: transparent;
+        }
       }
     }
 

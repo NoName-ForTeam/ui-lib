@@ -1,8 +1,6 @@
-
 export * from './textArea'
 export * from './typography'
-
-
+export * from './tabs'
 export * from './checkbox'
 export * from './select'
 export * from './button'

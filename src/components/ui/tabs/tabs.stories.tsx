@@ -1,16 +1,7 @@
-import { useState } from 'react'
+import { type Meta, StoryObj } from '@storybook/react'
 
-import { type Meta } from '@storybook/react'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs'
 
-import { type Tab, Tabs } from './Tabs'
-
-const meta = {
-  component: Tabs,
-  tags: ['autodocs'],
-  title: 'Components/Tabs',
-} satisfies Meta<typeof Tabs>
-
-export default meta
 const ContentFirst = () => {
   return <div style={{ color: 'red', maxWidth: '100%', width: '350px' }}>First</div>
 }
@@ -21,19 +12,58 @@ const ContentThird = () => {
   return <div style={{ color: 'green', maxWidth: '100%', width: '350px' }}>Third</div>
 }
 
-const tabs: Tab[] = [
-  { content: <ContentFirst />, text: 'First', value: 'First' },
-  { content: <ContentSecond />, text: 'Second', value: 'Second' },
-  { content: <ContentThird />, text: 'Third', value: 'Third' },
-  { disabled: true, text: 'Disabled', value: 'disabled' },
-]
+const meta = {
+  component: Tabs,
+  tags: ['autodocs'],
+  title: 'Components/Tabs',
+} satisfies Meta<typeof Tabs>
 
-export const Default = {
-  render: () => {
-    const [value, setValue] = useState<string>()
+export default meta
 
-    return (
-          <Tabs defaultValue={tabs[0]?.value} onValueChange={setValue} tabs={tabs} value={value} />
-    )
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    children: (
+      <>
+        <TabsList>
+          <TabsTrigger defaultValue={'First'} value={'First'}>
+            First
+          </TabsTrigger>
+          <TabsTrigger value={'Second'}>Second</TabsTrigger>
+          <TabsTrigger value={'Third'}>Third</TabsTrigger>
+          <TabsTrigger disabled={true} value={'Disabled'}>
+            Disabled
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value={'First'}>
+          <ContentFirst />
+        </TabsContent>
+        <TabsContent value={'Second'}>
+          <ContentSecond />
+        </TabsContent>
+        <TabsContent value={'Third'}>
+          <ContentThird />
+        </TabsContent>
+      </>
+    ),
+  },
+  render: args => {
+    return <Tabs defaultValue={'First'}>{args.children}</Tabs>
+  },
+}
+
+export const ActiveDisabled = {
+  args: {
+    children: (
+      <TabsList>
+        <TabsTrigger disabled={true} value={'Disabled'}>
+          Disabled
+        </TabsTrigger>
+      </TabsList>
+    ),
+  },
+  render: args => {
+    return <Tabs defaultValue={'Disabled'}>{args.children}</Tabs>
   },
 }
