@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Sidebars, SidebarsElement } from './sidebars'
 
 import { Home } from '@/assets'
-import { Button } from '../button'
 import React from 'react'
 
 const meta = {

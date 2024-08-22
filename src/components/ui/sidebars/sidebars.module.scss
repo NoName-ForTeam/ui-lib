@@ -24,10 +24,12 @@
 }
 
 .element {
+  cursor: pointer;
+
   display: flex;
   gap: 12px;
   align-items: center;
-  cursor: pointer;
+
   width: max-content;
 
   &:hover {
@@ -39,12 +41,12 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--accent-700);
     border-radius: 2px;
+    outline: 2px solid var(--accent-700);
   }
 
   &.disabled {
-    color: var(--dark-100);
     cursor: default;
+    color: var(--dark-100);
   }
 }
