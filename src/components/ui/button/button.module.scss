@@ -70,6 +70,24 @@
   }
 }
 
+.ghost {
+  @include button();
+
+  color: var(--accent-500);
+
+  &:hover {
+    color: var(--accent-100);
+  }
+
+  &:active {
+    color: var(--accent-700);
+  }
+
+  &:disabled {
+    color: var(--accent-900);
+  }
+}
+
 button.link,
 a.link {
   cursor: pointer;
