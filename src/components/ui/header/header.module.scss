@@ -1,20 +1,21 @@
 .headerContainer {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+
   height: 60px;
   padding: 12px 64px;
 
   .logo {
-    text-decoration: none;
     font-size: var(--font-size-xxl);
+    text-decoration: none;
   }
 }
 
 .buttonsContainer {
   display: flex;
-  align-items: center;
   gap: 28px;
+  align-items: center;
 }
 
 .select {
