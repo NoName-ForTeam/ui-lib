@@ -2,6 +2,7 @@ import { Button, Select, SelectItem } from '@/components'
 import styles from './header.module.scss'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
 import { OutlineBell, FillBell, FlagRussia, FlagUnitedKingdom } from '@/assets'
+import clsx from 'clsx'
 
 type HeaderProps = {
   isLoggedIn: boolean
@@ -10,7 +11,7 @@ type HeaderProps = {
 } & ComponentPropsWithoutRef<'div'>
 
 export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
-  ({ isLoggedIn, onChangeLanguage, notifications, ...rest }, ref) => {
+  ({ isLoggedIn, onChangeLanguage, notifications, className, ...rest }, ref) => {
     const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
 
     const onClickBall = () => {
@@ -22,7 +23,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
     }
 
     const classNames = {
-      header: styles.headerContainer,
+      header: clsx(styles.headerContainer, className),
       logo: styles.logo,
       buttonBell: styles.bellButton,
       buttonsContainer: styles.buttonsContainer,
