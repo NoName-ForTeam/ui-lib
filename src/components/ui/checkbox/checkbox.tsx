@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef, useId } from 'react'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import clsx from 'clsx'
 
-import styles from './Checkbox.module.scss'
+import styles from './checkbox.module.scss'
 import { CheckmarkOutline } from '@/assets'
 
 type CheckboxProps = {
