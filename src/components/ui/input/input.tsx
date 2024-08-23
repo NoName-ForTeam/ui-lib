@@ -9,6 +9,7 @@ export type InputProps = {
   errorMessage?: string
   label?: string
   variant?: 'text' | 'password' | 'search'
+  onValueChange?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
 /**
@@ -36,6 +37,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
       errorMessage,
       className,
       onChange,
+      onValueChange,
       disabled,
       value,
       placeholder,
@@ -69,6 +71,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e)
+      onValueChange?.(e.target.value)
     }
 
     const showPasswordHandler = () => {
