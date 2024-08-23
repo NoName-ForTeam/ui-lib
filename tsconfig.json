@@ -52,6 +52,9 @@
 
     // Enfore "type" modifier for type imports.
     "verbatimModuleSyntax": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": ".",
     // use alias in paths
     "paths": {
       "@/*": ["./src/*"]
@@ -73,5 +76,6 @@
   },
 
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["./src/**/*.stories.*"]
+  "exclude": ["./src/**/*.stories.*", "./src/assets/**/*",
+  "node_modules"]
 }
