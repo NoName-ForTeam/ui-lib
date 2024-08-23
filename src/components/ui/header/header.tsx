@@ -1,84 +1,85 @@
 import { Button, Select, SelectItem } from '@/components'
 import styles from './header.module.scss'
-import { useState } from 'react'
-import OutlineBell from '@/assets/icons/components/OutlineBell.tsx'
-import FillBell from '@/assets/icons/components/FillBell.tsx'
-import FlagRussia from '@/assets/icons/components/FlagRussia.tsx'
-import FlagUnitedKingdom from '@/assets/icons/components/FlagUnitedKingdom.tsx'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'react'
+import { OutlineBell, FillBell, FlagRussia, FlagUnitedKingdom } from '@/assets'
 
 type HeaderProps = {
   isLoggedIn: boolean
-}
+  onChangeLanguage: (value: string) => void
+  notifications?: unknown[]
+} & ComponentPropsWithoutRef<'div'>
 
-export const Header = (props: HeaderProps) => {
-  const { isLoggedIn } = props
+export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
+  ({ isLoggedIn, onChangeLanguage, notifications, ...rest }, ref) => {
+    const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
 
-  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false)
+    const onClickBall = () => {
+      setIsNotificationsOpen(!isNotificationsOpen)
+    }
 
-  const onClickBall = () => {
-    setIsNotificationsOpen(!isNotificationsOpen)
-  }
+    const onChangeLanguageCallback = (value: string) => {
+      onChangeLanguage(value)
+    }
 
-  if (isLoggedIn) {
+    const classNames = {
+      header: styles.headerContainer,
+      logo: styles.logo,
+      buttonBell: styles.bellButton,
+      buttonsContainer: styles.buttonsContainer,
+      notifications: styles.notifications,
+      selectContainer: styles.selectContainer,
+      selectItem: styles.selectItem,
+      flags: styles.flag,
+      bell: styles.bell
+    } as const
+
     return (
-      <div className={styles.headerContainer}>
-        <a className={styles.logo} href={'/'}>
+      <div className={classNames.header} ref={ref} {...rest}>
+        <a className={classNames.logo} href={'/'}>
           Inctagram
         </a>
-        <div className={styles.buttonsContainer}>
-          <Button variant={'ghost'} onClick={onClickBall}>
-            {isNotificationsOpen ? (
-              <OutlineBell width={24} height={24} viewBox={'-3 2 24 24'} />
-            ) : (
-              <FillBell width={24} height={24} />
-            )}
-          </Button>
-          <Select defaultValue={'en'}>
+        <div className={classNames.buttonsContainer}>
+          {isLoggedIn && (
+            <Button variant={'ghost'} onClick={onClickBall} className={classNames.buttonBell}>
+              {isNotificationsOpen ? (
+                <>
+                  <FillBell className={classNames.bell} />
+                </>
+              ) : (
+                <>
+                  <OutlineBell className={classNames.bell} viewBox={'-3 2 24 24'}/>
+                  <div className={classNames.notifications}>{notifications?.length}</div>
+                </>
+              )}
+            </Button>
+          )}
+          <Select onValueChange={() => onChangeLanguageCallback} defaultValue={'en'}>
             <SelectItem value={'ru'}>
-              <div className={styles.selectItem}>
-                <FlagRussia width={20} height={20} />
+              <div className={classNames.selectItem}>
+                <FlagRussia className={classNames.flags} />
                 Russian
               </div>
             </SelectItem>
             <SelectItem value={'en'}>
-              <div className={styles.selectItem}>
-                <FlagUnitedKingdom width={20} height={20} />
+              <div className={classNames.selectItem}>
+                <FlagUnitedKingdom className={classNames.flags} />
                 English
               </div>
             </SelectItem>
           </Select>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className={styles.headerContainer}>
-        <a className={styles.logo} href={'/'}>
-          Inctagram
-        </a>
-        <div className={styles.buttonsContainer}>
-          <Select defaultValue={'en'}>
-            <SelectItem value={'ru'}>
-              <div className={styles.selectItem}>
-                <FlagRussia width={20} height={20} />
-                Russian
-              </div>
-            </SelectItem>
-            <SelectItem value={'en'}>
-              <div className={styles.selectItem}>
-                <FlagUnitedKingdom width={20} height={20} />
-                English
-              </div>
-            </SelectItem>
-          </Select>
-          <Button variant={'link'} asChild>
-            <a href={'/login'}>Log in</a>
-          </Button>
-          <Button variant={'primary'} asChild>
-            <a href={'/registration'}>Sign up</a>
-          </Button>
+
+          {!isLoggedIn && (
+            <>
+              <Button variant={'link'} asChild>
+                <a href={'/login'}>Log in</a>
+              </Button>
+              <Button variant={'primary'} asChild>
+                <a href={'/registration'}>Sign up</a>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     )
   }
-}
+)

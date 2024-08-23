@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
 
+  //TO DO add style variable for header height
   height: 60px;
   padding: 12px 64px;
 
@@ -12,8 +13,13 @@
   }
 }
 
+.bellButton {
+  padding: 0;
+}
+
 .buttonsContainer {
   display: flex;
+  position: relative;
   gap: 28px;
   align-items: center;
 }
@@ -22,3 +28,29 @@
   display: flex;
   gap: 12px;
 }
+
+.notifications {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--danger-500);
+  font-size: 12px;
+  height: 14px;
+  width: 14px;
+  color: var(--light-100);
+  border-radius: 50%;
+  top: 6px;
+  left: 14px;
+}
+
+.flag {
+  width: 20px;
+  height: 20px;
+}
+
+.bell {
+  width: 24px;
+  height: 24px;
+}
+
