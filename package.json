@@ -1,10 +1,11 @@
 {
   "name": "@photo-fiesta/ui-lib",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "rimraf dist",
     "build": "tsc -b && vite build ",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
@@ -86,6 +87,7 @@
     "eslint-plugin-storybook": "^0.8.0",
     "husky": "^8.0.0",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "sass": "^1.77.8",
     "storybook": "^8.2.7",
     "stylelint": "^16.8.1",
