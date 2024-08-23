@@ -72,7 +72,7 @@ export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, Tabs
   ({ value, className, ...rest }, ref) => {
     const classNames = {
       trigger: clsx(styles.trigger, className),
-    }
+    } as const
     return <TabsRadix.Trigger value={value} className={classNames.trigger} ref={ref} {...rest} />
   }
 )
@@ -94,7 +94,7 @@ export const TabsContent = forwardRef<ElementRef<typeof TabsRadix.Content>, Tabs
   ({ children, className, ...rest }, ref) => {
     const classNames = {
       content: clsx(styles.content, className),
-    }
+    } as const
 
     return (
       <TabsRadix.Content className={classNames.content} ref={ref} {...rest}>
