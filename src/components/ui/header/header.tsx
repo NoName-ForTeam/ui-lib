@@ -30,7 +30,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
       selectContainer: styles.selectContainer,
       selectItem: styles.selectItem,
       flags: styles.flag,
-      bell: styles.bell
+      bell: styles.bell,
     } as const
 
     return (
@@ -47,7 +47,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
                 </>
               ) : (
                 <>
-                  <OutlineBell className={classNames.bell} viewBox={'-3 2 24 24'}/>
+                  <OutlineBell className={classNames.bell} viewBox={'-3 2 24 24'} />
                   <div className={classNames.notifications}>{notifications?.length}</div>
                 </>
               )}
