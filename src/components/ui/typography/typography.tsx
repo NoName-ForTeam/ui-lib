@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
 import clsx from 'clsx'
 
-import styles from './Typography.module.scss'
+import styles from './typography.module.scss'
 
 type TypographyType =
   | 'h1'
