@@ -1,7 +1,7 @@
 {
-  "name": "ui-kit",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@photo-fiesta/ui-lib",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,7 +17,8 @@
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
     "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
-    "pre-push": "pnpm format && pnpm run lint && pnpm run build"
+    "pre-push": "pnpm format && pnpm run lint && pnpm run build",
+    "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
   },
   "comments": {
     "//": "script description",
@@ -25,7 +26,8 @@
       "sb": "storybook",
       "/": "usage: pnpm comp <folderName> <componentName> true",
       "comp": "generate folder with tsx,stories,scss templates",
-      "generate-svg-components": "generate tsx from svg"
+      "generate-svg-components": "generate tsx from svg",
+      "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
     }
   },
   "main": "./dist/index.cjs",
@@ -43,6 +45,10 @@
       }
     },
     "./style.css": "./dist/style.css"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.20",
