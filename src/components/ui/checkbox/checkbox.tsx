@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import styles from './checkbox.module.scss'
 import { CheckmarkOutline } from '@/assets'
 
-type CheckboxProps = {
+export type CheckboxProps = {
   label?: string | null
 
   onChange?: (checked: CheckboxRadix.CheckedState) => void
