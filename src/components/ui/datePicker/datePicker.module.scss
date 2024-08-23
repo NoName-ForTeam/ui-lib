@@ -1,3 +1,52 @@
+///* Основные стили календаря */
+//.react-datepicker {
+//  font-family: Arial, sans-serif;
+//}
+//
+//.react-datepicker__header {
+//  background-color: white;
+//  border-bottom: none;
+//}
+//
+//.custom-header {
+//  display: flex;
+//  justify-content: space-between;
+//  align-items: center;
+//  padding: 0.5em;
+//  background-color: white;
+//  border-bottom: 1px solid #ccc;
+//}
+//
+//.custom-header button {
+//  background: none;
+//  border: none;
+//  cursor: pointer;
+//  font-size: 1.2em;
+//  color: #007bff;
+//}
+//
+//.react-datepicker__day {
+//  color: black;
+//}
+//
+//.react-datepicker__day--today {
+//  background-color: blue;
+//  color: white;
+//}
+//
+//.outside-month {
+//  color: gray;
+//}
+//
+//.weekend {
+//  color: red;
+//}
+//
+//.react-datepicker__day:hover {
+//  background-color: #f0f0f0;
+//}
+
+
 .root {
   display: flex;
   flex-direction: column;

@@ -1,125 +1,241 @@
-import React, { ReactNode, forwardRef, ComponentProps } from 'react'
-import DatePicker, { ReactDatePickerCustomHeaderProps, registerLocale } from 'react-datepicker'
-import { format } from 'date-fns'
-import { enUS } from 'date-fns/locale'
-import clsx from 'clsx'
-import styles from './datePicker.module.scss'
-import { ArrowIosBackOutline, ArrowIosForwardOutline, Calendar } from '@/assets'
+import React, { useState } from 'react';
+import DatePicker, { ReactDatePickerCustomHeaderProps, registerLocale} from 'react-datepicker';
+import styles from "./datePicker.module.scss";
+import {ArrowIosBackOutline, ArrowIosForwardOutline, Calendar} from "@/assets";
+import {enUS} from "date-fns/locale";
+import clsx from "clsx";
 
-// Регистрация локали для DatePicker
-
+type DatePickerType={
+    errorMessage?: string
+    label?: string
+    disabled?: boolean
+    required?: boolean
+    selectsRange?: boolean
+}
 registerLocale('enUS', enUS)
 
-export type DatePickerProps = {
-  disabled?: boolean
-  endDate?: Date | null
-  errorMessage?: string
-  label?: ReactNode
-  required?: boolean
-  setEndDate?: (date: Date | null) => void
-  setStartDate: (date: Date | null) => void
-  startDate: Date | null
-} & ComponentProps<'div'>
+export const CustomDatePicker: React.FC = ({errorMessage,label, disabled, required, selectsRange, ...restProps}: DatePickerType) => {
+    const [selectedDate, setSelectedDate] = useState<Date|null>(null)
 
-export const DatePickerCalendar = ({
-  endDate,
-  startDate,
-  setEndDate,
-  setStartDate,
-  errorMessage,
-  disabled,
-  label,
-  required,
-  ...restProps
-}: DatePickerProps) => {
+    // const [selectedDate, setSelectedDate] = useState<Date | [Date | undefined, Date | undefined]>(selectsRange ? [undefined, undefined] : new Date());
 
-  // Проверка на наличие ошибки
-  // const showError = !!errorMessage;
+    const showError = !!errorMessage && errorMessage.length > 0
+    const renderCustomHeader = ({date, decreaseMonth, increaseMonth,
+                                }: ReactDatePickerCustomHeaderProps) => (
+        <div className={styles.header}>
+            <span>{date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
+            <div className={styles.buttonBox}>
+                <button className={styles.button} onClick={decreaseMonth} type="button">
+                 <ArrowIosBackOutline/>
+                 </button>
+                <button className={styles.button} onClick={increaseMonth} type="button">
+                <ArrowIosForwardOutline/>
+               </button>
+            </div>
+        </div>
+    );
 
-  const showError = !!errorMessage && errorMessage.length > 0
-  const startDateCalendar = startDate || undefined
-  const endDateCalendar = endDate || undefined
+// const dayStyles = (date: Date) => styles.day
 
-  // Функция для обработки изменения дат
-
-  const handleDateChange = (dates: [Date | null, Date | null] | Date) => {
-    if (Array.isArray(dates)) {
-      const [start, end] = dates
-      setStartDate(start)
-      setEndDate?.(end)
-    } else {
-      setStartDate(dates)
-    }
-  }
-  const classNames = {
-    calendar: styles.calendar,
-    day: () => styles.day,
-    errorText: styles.errorText,
-    input: clsx(styles.input, showError && styles.error),
-    inputContainer: styles.inputContainer,
-    root: clsx(styles.root),
-  }
-
-  return (
-    <div className={classNames.root} {...restProps}>
-      <DatePicker
-        selected={startDate}
-        calendarStartDay={1}
-        calendarClassName={classNames.calendar}
-
-        // dayClassName={classNames.day}
-
-        className={classNames.input}
-        onChange={handleDateChange}
-        startDate={startDateCalendar}
-        endDate={endDateCalendar}
-        selectsRange // Выбор диапазона дат, если endDate определен
-        disabled={disabled}
-        dateFormat="dd/MM/yyyy"
-        locale="enUS"
-        required={required}
-        customInput={<CustomInput disabled={disabled} label={label} />}
-        renderCustomHeader={CustomHeader}
-        popperPlacement="bottom-start"
-        showPopperArrow={false}
-      />
-      {showError && <p className={classNames.errorText}>{errorMessage}</p>}
-    </div>
-  )
-}
-
-type CustomInputProps = {
-  disabled?: boolean
-  label?: ReactNode
-}
-
-const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
-  ({ disabled, label, ...rest }, ref) => {
-    const classNames = {
-      icon: clsx(styles.icon, disabled && styles.disabled),
-      inputContainer: styles.inputContainer,
-    }
-
+    const formatSelectedDate = () => {
+        if (selectsRange && Array.isArray(selectedDate)) {
+            const [start, end] = selectedDate;
+            return `${start ? start.toLocaleDateString() : ''} - ${end ? end.toLocaleDateString() : ''}`;
+        }
+        return selectedDate instanceof Date ? selectedDate.toLocaleDateString() : '';
+    };
     return (
-      <div className={classNames.inputContainer}>
-        <label>{label}</label>
-        <input ref={ref} disabled={disabled} {...rest} />
-        <Calendar className={classNames.icon} />
-      </div>
-    )
-  }
-)
+        <div className={styles.root} {...restProps}>
+        <DatePicker
+            selected={Array.isArray(selectedDate) ? selectedDate[0] : selectedDate}
 
-const CustomHeader = ({ date, decreaseMonth, increaseMonth }: ReactDatePickerCustomHeaderProps) => (
-  <div className={styles.header}>
-    <div>{format(date, 'LLLL yyyy', { locale: enUS })}</div>
-    <div className={styles.buttonBox}>
-      <button className={styles.button} onClick={decreaseMonth} type="button">
-        <ArrowIosBackOutline />
-      </button>
-      <button className={styles.button} onClick={increaseMonth} type="button">
-        <ArrowIosForwardOutline />
-      </button>
-    </div>
-  </div>
-)
+            // startDate={selectsRange ? (selectedDate as [Date | undefined, Date | undefined])[0] : undefined}
+            // endDate={selectsRange ? (selectedDate as [Date | undefined, Date | undefined])[1] : undefined}
+
+            locale={'enUS'}
+            onChange={(date) => setSelectedDate(date)}
+            dateFormat="dd/MM/yyyy"
+            renderCustomHeader={renderCustomHeader}
+            popperPlacement="bottom-start"
+            showPopperArrow={false}
+            calendarClassName={styles.calendar}
+
+            // dayClassName={dayStyles}
+
+            required={required}
+            disabled={disabled}
+            customInput={
+                <div className={clsx(styles.inputContainer, 
+
+                    // { styles.error: showError }
+
+                    )}>
+                    {label && <label className={styles.label}>{label} {required && '*'}</label>}
+                    <input className={styles.input}
+                           type="text"
+
+                           // value={selectedDate ? selectedDate.toLocaleDateString() : ''}
+
+                           value={formatSelectedDate()}
+                           readOnly
+                           disabled={disabled}
+                           required={required}
+                    />
+                    <Calendar className={styles.icon}/>
+                </div>
+            }
+        />
+    {showError && <p className={clsx(styles.errorText, styles.error)}>{errorMessage}</p>}
+        </div>
+    )
+}
+
+
+
+// import React, {ReactNode, forwardRef, ComponentProps} from 'react'
+// import {ReactDatePickerCustomHeaderProps, registerLocale} from 'react-datepicker'
+// import * as RDP from 'react-datepicker'
+// import {format} from 'date-fns'
+// import {enUS} from 'date-fns/locale'
+// import clsx from 'clsx'
+// import styles from './datePicker.module.scss'
+// import {ArrowIosBackOutline, ArrowIosForwardOutline, Calendar} from '@/assets'
+// const RDPC = (((RDP.default as any).default as any) ||
+//     (RDP.default as any) ||
+//     (RDP as any)) as typeof RDP.default
+//
+// // Регистрация локали для DatePicker
+//
+// registerLocale('enUS', enUS)
+//
+// export type DatePickerProps = {
+//     disabled?: boolean
+//     placeholder?: string | undefined
+//     errorMessage?: string
+//     label?: ReactNode
+//     required?: boolean
+//     className?: string
+//
+//     setEndDate?: (date: Date | null) => void
+//     setStartDate: (date: Date | null) => void
+//     startDate: Date | null
+//     endDate?: Date | null
+//     range?: boolean
+//
+// }& ComponentProps<'div'>
+//
+// export const DatePickerCalendar = ({
+//
+// range,endDate, startDate, setStartDate, setEndDate,
+//
+//                      errorMessage,
+//                                        disabled,
+//                                        label,
+//                                        required,
+//                                        placeholder,
+//                                        ...restProps
+//                                    }: DatePickerProps) => {
+//
+//     // Проверка на наличие ошибки
+//     // const showError = !!errorMessage;
+//
+//     // type Nullable<T> = null | T
+//     // type Value = Nullable<Date>
+//     // type RangeValue = [Value, Value]
+//
+//
+//     const showError = !!errorMessage && errorMessage.length > 0
+//
+//
+//     // const [startDate, setStartDate] = useState<Date|null>(placeholder ? new Date(placeholder) : null)
+//     // const [endDate, setEndDate] = useState<Date|null>(null)
+//
+//     const isRange = endDate ? true : undefined
+//
+//     // const placeholderDate = placeholder ? new Date(placeholder).toDateString() : undefined
+//
+//     const startDateCalendar = startDate || undefined
+//     const endDateCalendar = endDate || undefined
+//
+//     // Функция для обработки изменения дат
+//
+//     const handleDateChange = (dates: Date | null) => {
+//         if (Array.isArray(dates)) {
+//             const [start, end] = dates
+//             setStartDate(start)
+//             setEndDate?.(end)
+//         } else {
+//             setStartDate(dates)
+//         }
+//     }
+//     const classNames = {
+//         calendar: styles.calendar,
+//         day: () => styles.day,
+//         errorText: styles.errorText,
+//         input: clsx(styles.input, showError && styles.error),
+//         inputContainer: styles.inputContainer,
+//         root: clsx(styles.root),
+//     }
+//
+//     return (
+//         <div className={classNames.root} {...restProps}>
+//             <RDPC
+//                 selected={startDate}
+//                 calendarStartDay={1}
+//                 calendarClassName={classNames.calendar}
+//                 dayClassName={classNames.day}
+//                 placeholderText={placeholder}
+//                 className={classNames.input}
+//                 onChange={handleDateChange}
+//                 startDate={range ? startDateCalendar : undefined}
+//                 endDate={range ? endDateCalendar : undefined}
+//                 selectsRange={isRange} // Выбор диапазона дат, если endDate определен
+//                 disabled={disabled}
+//                 dateFormat="dd/MM/yyyy"
+//                 locale="enUS"
+//                 required={required}
+//                 customInput={<CustomInput disabled={disabled} label={label}/>}
+//                 renderCustomHeader={CustomHeader}
+//                 popperPlacement="bottom-start"
+//                 showPopperArrow={false}
+//             />
+//             {showError && <p className={classNames.errorText}>{errorMessage}</p>}
+//         </div>
+//     )
+// }
+//
+// type CustomInputProps = {
+//     disabled?: boolean
+//     label?: ReactNode
+// }
+//
+// const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
+//     ({disabled, label, ...rest}, ref) => {
+//         const classNames = {
+//             icon: clsx(styles.icon, disabled && styles.disabled),
+//             inputContainer: styles.inputContainer,
+//         }
+//
+//         return (
+//             <div className={classNames.inputContainer}>
+//                 <label>{label}</label>
+//                 <input ref={ref} disabled={disabled} {...rest} />
+//                 <Calendar className={classNames.icon}/>
+//             </div>
+//         )
+//     }
+// )
+//
+// const CustomHeader = ({date, decreaseMonth, increaseMonth}: ReactDatePickerCustomHeaderProps) => (
+//     <div className={styles.header}>
+//         <div>{format(date, 'LLLL yyyy', {locale: enUS})}</div>
+//         <div className={styles.buttonBox}>
+//             <button className={styles.button} onClick={decreaseMonth} type="button">
+//                 <ArrowIosBackOutline/>
+//             </button>
+//             <button className={styles.button} onClick={increaseMonth} type="button">
+//                 <ArrowIosForwardOutline/>
+//             </button>
+//         </div>
+//     </div>
+// )
