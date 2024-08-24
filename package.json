@@ -18,8 +18,22 @@
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
     "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
-    "pre-push": "pnpm format && pnpm run lint && pnpm run build",
+
+    "pre-push": "pnpm run build",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less,scss,sass,sss}": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
+
     "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
+
   },
   "comments": {
     "//": "script description",
@@ -65,7 +79,11 @@
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+
+    "react-google-recaptcha": "^3.1.0"
+
     "react-hook-form": "^7.52.2"
+
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -76,12 +94,13 @@
     "@storybook/addon-links": "^8.2.7",
     "@storybook/addon-onboarding": "^8.2.7",
     "@storybook/blocks": "^8.2.7",
-    "@storybook/react": "^8.2.7",
-    "@storybook/react-vite": "^8.2.7",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-vite": "^8.2.9",
     "@storybook/test": "^8.2.7",
     "@types/node": "^22.1.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -90,13 +109,14 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
     "husky": "^8.0.0",
+    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
     "rimraf": "^6.0.1",
     "sass": "^1.77.8",
     "storybook": "^8.2.7",
     "stylelint": "^16.8.1",
-    "typescript": "5.4.2",
-    "vite": "^5.3.4",
-    "vite-plugin-dts": "4.0.0-beta.2"
+    "typescript": "5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "4.0.3"
   }
 }

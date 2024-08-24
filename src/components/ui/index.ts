@@ -1,4 +1,8 @@
+
+export * from './recaptcha'
+
 export * from './sidebars'
+
 export * from './textArea'
 export * from './typography'
 export * from './tabs'
