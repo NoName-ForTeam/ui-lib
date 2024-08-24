@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
 import { CustomDatePicker } from './'
-import {Meta, StoryObj} from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import moment from 'moment'
-import meta from "../button/button.stories";
+import meta from '../button/button.stories'
 
 export default {
   component: CustomDatePicker,
@@ -12,36 +12,36 @@ export default {
 
 type Story = StoryObj<typeof meta>
 
-export const Default:Story = {
+export const Default: Story = {
   args: {
     disabled: false,
     label: 'Дата',
-   placeholder:  moment().format('L')
-
+    placeholder: moment().format('L'),
   },
 
   render(args) {
     const [startDate, setStartDate] = useState(null)
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <CustomDatePicker
-              setStartDate={setStartDate}
-              startDate={startDate}
-              selectsRange={false}
-              {...args} />
-        </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+        <CustomDatePicker
+          setStartDate={setStartDate}
+          startDate={startDate}
+          selectsRange={false}
+          {...args}
+        />
+      </div>
     )
   },
 }
-export const Required:Story = {
+export const Required: Story = {
   ...Default,
   args: {
     ...Default.args,
     required: true,
   },
 }
-export const DefaultWithErrors:Story = {
+export const DefaultWithErrors: Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -50,7 +50,7 @@ export const DefaultWithErrors:Story = {
   },
 }
 
-export const DefaultDisabled:Story = {
+export const DefaultDisabled: Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -58,7 +58,7 @@ export const DefaultDisabled:Story = {
   },
 }
 
-export const Range:Story = {
+export const Range: Story = {
   args: {
     placeholder: 'Выбрать период',
   },
@@ -68,16 +68,16 @@ export const Range:Story = {
     const [endDate, setEndDate] = useState<Date | null>(null)
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <CustomDatePicker
-              endDate={endDate}
-              setEndDate={setEndDate}
-              setStartDate={setStartDate}
-              startDate={startDate}
-              selectsRange={true}
-              {...args}
-          />
-        </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+        <CustomDatePicker
+          endDate={endDate}
+          setEndDate={setEndDate}
+          setStartDate={setStartDate}
+          startDate={startDate}
+          selectsRange={true}
+          {...args}
+        />
+      </div>
     )
   },
 }
