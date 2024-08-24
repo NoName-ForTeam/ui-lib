@@ -106,6 +106,7 @@ export const usePagination = ({
 
       return [firstPageIndex, DOTS, ...middleRange, DOTS, lastPageIndex]
     }
+    return getRange(1, totalPageCount)
   }, [totalCount, pageSize, siblingCount, currentPage]) as PaginationRange
 
   const handlePageChange = (num: number) => {
