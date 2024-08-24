@@ -2,6 +2,11 @@
   color: var(--light-100);
 }
 
+.icon {
+  fill: var(--light-100);
+  transition: 0.2s;
+}
+
 .trigger {
   cursor: pointer;
 
@@ -21,25 +26,21 @@
   border-radius: 2px;
   outline: none;
 
-  .icon {
-    fill: var(--light-100);
-    transition: 0.2s;
-  }
-
   &.pagination {
     column-gap: 6px;
     padding: 0 2px 0 6px;
     font-size: var(--font-size-s);
   }
 
+  .icon {
+    transform: none;
+    color: var(--light-100);
+  }
+
   &:focus-visible:not([data-disabled]) {
     color: var(--light-900);
     border: 2px solid var(--accent-500);
     outline: none;
-
-    .icon {
-      color: var(--light-100);
-    }
   }
 
   &[data-state='open'] {
@@ -76,6 +77,10 @@
 
 .withoutLabel {
   color: var(--light-900);
+  /* stylelint-disable-next-line */
+  .icon {
+    color: var(--light-100);
+  }
 }
 
 .content {
