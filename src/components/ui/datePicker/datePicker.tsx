@@ -1,95 +1,117 @@
-import React, { useState } from 'react';
-import DatePicker, { ReactDatePickerCustomHeaderProps, registerLocale} from 'react-datepicker';
+import React from 'react';
+import DatePicker, {ReactDatePickerCustomHeaderProps, registerLocale} from 'react-datepicker';
 import styles from "./datePicker.module.scss";
 import {ArrowIosBackOutline, ArrowIosForwardOutline, Calendar} from "@/assets";
 import {enUS} from "date-fns/locale";
 import clsx from "clsx";
 
-type DatePickerType={
+type DatePickerType = {
     errorMessage?: string
     label?: string
     disabled?: boolean
     required?: boolean
     selectsRange?: boolean
+    range?: boolean
 }
 registerLocale('enUS', enUS)
 
-export const CustomDatePicker: React.FC = ({errorMessage,label, disabled, required, selectsRange, ...restProps}: DatePickerType) => {
-    const [selectedDate, setSelectedDate] = useState<Date|null>(null)
+export const CustomDatePicker: React.FC = ({
+                                               errorMessage,
+                                               label,
+                                               disabled,
+                                               required,
 
-    // const [selectedDate, setSelectedDate] = useState<Date | [Date | undefined, Date | undefined]>(selectsRange ? [undefined, undefined] : new Date());
+                                               // range,
+
+                                               ...restProps
+                                           }: DatePickerType) => {
+
+    // const [selectedDate, setSelectedDate] = useState<Date|null>(null)
+
+    // const [startDate, setStartDate] = useState<Date | null>()
+
+    // const [endDate, setEndDate] = useState<Date | null>(null)
 
     const showError = !!errorMessage && errorMessage.length > 0
-    const renderCustomHeader = ({date, decreaseMonth, increaseMonth,
+    const renderCustomHeader = ({
+                                    date, decreaseMonth, increaseMonth,
                                 }: ReactDatePickerCustomHeaderProps) => (
         <div className={styles.header}>
-            <span>{date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
+            <span>{date.toLocaleString('default', {month: 'long', year: 'numeric'})}</span>
             <div className={styles.buttonBox}>
                 <button className={styles.button} onClick={decreaseMonth} type="button">
-                 <ArrowIosBackOutline/>
-                 </button>
+                    <ArrowIosBackOutline/>
+                </button>
                 <button className={styles.button} onClick={increaseMonth} type="button">
-                <ArrowIosForwardOutline/>
-               </button>
+                    <ArrowIosForwardOutline/>
+                </button>
             </div>
         </div>
     );
 
 // const dayStyles = (date: Date) => styles.day
+//
+//     const formatSelectedDate = (dates: [Date | null, Date | null] | Date) => {
+//         if (Array.isArray(dates)) {
+//             const [start, end] = dates
+//
+//             setStartDate(start)
+//             setEndDate?.(end)
+//         } else {
+//             setStartDate(dates)
+//         }
+//     };
 
-    const formatSelectedDate = () => {
-        if (selectsRange && Array.isArray(selectedDate)) {
-            const [start, end] = selectedDate;
-            return `${start ? start.toLocaleDateString() : ''} - ${end ? end.toLocaleDateString() : ''}`;
-        }
-        return selectedDate instanceof Date ? selectedDate.toLocaleDateString() : '';
-    };
     return (
         <div className={styles.root} {...restProps}>
-        <DatePicker
-            selected={Array.isArray(selectedDate) ? selectedDate[0] : selectedDate}
+            <DatePicker
 
-            // startDate={selectsRange ? (selectedDate as [Date | undefined, Date | undefined])[0] : undefined}
-            // endDate={selectsRange ? (selectedDate as [Date | undefined, Date | undefined])[1] : undefined}
+                // selected={startDate}
 
-            locale={'enUS'}
-            onChange={(date) => setSelectedDate(date)}
-            dateFormat="dd/MM/yyyy"
-            renderCustomHeader={renderCustomHeader}
-            popperPlacement="bottom-start"
-            showPopperArrow={false}
-            calendarClassName={styles.calendar}
+                // startDate={range ? startDate : undefined}
+                // endDate={range ? endDate : undefined}
+                // selectsRange={range}
 
-            // dayClassName={dayStyles}
+                locale={'enUS'}
 
-            required={required}
-            disabled={disabled}
-            customInput={
-                <div className={clsx(styles.inputContainer, 
+                // onChange={formatSelectedDate}
 
-                    // { styles.error: showError }
+                dateFormat="dd/MM/yyyy"
+                renderCustomHeader={renderCustomHeader}
+                popperPlacement="bottom-start"
+                showPopperArrow={false}
+                calendarClassName={styles.calendar}
+
+                // dayClassName={dayStyles}
+
+                required={required}
+                disabled={disabled}
+                customInput={
+                    <div className={clsx(styles.inputContainer,
+
+                        // { styles.error: showError }
 
                     )}>
-                    {label && <label className={styles.label}>{label} {required && '*'}</label>}
-                    <input className={styles.input}
-                           type="text"
+                        {label && <label className={styles.label}>{label} {required && '*'}</label>}
+                        <input className={styles.input}
+                               type="text"
 
-                           // value={selectedDate ? selectedDate.toLocaleDateString() : ''}
+                            // value={selectedDate ? selectedDate.toLocaleDateString() : ''}
 
-                           value={formatSelectedDate()}
-                           readOnly
-                           disabled={disabled}
-                           required={required}
-                    />
-                    <Calendar className={styles.icon}/>
-                </div>
-            }
-        />
-    {showError && <p className={clsx(styles.errorText, styles.error)}>{errorMessage}</p>}
+                               // value={formatSelectedDate()}
+
+                               readOnly
+                               disabled={disabled}
+                               required={required}
+                        />
+                        <Calendar className={styles.icon}/>
+                    </div>
+                }
+            />
+            {showError && <p className={clsx(styles.errorText, styles.error)}>{errorMessage}</p>}
         </div>
     )
 }
-
 
 
 // import React, {ReactNode, forwardRef, ComponentProps} from 'react'
