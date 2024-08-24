@@ -1,18 +1,23 @@
 import { useState } from 'react'
 
 import { CustomDatePicker } from './'
-import { Meta } from '@storybook/react'
+import {Meta, StoryObj} from '@storybook/react'
+import moment from 'moment'
+import meta from "../button/button.stories";
 
 export default {
   component: CustomDatePicker,
   title: 'Components/Date Picker',
 } satisfies Meta<typeof CustomDatePicker>
 
-export const Default = {
+type Story = StoryObj<typeof meta>
+
+export const Default:Story = {
   args: {
     disabled: false,
     label: 'Дата',
-    placeholder: 'Выбрать дату',
+   placeholder:  moment().format('L')
+
   },
 
   render(args) {
@@ -20,19 +25,23 @@ export const Default = {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
-          <CustomDatePicker setStartDate={setStartDate} startDate={startDate} selectsRange={false} {...args} />
+          <CustomDatePicker
+              setStartDate={setStartDate}
+              startDate={startDate}
+              selectsRange={false}
+              {...args} />
         </div>
     )
   },
 }
-export const Required = {
+export const Required:Story = {
   ...Default,
   args: {
     ...Default.args,
     required: true,
   },
 }
-export const DefaultWithErrors = {
+export const DefaultWithErrors:Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -41,7 +50,7 @@ export const DefaultWithErrors = {
   },
 }
 
-export const DefaultDisabled = {
+export const DefaultDisabled:Story = {
   ...Default,
   args: {
     ...Default.args,
@@ -49,7 +58,7 @@ export const DefaultDisabled = {
   },
 }
 
-export const Range = {
+export const Range:Story = {
   args: {
     placeholder: 'Выбрать период',
   },

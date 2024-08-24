@@ -11,31 +11,30 @@ type DatePickerType = {
     disabled?: boolean
     required?: boolean
     selectsRange?: boolean
-    range?: boolean
+    placeholder?: string
+    startDate?: Date | null;
+    endDate?: Date | null;
+    setStartDate?: (date: Date | null) => void;
+    setEndDate?: (date: Date | null) => void;
 }
 registerLocale('enUS', enUS)
 
-export const CustomDatePicker: React.FC = ({
+export const CustomDatePicker = ({
                                                errorMessage,
                                                label,
                                                disabled,
                                                required,
-
-                                               // range,
-
+                                               setEndDate,
+                                               endDate,
+                                               startDate,
+                                               setStartDate,
+                                               selectsRange,
+    placeholder,
                                                ...restProps
                                            }: DatePickerType) => {
 
-    // const [selectedDate, setSelectedDate] = useState<Date|null>(null)
-
-    // const [startDate, setStartDate] = useState<Date | null>()
-
-    // const [endDate, setEndDate] = useState<Date | null>(null)
-
     const showError = !!errorMessage && errorMessage.length > 0
-    const renderCustomHeader = ({
-                                    date, decreaseMonth, increaseMonth,
-                                }: ReactDatePickerCustomHeaderProps) => (
+    const renderCustomHeader = ({date, decreaseMonth, increaseMonth}: ReactDatePickerCustomHeaderProps) => (
         <div className={styles.header}>
             <span>{date.toLocaleString('default', {month: 'long', year: 'numeric'})}</span>
             <div className={styles.buttonBox}>
@@ -49,33 +48,41 @@ export const CustomDatePicker: React.FC = ({
         </div>
     );
 
-// const dayStyles = (date: Date) => styles.day
-//
-//     const formatSelectedDate = (dates: [Date | null, Date | null] | Date) => {
-//         if (Array.isArray(dates)) {
-//             const [start, end] = dates
-//
-//             setStartDate(start)
-//             setEndDate?.(end)
-//         } else {
-//             setStartDate(dates)
-//         }
-//     };
+    // const dayStyles = () => styles.day
+
+    const formatSelectedDate = (dates: [Date | null, Date | null] | Date) => {
+        if (Array.isArray(dates)) {
+            const [start, end] = dates
+
+            setStartDate?.(start)
+            setEndDate?.(end)
+        } else {
+            setStartDate?.(dates)
+            setEndDate?.(null)
+        }
+    };
+    const getInputValue = () => {
+        if (selectsRange && startDate && endDate) {
+            return `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`;
+        }
+        return startDate ? startDate.toLocaleDateString() : '';
+    };
 
     return (
         <div className={styles.root} {...restProps}>
-            <DatePicker
+            <DatePicker 
+                selected={startDate}
+                startDate={undefined}
+                endDate={undefined}
+                selectsRange={true}
 
-                // selected={startDate}
-
-                // startDate={range ? startDate : undefined}
-                // endDate={range ? endDate : undefined}
-                // selectsRange={range}
+                // startDate={selectsRange ? startDate : undefined}
+                // endDate={selectsRange ? endDate : undefined}
+                // selectsRange={selectsRange}
 
                 locale={'enUS'}
-
-                // onChange={formatSelectedDate}
-
+                placeholderText={placeholder}
+                onChange={formatSelectedDate}
                 dateFormat="dd/MM/yyyy"
                 renderCustomHeader={renderCustomHeader}
                 popperPlacement="bottom-start"
@@ -95,18 +102,16 @@ export const CustomDatePicker: React.FC = ({
                         {label && <label className={styles.label}>{label} {required && '*'}</label>}
                         <input className={styles.input}
                                type="text"
-
-                            // value={selectedDate ? selectedDate.toLocaleDateString() : ''}
-
-                               // value={formatSelectedDate()}
-
+                               value={getInputValue()}
                                readOnly
                                disabled={disabled}
                                required={required}
+                               placeholder={placeholder}
                         />
                         <Calendar className={styles.icon}/>
                     </div>
                 }
+                {...restProps}
             />
             {showError && <p className={clsx(styles.errorText, styles.error)}>{errorMessage}</p>}
         </div>
