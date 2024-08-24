@@ -1,3 +1,4 @@
+export * from './pagination'
 export * from './recaptcha'
 export * from './sidebars'
 export * from './textArea'
