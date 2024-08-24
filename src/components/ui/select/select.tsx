@@ -27,45 +27,48 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProp
   const classNames = {
     trigger: clsx(
       styles.trigger,
-      !label?.length && styles.withoutLabel,
-      disabled && styles.disabled,
-      pagination && styles.paginationTrigger
+      disabled && styles.triggerDisabled,
+      pagination && styles.pagination,
+      !label?.length && styles.withoutLabel
     ),
-    icon: styles.icon,
-    content: clsx(styles.content, pagination && styles.paginationContent),
+    icon: clsx(styles.icon, disabled && styles.iconDisabled),
+    content: styles.content,
+    label: clsx(styles.label, className),
   } as const
 
   return (
-    <SelectRadix.Root disabled={disabled} onValueChange={onValueChange} value={value} {...rest}>
-      <div className={styles.container}>
-        <label className={clsx(styles.label, className)}>
-          {label}
-          <SelectRadix.Trigger ref={ref} className={classNames.trigger}>
-            <SelectRadix.Value placeholder={placeholder ?? '...'} />
-            <SelectRadix.Icon asChild>
-              <ArrowIosDownOutline className={classNames.icon} />
-            </SelectRadix.Icon>
-          </SelectRadix.Trigger>
-        </label>
-      </div>
-      <SelectRadix.Portal>
-        <SelectRadix.Content position={'popper'} className={classNames.content}>
-          <SelectRadix.Viewport>{children}</SelectRadix.Viewport>
-        </SelectRadix.Content>
-      </SelectRadix.Portal>
-    </SelectRadix.Root>
+    <label className={classNames.label}>
+      <SelectRadix.Root disabled={disabled} onValueChange={onValueChange} value={value} {...rest}>
+        {label}
+        <SelectRadix.Trigger ref={ref} className={classNames.trigger}>
+          <SelectRadix.Value placeholder={placeholder ?? '...'} />
+          <SelectRadix.Icon asChild>
+            <ArrowIosDownOutline className={classNames.icon} />
+          </SelectRadix.Icon>
+        </SelectRadix.Trigger>
+        <SelectRadix.Portal>
+          <SelectRadix.Content position={'popper'} className={classNames.content}>
+            <SelectRadix.Viewport>{children}</SelectRadix.Viewport>
+          </SelectRadix.Content>
+        </SelectRadix.Portal>
+      </SelectRadix.Root>
+    </label>
   )
 })
 
 type SelectItemProps = {
   className?: string
+  pagination?: boolean
 } & ComponentPropsWithoutRef<typeof SelectRadix.Item>
 
 export const SelectItem = forwardRef<ElementRef<typeof SelectRadix.Item>, SelectItemProps>(
   (props, ref) => {
-    const { className, children, ...rest } = props
+    const { className, pagination, children, ...rest } = props
+    const classNames = {
+      item: clsx(styles.item, pagination && styles.pagination, className),
+    } as const
     return (
-      <SelectRadix.Item className={clsx(styles.item, className)} ref={ref} {...rest}>
+      <SelectRadix.Item className={classNames.item} ref={ref} {...rest}>
         <SelectRadix.ItemText>{children}</SelectRadix.ItemText>
       </SelectRadix.Item>
     )
