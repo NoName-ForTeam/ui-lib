@@ -35,15 +35,12 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
-
       react-google-recaptcha:
         specifier: ^3.1.0
         version: 3.1.0(react@18.3.1)
-
       react-hook-form:
         specifier: ^7.52.2
         version: 7.52.2(react@18.3.1)
-
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.6.1
@@ -53,9 +50,7 @@ importers:
         version: 0.1.2
       '@it-incubator/stylelint-config':
         specifier: ^2.0.0
-
-        version: 2.0.0(stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.4.2)))(stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2)))(stylelint@16.8.1(typescript@5.4.2))
-
+        version: 2.0.0(stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.5.4)))(stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4)))(stylelint@16.8.1(typescript@5.5.4))
       '@storybook/addon-essentials':
         specifier: ^8.2.7
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -72,13 +67,11 @@ importers:
         specifier: ^8.2.7
         version: 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/react':
-
-        specifier: ^8.2.7
-        version: 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)
+        specifier: ^8.2.9
+        version: 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)
       '@storybook/react-vite':
-        specifier: ^8.2.7
-        version: 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.20.0)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))
-
+        specifier: ^8.2.9
+        version: 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.20.0)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))
       '@storybook/test':
         specifier: ^8.2.7
         version: 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
@@ -96,17 +89,13 @@ importers:
         version: 2.1.9
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.15.0
-
-        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)
-
+        version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
       '@typescript-eslint/parser':
         specifier: ^7.15.0
         version: 7.18.0(eslint@8.57.0)(typescript@5.5.4)
       '@vitejs/plugin-react-swc':
         specifier: ^3.5.0
-
         version: 3.7.0(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))
-
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -147,10 +136,8 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2(@types/node@22.3.0)(sass@1.77.8)
       vite-plugin-dts:
-
         specifier: 4.0.3
         version: 4.0.3(@types/node@22.3.0)(rollup@4.20.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))
-
 
 packages:
 
@@ -3722,7 +3709,6 @@ packages:
       react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
       react-dom: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
 
-
   react-google-recaptcha@3.1.0:
     resolution: {integrity: sha512-cYW2/DWas8nEKZGD7SCu9BSuVz8iOcOLHChHyi7upUuVhkpkhYG/6N3KDiTQ3XAiZ2UAZkfvYKMfAHOzBOcGEg==}
     peerDependencies:
@@ -3733,7 +3719,6 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
-
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -4008,11 +3993,13 @@ packages:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
 
+  string-width@5.1.2:
+    resolution: {integrity: sha512-HnLOCR3vjcY8beoNLtcjZ5/nxn2afmME6lhrDrebokqMap+XbeW8n9TXpPDOqdGK5qcI3oT0GKTW6wC7EMiVqA==}
+    engines: {node: '>=12'}
 
   string-width@7.2.0:
     resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
     engines: {node: '>=18'}
-
 
   string_decoder@1.3.0:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
@@ -4418,11 +4405,17 @@ packages:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
+  wrap-ansi@7.0.0:
+    resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
+    engines: {node: '>=10'}
+
+  wrap-ansi@8.1.0:
+    resolution: {integrity: sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==}
+    engines: {node: '>=12'}
 
   wrap-ansi@9.0.0:
     resolution: {integrity: sha512-G8ura3S+3Z2G+mkgNRq8dqaFZAuxfsxpBB8OCTGRTCtp+l/v9nbFNmCUP1BZMts3G1142MsZfn6eeUKrr4PD1Q==}
     engines: {node: '>=18'}
-
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
@@ -5457,31 +5450,25 @@ snapshots:
     dependencies:
       prettier: 3.0.0
 
-
-  '@it-incubator/stylelint-config@2.0.0(stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.4.2)))(stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2)))(stylelint@16.8.1(typescript@5.4.2))':
+  '@it-incubator/stylelint-config@2.0.0(stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.5.4)))(stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4)))(stylelint@16.8.1(typescript@5.5.4))':
     dependencies:
-      stylelint: 16.8.1(typescript@5.4.2)
-      stylelint-config-clean-order: 6.1.0(stylelint@16.8.1(typescript@5.4.2))
-      stylelint-config-standard-scss: 13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2))
-
+      stylelint: 16.8.1(typescript@5.5.4)
+      stylelint-config-clean-order: 6.1.0(stylelint@16.8.1(typescript@5.5.4))
+      stylelint-config-standard-scss: 13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4))
 
   '@jest/schemas@29.6.3':
     dependencies:
       '@sinclair/typebox': 0.27.8
 
-
-  '@joshwooding/vite-plugin-react-docgen-typescript@0.3.1(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))':
-
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.3.1(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))':
     dependencies:
       glob: 7.2.3
       glob-promise: 4.2.2(glob@7.2.3)
       magic-string: 0.27.0
-
       react-docgen-typescript: 2.2.2(typescript@5.5.4)
       vite: 5.4.2(@types/node@22.3.0)(sass@1.77.8)
     optionalDependencies:
       typescript: 5.5.4
-
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
@@ -6072,9 +6059,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-
-  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))':
-
+  '@storybook/builder-vite@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))':
     dependencies:
       '@storybook/csf-plugin': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@types/find-cache-dir': 3.2.1
@@ -6086,11 +6071,9 @@ snapshots:
       magic-string: 0.30.11
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
       ts-dedent: 2.2.0
-
       vite: 5.4.2(@types/node@22.3.0)(sass@1.77.8)
     optionalDependencies:
       typescript: 5.5.4
-
     transitivePeerDependencies:
       - supports-color
 
@@ -6177,14 +6160,12 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2))
 
-
-  '@storybook/react-vite@8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.20.0)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))':
+  '@storybook/react-vite@8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.20.0)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))':
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.1(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.1(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))
       '@rollup/pluginutils': 5.1.0(rollup@4.20.0)
-      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))
-      '@storybook/react': 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)
-
+      '@storybook/builder-vite': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))
+      '@storybook/react': 8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)
       find-up: 5.0.0
       magic-string: 0.30.11
       react: 18.3.1
@@ -6201,9 +6182,7 @@ snapshots:
       - typescript
       - vite-plugin-glimmerx
 
-
-  '@storybook/react@8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.4.2)':
-
+  '@storybook/react@8.2.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))(typescript@5.5.4)':
     dependencies:
       '@storybook/components': 8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))
       '@storybook/global': 5.0.0
@@ -6230,9 +6209,7 @@ snapshots:
       type-fest: 2.19.0
       util-deprecate: 1.0.2
     optionalDependencies:
-
       typescript: 5.5.4
-
 
   '@storybook/test@8.2.9(storybook@8.2.9(@babel/preset-env@7.25.3(@babel/core@7.25.2)))':
     dependencies:
@@ -6465,9 +6442,7 @@ snapshots:
 
   '@types/uuid@9.0.8': {}
 
-
-  '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)':
-
+  '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@7.18.0(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)':
     dependencies:
       '@eslint-community/regexpp': 4.11.0
       '@typescript-eslint/parser': 7.18.0(eslint@8.57.0)(typescript@5.5.4)
@@ -6479,12 +6454,9 @@ snapshots:
       graphemer: 1.4.0
       ignore: 5.3.2
       natural-compare: 1.4.0
-script: 5.5.4
-
-      ts-api-utils: 1.3.0(typescript@5.4.2)
+      ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
-      typescript: 5.4.2
-
+      typescript: 5.5.4
     transitivePeerDependencies:
       - supports-color
 
@@ -6497,9 +6469,7 @@ script: 5.5.4
       debug: 4.3.6
       eslint: 8.57.0
     optionalDependencies:
-
       typescript: 5.5.4
-
     transitivePeerDependencies:
       - supports-color
 
@@ -6519,11 +6489,9 @@ script: 5.5.4
       '@typescript-eslint/utils': 7.18.0(eslint@8.57.0)(typescript@5.5.4)
       debug: 4.3.6
       eslint: 8.57.0
-
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
-
     transitivePeerDependencies:
       - supports-color
 
@@ -6539,11 +6507,9 @@ script: 5.5.4
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.6.3
-
       tsutils: 3.21.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
-
     transitivePeerDependencies:
       - supports-color
 
@@ -6556,11 +6522,9 @@ script: 5.5.4
       is-glob: 4.0.3
       minimatch: 9.0.5
       semver: 7.6.3
-
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
       typescript: 5.5.4
-
     transitivePeerDependencies:
       - supports-color
 
@@ -6602,9 +6566,7 @@ script: 5.5.4
 
   '@ungap/structured-clone@1.2.0': {}
 
-
-  '@vitejs/plugin-react-swc@3.7.0(vite@5.4.0(@types/node@22.3.0)(sass@1.77.8))':
-
+  '@vitejs/plugin-react-swc@3.7.0(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8))':
     dependencies:
       '@swc/core': 1.7.11
       vite: 5.4.2(@types/node@22.3.0)(sass@1.77.8)
@@ -6681,9 +6643,7 @@ script: 5.5.4
       muggle-string: 0.4.1
       path-browserify: 1.0.1
     optionalDependencies:
-
       typescript: 5.5.4
-
 
   '@vue/shared@3.4.38': {}
 
@@ -7041,9 +7001,7 @@ script: 5.5.4
       js-yaml: 4.1.0
       parse-json: 5.2.0
     optionalDependencies:
-
       typescript: 5.5.4
-
 
   cross-spawn@7.0.3:
     dependencies:
@@ -8304,13 +8262,11 @@ script: 5.5.4
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-
   react-async-script@1.2.0(react@18.3.1):
     dependencies:
       hoist-non-react-statics: 3.3.2
       prop-types: 15.8.1
       react: 18.3.1
-
 
   react-colorful@5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -8355,7 +8311,6 @@ script: 5.5.4
       react-dom: 18.3.1(react@18.3.1)
       react-is: 18.1.0
 
-
   react-google-recaptcha@3.1.0(react@18.3.1):
     dependencies:
       prop-types: 15.8.1
@@ -8365,7 +8320,6 @@ script: 5.5.4
   react-hook-form@7.52.2(react@18.3.1):
     dependencies:
       react: 18.3.1
-
 
   react-is@16.13.1: {}
 
@@ -8703,12 +8657,16 @@ script: 5.5.4
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
 
+  string-width@5.1.2:
+    dependencies:
+      eastasianwidth: 0.2.0
+      emoji-regex: 9.2.2
+      strip-ansi: 7.1.0
 
   string-width@7.2.0:
     dependencies:
       emoji-regex: 10.3.0
       get-east-asian-width: 1.2.0
-
       strip-ansi: 7.1.0
 
   string_decoder@1.3.0:
@@ -8739,50 +8697,44 @@ script: 5.5.4
 
   strip-json-comments@3.1.1: {}
 
-
-  stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.4.2)):
+  stylelint-config-clean-order@6.1.0(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.8.1(typescript@5.4.2)
-      stylelint-order: 6.0.4(stylelint@16.8.1(typescript@5.4.2))
+      stylelint: 16.8.1(typescript@5.5.4)
+      stylelint-order: 6.0.4(stylelint@16.8.1(typescript@5.5.4))
 
-  stylelint-config-recommended-scss@14.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2)):
+  stylelint-config-recommended-scss@14.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.4.41)
-      stylelint: 16.8.1(typescript@5.4.2)
-      stylelint-config-recommended: 14.0.1(stylelint@16.8.1(typescript@5.4.2))
-      stylelint-scss: 6.5.0(stylelint@16.8.1(typescript@5.4.2))
+      stylelint: 16.8.1(typescript@5.5.4)
+      stylelint-config-recommended: 14.0.1(stylelint@16.8.1(typescript@5.5.4))
+      stylelint-scss: 6.5.0(stylelint@16.8.1(typescript@5.5.4))
     optionalDependencies:
       postcss: 8.4.41
 
-  stylelint-config-recommended@14.0.1(stylelint@16.8.1(typescript@5.4.2)):
-
+  stylelint-config-recommended@14.0.1(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
       stylelint: 16.8.1(typescript@5.5.4)
 
-
-  stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2)):
+  stylelint-config-standard-scss@13.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.8.1(typescript@5.4.2)
-      stylelint-config-recommended-scss: 14.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.4.2))
-      stylelint-config-standard: 36.0.1(stylelint@16.8.1(typescript@5.4.2))
+      stylelint: 16.8.1(typescript@5.5.4)
+      stylelint-config-recommended-scss: 14.1.0(postcss@8.4.41)(stylelint@16.8.1(typescript@5.5.4))
+      stylelint-config-standard: 36.0.1(stylelint@16.8.1(typescript@5.5.4))
     optionalDependencies:
       postcss: 8.4.41
 
-  stylelint-config-standard@36.0.1(stylelint@16.8.1(typescript@5.4.2)):
+  stylelint-config-standard@36.0.1(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
-      stylelint: 16.8.1(typescript@5.4.2)
-      stylelint-config-recommended: 14.0.1(stylelint@16.8.1(typescript@5.4.2))
+      stylelint: 16.8.1(typescript@5.5.4)
+      stylelint-config-recommended: 14.0.1(stylelint@16.8.1(typescript@5.5.4))
 
-  stylelint-order@6.0.4(stylelint@16.8.1(typescript@5.4.2)):
-
+  stylelint-order@6.0.4(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
       postcss: 8.4.41
       postcss-sorting: 8.0.2(postcss@8.4.41)
       stylelint: 16.8.1(typescript@5.5.4)
 
-
-  stylelint-scss@6.5.0(stylelint@16.8.1(typescript@5.4.2)):
-
+  stylelint-scss@6.5.0(stylelint@16.8.1(typescript@5.5.4)):
     dependencies:
       css-tree: 2.3.1
       is-plain-object: 5.0.0
@@ -9043,9 +8995,7 @@ script: 5.5.4
 
   vary@1.1.2: {}
 
-
   vite-plugin-dts@4.0.3(@types/node@22.3.0)(rollup@4.20.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.3.0)(sass@1.77.8)):
-
     dependencies:
       '@microsoft/api-extractor': 7.47.4(@types/node@22.3.0)
       '@rollup/pluginutils': 5.1.0(rollup@4.20.0)
@@ -9056,12 +9006,10 @@ script: 5.5.4
       kolorist: 1.8.0
       local-pkg: 0.5.0
       magic-string: 0.30.11
-
       typescript: 5.5.4
       vue-tsc: 2.0.29(typescript@5.5.4)
     optionalDependencies:
       vite: 5.4.2(@types/node@22.3.0)(sass@1.77.8)
-
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -9114,12 +9062,22 @@ script: 5.5.4
 
   word-wrap@1.2.5: {}
 
+  wrap-ansi@7.0.0:
+    dependencies:
+      ansi-styles: 4.3.0
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+
+  wrap-ansi@8.1.0:
+    dependencies:
+      ansi-styles: 6.2.1
+      string-width: 5.1.2
+      strip-ansi: 7.1.0
 
   wrap-ansi@9.0.0:
     dependencies:
       ansi-styles: 6.2.1
       string-width: 7.2.0
-
       strip-ansi: 7.1.0
 
   wrappy@1.0.2: {}

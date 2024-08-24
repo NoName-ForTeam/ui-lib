@@ -1,7 +1,7 @@
 {
   "name": "@photo-fiesta/ui-lib",
   "private": false,
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,6 @@
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
     "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
-
     "pre-push": "pnpm run build",
     "lint-staged": "lint-staged"
   },
@@ -30,10 +29,8 @@
     "*.{css,less,scss,sass,sss}": [
       "prettier --write",
       "stylelint --fix"
-    ]
-
+    ],
     "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
-
   },
   "comments": {
     "//": "script description",
@@ -79,11 +76,8 @@
     "clsx": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-
-    "react-google-recaptcha": "^3.1.0"
-
+    "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.52.2"
-
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
