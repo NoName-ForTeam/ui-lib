@@ -1,0 +1,52 @@
+@use '@/styles' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  max-width: 220px;
+  height: 100%;
+
+  /* stylelint-disable-next-line scss/double-slash-comment-whitespace-inside */
+  //todo extract 60px as header-height to _variables.scss
+
+  min-height: calc(100vh - 60px);
+  padding: 72px 0 36px 60px;
+
+  color: var(--light-100);
+
+  background-color: var(--dark-700);
+  border-right: 1px solid var(--dark-300);
+
+  @include font(var(--font-size-s), var(--line-height-m), var(--font-weight-medium));
+}
+
+.element {
+  cursor: pointer;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  width: max-content;
+
+  &:hover {
+    color: var(--accent-100);
+  }
+
+  &:active {
+    color: var(--accent-500);
+  }
+
+  &:focus-visible {
+    border-radius: 2px;
+    outline: 2px solid var(--accent-700);
+  }
+
+  &.disabled {
+    cursor: default;
+    color: var(--dark-100);
+  }
+}
