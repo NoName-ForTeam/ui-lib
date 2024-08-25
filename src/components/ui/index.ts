@@ -1,3 +1,4 @@
+export * from './modal'
 export * from './recaptcha'
 export * from './sidebars'
 export * from './textArea'
