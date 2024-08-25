@@ -1,3 +1,65 @@
 .root {
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* reset */
+button {
+  all: unset;
+}
+
+.item {
+  cursor: pointer;
+
+  width: var(--radio-size);
+  height: var(--radio-size);
+
+  background-color: var(--dark-900);
+  border: 3px solid var(--light-100);
+  border-radius: 100%;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:active {
+    box-shadow: 0 0 0 var(--radio-shadow-size) var(--dark-100);
+  }
+
+  &[data-disabled] {
+    cursor: default;
+    border-color: var(--dark-100);
+
+    &:hover,
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+
+.indicator {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    content: '';
+
+    display: block;
+
+    width: var(--radio-indicator-size);
+    height: var(--radio-indicator-size);
+
+    background-color: var(--light-100);
+    border-radius: 50%;
+  }
+
+  &[data-disabled]::after {
+    background-color: var(--dark-100);
+  }
 }
