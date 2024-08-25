@@ -1,11 +1,13 @@
-.headerContainer {
+.headerMobileContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  min-width: 360px;
+
   // TO DO add style variable for header height
   height: 60px;
-  padding: 12px 64px;
+  padding: 18px 15px;
 
   border-bottom: var(--dark-300);
 
@@ -16,43 +18,34 @@
   }
 }
 
-.bellButton {
-  padding: 0;
-}
-
 .buttonsContainer {
-  position: relative;
   display: flex;
-  gap: 28px;
+  gap: 24px;
   align-items: center;
+  justify-content: center;
 }
 
 .select {
-  min-width: 150px;
+  button {
+    gap: 2px;
+    justify-content: center;
+
+    min-width: 50px;
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+
+    &:focus-visible:not([data-disabled]) {
+      border: none;
+      outline: none;
+    }
+  }
 }
 
 .selectItem {
   display: flex;
-  gap: 12px;
-}
-
-.notifications {
-  position: absolute;
-  top: 6px;
-  left: 14px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 14px;
-  height: 14px;
-
-  font-size: 12px;
-  color: var(--light-100);
-
-  background-color: var(--danger-500);
-  border-radius: 50%;
+  place-content: center center;
 }
 
 .flag {
@@ -60,7 +53,7 @@
   height: 20px;
 }
 
-.bell {
+.more {
   width: 24px;
   height: 24px;
 }
