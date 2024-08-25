@@ -1,9 +1,9 @@
 # React + TypeScript + Vite
 
 
-# UI-Kit: Custom React Component Library
+# UI-Lib: Custom React Component Library
 
-UI-Kit is a modern, customizable React component library designed to streamline your development process. Built with TypeScript and bundled with Vite, this library offers a set of reusable UI components that are easy to integrate into any React project.
+UI-Lib is a modern, customizable React component library designed to streamline your development process. Built with TypeScript and bundled with Vite, this library offers a set of reusable UI components that are easy to integrate into any React project.
 
 ## Features
 - **TypeScript Support**: Fully typed components for better development experience.
@@ -102,10 +102,11 @@ ui-lib/
 │   ├── assets/
 │   │   └── icons/
 │   ├── components/
-│   │   └── Checkbox/
-│   │       ├── Checkbox.tsx
-│   │       ├── Checkbox.module.scss
-│   │       └── Checkbox.stories.tsx
+|   |   └── ui
+│   │       └── Checkbox/
+│   │           ├── Checkbox.tsx
+│   │           ├── Checkbox.module.scss
+│   │           └── Checkbox.stories.tsx
 │   └── index.ts
 ├── .eslintrc.cjs
 ├── .prettierrc.cjs
@@ -130,7 +131,7 @@ We welcome contributions! Please follow these steps:
 This project is licensed under the MIT License.
 
 ## Support
-If you encounter any issues or have questions, please file an issue on our [GitHub repository](https://github.com/your-username/ui-kit/issues).
+If you encounter any issues or have questions, please file an issue on our [GitHub repository](https://github.com/your-username/ui-lib/issues).
 ```
 
 This version of the README.md is formatted as a single continuous document without section breaks, providing a comprehensive overview of your UI-Kit library. You can customize it further by adding more components or specific details as needed.
