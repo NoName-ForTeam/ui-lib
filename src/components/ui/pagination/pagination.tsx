@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, ReactNode } from 'react'
+import React, { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 
 import { ArrowIosBack, ArrowIosForward } from '@/assets'
 import { clsx } from 'clsx'
@@ -34,66 +34,73 @@ type PaginationProps = {
  * @returns {JSX.Element} - The rendered Pagination component.
  */
 
-export const Pagination = ({
-  children,
-  currentPage,
-  onChangePage,
-  pageSize,
-  siblingCount = 1,
-  totalCount,
-}: PaginationProps) => {
-  const classNames = { container: styles.container, root: styles.root } as const
-  const { handleClickNextBtn, handleClickPrevBtn, handlePageChange, paginationRange } =
-    usePagination({ currentPage, onChangePage, pageSize, siblingCount, totalCount })
+export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
+  (
+    {
+      children,
+      currentPage,
+      onChangePage,
+      pageSize,
+      siblingCount = 1,
+      totalCount,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
+    const classNames = { container: styles.container, root: clsx(styles.root, className) } as const
+    const { handleClickNextBtn, handleClickPrevBtn, handlePageChange, paginationRange } =
+      usePagination({ currentPage, onChangePage, pageSize, siblingCount, totalCount })
 
-  const disabledPrevBtn = currentPage < 2
-  const disabledNextBtn = currentPage >= Math.ceil(totalCount / pageSize)
+    const disabledPrevBtn = currentPage < 2
+    const disabledNextBtn = currentPage >= Math.ceil(totalCount / pageSize)
 
-  const mainButtons = React.useMemo(
-    () =>
-      paginationRange.map((pageLocal, i) => {
-        const isSelected = currentPage === pageLocal
+    const mainButtons = React.useMemo(
+      () =>
+        paginationRange.map((pageLocal, i) => {
+          const isSelected = currentPage === pageLocal
 
-        return (
-          <PaginationButton
-            isSelected={isSelected}
-            key={i}
-            onClick={() => handlePageChange(pageLocal as number)}
-          >
-            <Typography as={'span'} variant={'text14'}>
-              {pageLocal}
-            </Typography>
-          </PaginationButton>
-        )
-      }),
-    [paginationRange, currentPage, handlePageChange]
-  )
+          return (
+            <PaginationButton
+              isSelected={isSelected}
+              key={i}
+              onClick={() => handlePageChange(pageLocal as number)}
+            >
+              <Typography as={'span'} variant={'text14'}>
+                {pageLocal}
+              </Typography>
+            </PaginationButton>
+          )
+        }),
+      [paginationRange, currentPage, handlePageChange]
+    )
 
-  return (
-    <div className={clsx(classNames.root)}>
-      <PaginationButton
-        aria-label={'Previous page'}
-        disabled={disabledPrevBtn}
-        onClick={() => handleClickPrevBtn()}
-      >
-        <ArrowIosBack />
-      </PaginationButton>
-      <div className={clsx(classNames.container)}>
-        {mainButtons}
+    return (
+      <div className={clsx(classNames.root)} {...rest} ref={ref}>
         <PaginationButton
-          aria-label={'Next page'}
-          disabled={disabledNextBtn}
-          onClick={() => {
-            handleClickNextBtn()
-          }}
+          aria-label={'Previous page'}
+          disabled={disabledPrevBtn}
+          onClick={() => handleClickPrevBtn()}
         >
-          <ArrowIosForward />
+          <ArrowIosBack />
         </PaginationButton>
+        <div className={clsx(classNames.container)}>
+          {mainButtons}
+          <PaginationButton
+            aria-label={'Next page'}
+            disabled={disabledNextBtn}
+            onClick={() => {
+              handleClickNextBtn()
+            }}
+          >
+            <ArrowIosForward />
+          </PaginationButton>
+        </div>
+        {children}
       </div>
-      {children}
-    </div>
-  )
-}
+    )
+  }
+)
 
 /**
  * Props for the PaginationButton component.
@@ -114,13 +121,19 @@ type PaginationButtonProps = {
  * @returns {JSX.Element} - The rendered PaginationButton component.
  */
 
-const PaginationButton = ({ children, isSelected, onClick }: PaginationButtonProps) => {
+const PaginationButton = ({
+  children,
+  isSelected,
+  className,
+  onClick,
+  ...rest
+}: PaginationButtonProps) => {
   const classNames = {
-    btn: clsx(styles.btn, isSelected && styles.selected),
+    btn: clsx(styles.btn, isSelected && styles.selected, className),
   } as const
 
   return (
-    <button className={clsx(classNames.btn)} onClick={onClick} type={'button'}>
+    <button className={clsx(classNames.btn)} onClick={onClick} type={'button'} {...rest}>
       {children}
     </button>
   )
@@ -136,7 +149,7 @@ const PaginationButton = ({ children, isSelected, onClick }: PaginationButtonPro
 type SelectContainerProps = {
   children: ReactNode
   content: string[]
-}
+} & ComponentPropsWithoutRef<'div'>
 
 /**
  * A custom SelectContainer component.
@@ -144,13 +157,18 @@ type SelectContainerProps = {
  * @returns {JSX.Element} - The rendered SelectContainer component.
  */
 
-export const SelectContainer = ({ children, content }: SelectContainerProps) => {
+export const SelectContainer = ({
+  children,
+  content,
+  className,
+  ...rest
+}: SelectContainerProps) => {
   const classNames = {
-    select: styles.select,
+    select: clsx(styles.select, className),
   }
 
   return (
-    <div className={clsx(classNames.select)}>
+    <div className={classNames.select} {...rest}>
       <Typography as={'span'} variant={'text14'}>
         {content[0] || ''}
       </Typography>
