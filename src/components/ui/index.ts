@@ -1,3 +1,4 @@
+export * from './modal'
 export * from './pagination'
 export * from './radioGroup'
 export * from './recaptcha'
