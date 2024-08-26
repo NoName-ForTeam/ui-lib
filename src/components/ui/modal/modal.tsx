@@ -72,13 +72,13 @@ export const ModalHeader = ({ title, className, type, actionBtn, ...rest }: Moda
       <>
         <Typography variant={'h1'}>{title}</Typography>
         <Dialog.Close className={classNames.closeButton}>
-          <CloseOutline className={classNames.icon} width={24} height={24} />
+          <CloseOutline className={classNames.icon} />
         </Dialog.Close>
       </>
     ) : (
       <>
         <Button color={'#fff'} variant={'ghost'}>
-          <ArrowIosBack className={classNames.icon} width={24} height={24} />
+          <ArrowIosBack className={classNames.icon} />
         </Button>
         <Typography variant={'h1'}>{title}</Typography>
         <Button variant={'ghost'}>{actionBtn}</Button>
@@ -104,7 +104,7 @@ export type ModalFooterProps = ComponentPropsWithoutRef<'div'>
 export const ModalFooter = ({ children, className, ...rest }: ModalFooterProps) => {
   const classNames = {
     footer: className,
-  }
+  } as const
   return (
     <div className={classNames.footer} {...rest}>
       {children}
@@ -142,7 +142,7 @@ export const ModalContent = forwardRef<ElementRef<typeof Dialog.Content>, ModalC
       <ModalHeader type={headerType} title={title} actionBtn={actionBtn} />
     ) : (
       <Dialog.Close className={classNames.closeButton}>
-        <CloseOutline className={classNames.icon} width={24} height={24} />
+        <CloseOutline className={classNames.icon} />
       </Dialog.Close>
     )
 
