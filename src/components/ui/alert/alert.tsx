@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import styles from './Alert.module.scss'
 import { CloseOutline } from '@/assets'
@@ -7,6 +7,7 @@ import { Button, Card, Typography } from '@/components'
 type AlertType = 'success' | 'error'
 
 interface AlertProps {
+  className?: string
   type: AlertType
   message: React.ReactNode
   onClose: () => void
@@ -26,9 +27,9 @@ interface AlertProps {
  * />
  */
 
-export const Alert: FC<AlertProps> = ({ type, message, onClose }) => {
+export const Alert = ({ type, message, onClose, className }: AlertProps) => {
   const classNames = {
-    card: clsx(styles.alert, styles[type]),
+    card: clsx(styles.alert, styles[type], className),
     icon: styles.icon,
   }
   return (
