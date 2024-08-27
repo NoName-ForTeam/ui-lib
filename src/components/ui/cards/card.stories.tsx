@@ -1,17 +1,17 @@
 import { type Meta, type StoryObj } from '@storybook/react'
 
-import { Cards } from './cards'
+import { Card } from './card'
 import { Typography } from '../typography'
 import { Button } from '../button'
 
 const meta = {
-  component: Cards,
+  component: Card,
   tags: ['autodocs'],
   title: 'Components/Cards',
-} satisfies Meta<typeof Cards>
+} satisfies Meta<typeof Card>
 
 export default meta
-type Story = StoryObj<typeof Cards>
+type Story = StoryObj<typeof Card>
 export const Default = {
   args: {
     style: {
@@ -23,7 +23,7 @@ export const Default = {
 
 export const CardsContent = () => {
   return (
-    <Cards style={{ width: '420px', padding: '26px' }}>
+    <Card style={{ width: '420px', padding: '26px' }}>
       <Typography as={'h1'} variant={'h1'}>
         Learn &quot;Deck Name&quot;
       </Typography>
@@ -32,6 +32,6 @@ export const CardsContent = () => {
       </Typography>
       <Typography>Количество попыток ответов на вопрос: 10</Typography>
       <Button fullWidth>Show Answer</Button>
-    </Cards>
+    </Card>
   )
 }
