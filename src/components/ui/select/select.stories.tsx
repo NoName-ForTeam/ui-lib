@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Select, SelectItem } from './select'
-import React from 'react'
 
 const meta = {
   component: Select,
