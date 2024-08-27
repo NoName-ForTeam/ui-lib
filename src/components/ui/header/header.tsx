@@ -4,7 +4,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef, useState } from 'reac
 import { OutlineBell, FillBell, FlagRussia, FlagUnitedKingdom } from '@/assets'
 import clsx from 'clsx'
 
-type HeaderProps = {
+export type HeaderProps = {
   isLoggedIn: boolean
   onChangeLanguage: (value: string) => void
   notifications?: unknown[]
@@ -28,7 +28,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
       buttonBell: styles.bellButton,
       buttonsContainer: styles.buttonsContainer,
       notifications: styles.notifications,
-      selectContainer: styles.selectContainer,
+      select: styles.select,
       selectItem: styles.selectItem,
       flags: styles.flag,
       bell: styles.bell,
@@ -36,6 +36,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
 
     return (
       <div className={classNames.header} ref={ref} {...rest}>
+        {/*// TO DO Change on <Link/> from Next*/}
         <a className={classNames.logo} href={'/'}>
           Inctagram
         </a>
@@ -54,7 +55,11 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
               )}
             </Button>
           )}
-          <Select onValueChange={() => onChangeLanguageCallback} defaultValue={'en'}>
+          <Select
+            onValueChange={() => onChangeLanguageCallback}
+            defaultValue={'en'}
+            className={classNames.select}
+          >
             <SelectItem value={'ru'}>
               <div className={classNames.selectItem}>
                 <FlagRussia className={classNames.flags} />
