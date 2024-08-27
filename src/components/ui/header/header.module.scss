@@ -1,17 +1,19 @@
+@use '@/styles' as *;
+
 .headerContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   // TO DO add style variable for header height
-  height: 60px;
+  height: var(--header-height);
   padding: 12px 64px;
 
   border-bottom: 1px solid var(--dark-300);
 
   .logo {
-    font-size: var(--font-size-xxl);
-    font-weight: var(--font-weight-semibold);
+    @include font(var(--font-size-xxl), var(--line-height-l), var(--font-weight-semibold));
+
     text-decoration: none;
   }
 }
@@ -56,11 +58,11 @@
 }
 
 .flag {
-  width: 20px;
-  height: 20px;
+  width: var(--flag-size);
+  height: var(--flag-size);
 }
 
 .bell {
-  width: 24px;
-  height: 24px;
+  width: var(--svg-size);
+  height: var(--svg-size);
 }

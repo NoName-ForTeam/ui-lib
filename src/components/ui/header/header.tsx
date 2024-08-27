@@ -36,6 +36,7 @@ export const Header = forwardRef<ElementRef<'div'>, HeaderProps>(
 
     return (
       <div className={classNames.header} ref={ref} {...rest}>
+        {/*// TO DO Change on <Link/> from Next*/}
         <a className={classNames.logo} href={'/'}>
           Inctagram
         </a>

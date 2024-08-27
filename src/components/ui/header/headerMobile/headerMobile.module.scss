@@ -6,7 +6,7 @@
   min-width: 360px;
 
   // TO DO add style variable for header height
-  height: 60px;
+  height: var(--header-height);
   padding: 18px 15px;
 
   border-bottom: 1px solid var(--dark-300);
@@ -49,11 +49,11 @@
 }
 
 .flag {
-  width: 20px;
-  height: 20px;
+  width: var(--flag-size);
+  height: var(--flag-size);
 }
 
 .more {
-  width: 24px;
-  height: 24px;
+  width: var(--svg-size);
+  height: var(--svg-size);
 }
