@@ -1,0 +1,59 @@
+.headerMobileContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 360px;
+
+  // TO DO add style variable for header height
+  height: var(--header-height);
+  padding: 18px 15px;
+
+  border-bottom: 1px solid var(--dark-300);
+
+  .logo {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-semibold);
+    text-decoration: none;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.select {
+  button {
+    gap: 2px;
+    justify-content: center;
+
+    min-width: 50px;
+    padding: 0;
+
+    background-color: transparent;
+    border: none;
+
+    &:focus-visible:not([data-disabled]) {
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.selectItem {
+  display: flex;
+  place-content: center center;
+}
+
+.flag {
+  width: var(--flag-size);
+  height: var(--flag-size);
+}
+
+.more {
+  width: var(--svg-size);
+  height: var(--svg-size);
+}
