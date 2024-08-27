@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
 import { ArrowIosBack, ArrowIosForward } from '@/assets'
 import { clsx } from 'clsx'
 
-import styles from './Pagination.module.scss'
+import styles from './pagination.module.scss'
 
 import { Typography } from '../typography'
 import { usePagination } from './usePagination'
