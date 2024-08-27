@@ -17,6 +17,7 @@ export const LoggedIn: Story = {
     notifications: [{}, {}],
   },
 }
+
 export const NotLoggedIn: Story = {
   args: {
     isLoggedIn: false,

@@ -1,12 +1,12 @@
 import { ComponentPropsWithRef, ElementRef, forwardRef } from 'react'
-import styles from './headerMobileMenu.module.scss'
+import styles from './mobileMenu.module.scss'
 import clsx from 'clsx'
 
 type HeaderMobileMenuProps = {
   children: React.ReactNode[]
 } & ComponentPropsWithRef<'div'>
 
-export const HeaderMobileMenu = forwardRef<ElementRef<'div'>, HeaderMobileMenuProps>(
+export const MobileMenu = forwardRef<ElementRef<'div'>, HeaderMobileMenuProps>(
   ({ children, className }, ref, ...rest) => {
     const classNames = {
       headerContainer: clsx(styles.headerMobileMenuContainer, className),

@@ -1,23 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { HeaderMobileMenu } from './headerMobileMenu'
+import { MobileMenu } from './mobileMenu'
 import {
   HomeOutline,
   MessageCircleOutline,
   PersonOutline,
   PlusSquareOutline,
   Search,
-} from '../../../../assets'
+} from '@/assets'
 
 const meta = {
-  component: HeaderMobileMenu,
+  component: MobileMenu,
   tags: ['autodocs'],
   title: 'Components/Header',
-} satisfies Meta<typeof HeaderMobileMenu>
+} satisfies Meta<typeof MobileMenu>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const MobileMenu: Story = {
+export const MobileMenuStory: Story = {
   args: {
     children: [
       <a href={'/'}>
