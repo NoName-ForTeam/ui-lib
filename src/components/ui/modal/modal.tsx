@@ -3,8 +3,9 @@ import clsx from 'clsx'
 import styles from './modal.module.scss'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
-import { Button, Typography } from '@/components'
-import { CloseOutline, ArrowIosBack } from '@/assets'
+
+// import { Button, Typography } from '@/components'
+// import { CloseOutline, ArrowIosBack } from '@/assets'
 
 /**
  * Modal component that serves as a wrapper for modal dialogs.
@@ -47,13 +48,6 @@ export const ModalTrigger = ({ className, children, ...rest }: ModalTriggerProps
   )
 }
 
-/**
- * ModalHeader component that serves as the header section of the modal.
- *
- * @param {ModalHeaderProps} props - The properties for the ModalHeader component.
- * @returns {JSX.Element} The rendered ModalHeader component.
- */
-
 export type HeaderType = 'default' | 'slide'
 
 export type ModalHeaderProps = {
@@ -61,35 +55,31 @@ export type ModalHeaderProps = {
   actionBtn?: string
 } & ComponentPropsWithoutRef<'div'>
 
-export const ModalHeader = ({ title, className, type, actionBtn, ...rest }: ModalHeaderProps) => {
+export const ModalHeader = ({ className, ...rest }: ModalHeaderProps) => {
   const classNames = {
     header: clsx(styles.header, className),
     closeButton: styles.closeButton,
     icon: styles.icon,
   } as const
-  const modalType =
-    type === 'default' ? (
-      <>
-        <Typography variant={'h1'}>{title}</Typography>
-        <Dialog.Close className={classNames.closeButton}>
-          <CloseOutline className={classNames.icon} />
-        </Dialog.Close>
-      </>
-    ) : (
-      <>
-        <Button color={'#fff'} variant={'ghost'}>
-          <ArrowIosBack className={classNames.icon} />
-        </Button>
-        <Typography variant={'h1'}>{title}</Typography>
-        <Button variant={'ghost'}>{actionBtn}</Button>
-      </>
-    )
+  // const modalType =
+  //   type === 'default' ? (
+  //     <>
+  //       <Typography variant={'h1'}>{title}</Typography>
+  //       <Dialog.Close className={classNames.closeButton}>
+  //         <CloseOutline className={classNames.icon} />
+  //       </Dialog.Close>
+  //     </>
+  //   ) : (
+  //     <>
+  //       <Button color={'#fff'} variant={'ghost'}>
+  //         <ArrowIosBack className={classNames.icon} />
+  //       </Button>
+  //       <Typography variant={'h1'}>{title}</Typography>
+  //       <Button variant={'ghost'}>{actionBtn}</Button>
+  //     </>
+  //   )
 
-  return (
-    <div className={classNames.header} {...rest}>
-      {modalType}
-    </div>
-  )
+  return <div className={classNames.header} {...rest} />
 }
 
 /**
@@ -101,15 +91,11 @@ export const ModalHeader = ({ title, className, type, actionBtn, ...rest }: Moda
 
 export type ModalFooterProps = ComponentPropsWithoutRef<'div'>
 
-export const ModalFooter = ({ children, className, ...rest }: ModalFooterProps) => {
+export const ModalFooter = ({ className, ...rest }: ModalFooterProps) => {
   const classNames = {
     footer: className,
   } as const
-  return (
-    <div className={classNames.footer} {...rest}>
-      {children}
-    </div>
-  )
+  return <div className={classNames.footer} {...rest} />
 }
 
 /**
@@ -130,7 +116,7 @@ export type ModalContentProps = {
 } & ComponentPropsWithoutRef<typeof Dialog.Content>
 
 export const ModalContent = forwardRef<ElementRef<typeof Dialog.Content>, ModalContentProps>(
-  ({ className, headerType = 'default', actionBtn, children, title, ...rest }, ref) => {
+  ({ className, children, ...rest }, ref) => {
     const classNames = {
       content: clsx(styles.content, className),
       overlay: styles.overlay,
@@ -138,19 +124,18 @@ export const ModalContent = forwardRef<ElementRef<typeof Dialog.Content>, ModalC
       icon: styles.icon,
     } as const
 
-    const header = title ? (
-      <ModalHeader type={headerType} title={title} actionBtn={actionBtn} />
-    ) : (
-      <Dialog.Close className={classNames.closeButton}>
-        <CloseOutline className={classNames.icon} />
-      </Dialog.Close>
-    )
+    // const header = title ? (
+    //   <ModalHeader type={headerType} title={title} actionBtn={actionBtn} />
+    // ) : (
+    //   <Dialog.Close className={classNames.closeButton}>
+    //     <CloseOutline className={classNames.icon} />
+    //   </Dialog.Close>
+    // )
 
     return (
       <Dialog.Portal>
         <Dialog.Overlay className={classNames.overlay} />
         <Dialog.Content ref={ref} forceMount className={classNames.content} {...rest}>
-          {header}
           {children}
         </Dialog.Content>
       </Dialog.Portal>

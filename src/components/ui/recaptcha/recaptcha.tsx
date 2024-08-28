@@ -1,46 +1,45 @@
 import clsx from 'clsx'
-import { ComponentPropsWithoutRef, useRef, useState } from 'react'
+import { ComponentPropsWithoutRef, useRef } from 'react'
 import ReCAPTCHAComponent from 'react-google-recaptcha'
 import styles from './recaptcha.module.scss'
 
+// type ReCaptchaStatus = 'default' | 'checked' | 'error'
+
 type ReCaptchaProps = {
+  /**
+   *  The Google reCAPTCHA site key.
+   */
   siteKey: string
+  /**
+   * Indicates if there's an error state.
+   */
   isError?: boolean
 } & ComponentPropsWithoutRef<'div'>
 
 /**
  * ReCaptcha component for user verification.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {string} props.siteKey - The Google reCAPTCHA site key.
- * @param {boolean} [props.isError] - Indicates if there's an error state.
- * @returns {JSX.Element} The rendered Recaptcha component.
- *
  * @example
  * <ReCaptcha siteKey="your-site-key" error={false} />
  */
-
+//ts-expect-error
 export const ReCaptcha = ({ siteKey, isError, ...rest }: ReCaptchaProps) => {
-  const [status, setStatus] = useState<ReCaptchaStatus>('default')
+  // const [status, setStatus] = useState<ReCaptchaStatus>('default')
   const reCaptchaRef = useRef<ReCAPTCHAComponent>(null)
 
   /**
    *may be needed to stylize the .container for different status in the future
    */
 
-  type ReCaptchaStatus = 'default' | 'hover' | 'checked' | 'loading' | 'errorStatus' | 'expired'
-
-  const handleChange = (value: string | null) => {
-    if (value) {
-      setStatus('checked')
-    } else {
-      setStatus('errorStatus')
-    }
-  }
+  // const handleChange = (value: string | null) => {
+  //   if (value) {
+  //     setStatus('checked')
+  //   } else {
+  //     setStatus('error')
+  //   }
+  // }
 
   const classNames = {
-    container: clsx(styles.container, isError && styles.error, styles[status]),
+    container: clsx(styles.container, isError && styles.error),
     errorText: styles.errorText,
   } as const
   return (
@@ -50,7 +49,7 @@ export const ReCaptcha = ({ siteKey, isError, ...rest }: ReCaptchaProps) => {
         theme="dark"
         ref={reCaptchaRef}
         sitekey={siteKey}
-        onChange={handleChange}
+        // onChange={handleChange}
       />
       {isError && (
         <div className={classNames.errorText}>Please verify that you are not a robot</div>

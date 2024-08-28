@@ -15,11 +15,10 @@ interface AlertProps {
 
 /**
  * Alert component for displaying messages with a specific type and a close button.
- * The alert can either show a success message or an error message and includes a close button.
+ * The alert can either show a success message or an error message
  *
  * @component
  * @example
- * // Example usage of the Alert component
  * <Alert
  *   type="success"
  *   message="Your settings have been saved!"

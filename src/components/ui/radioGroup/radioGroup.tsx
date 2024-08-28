@@ -1,10 +1,7 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import clsx from 'clsx'
 import * as React from 'react'
-import { ComponentPropsWithoutRef } from 'react'
 import styles from './radioGroup.module.scss'
-
-export type RadioGroupProps = ComponentPropsWithoutRef<'div'>
 
 /**
  * RadioGroup component
