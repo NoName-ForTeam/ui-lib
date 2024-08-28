@@ -2,7 +2,13 @@ import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 
 import { Input, InputProps } from '@/components'
 
+/**
+ * @param {import('react-hook-form').Control<TFieldValues>} control - The control object from react-hook-form used to manage the form state.
+ */
 export type FormInputProps<TFieldValues extends FieldValues> = UseControllerProps<TFieldValues> &
+  /**
+   * @param {Omit<InputProps, 'onBlur' | 'onChange' | 'value'>} [restInputProps] - Additional props passed to the Input component.
+   */
   Omit<InputProps, 'onBlur' | 'onChange' | 'value'>
 
 /**
@@ -22,11 +28,8 @@ export type FormInputProps<TFieldValues extends FieldValues> = UseControllerProp
  *         defaultValue=""
  *       />
  *     </form>
- *   );
+ *   )
  * }
- *
- * @param {import('react-hook-form').Control<TFieldValues>} props.control - The control object from react-hook-form used to manage the form state.
- * @param {Omit<InputProps, 'onBlur' | 'onChange' | 'value'>} [props.restInputProps] - Additional props passed to the Input component.
  */
 
 export const FormInput = <TFieldValues extends FieldValues>({
