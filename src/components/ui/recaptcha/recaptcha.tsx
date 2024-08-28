@@ -21,7 +21,7 @@ type ReCaptchaProps = {
  * @example
  * <ReCaptcha siteKey="your-site-key" error={false} />
  */
-//ts-expect-error
+
 export const ReCaptcha = ({ siteKey, isError, ...rest }: ReCaptchaProps) => {
   // const [status, setStatus] = useState<ReCaptchaStatus>('default')
   const reCaptchaRef = useRef<ReCAPTCHAComponent>(null)

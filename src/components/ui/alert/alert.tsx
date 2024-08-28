@@ -26,6 +26,8 @@ interface AlertProps {
  * />
  */
 
+// Взять за эталон оформления
+
 export const Alert = ({ type, message, onClose, className }: AlertProps) => {
   const classNames = {
     card: clsx(styles.alert, styles[type], className),

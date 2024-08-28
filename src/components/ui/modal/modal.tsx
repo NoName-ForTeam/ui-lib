@@ -61,6 +61,7 @@ export const ModalHeader = ({ className, ...rest }: ModalHeaderProps) => {
     closeButton: styles.closeButton,
     icon: styles.icon,
   } as const
+
   // const modalType =
   //   type === 'default' ? (
   //     <>

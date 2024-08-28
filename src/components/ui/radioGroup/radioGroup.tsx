@@ -16,6 +16,8 @@ import styles from './radioGroup.module.scss'
  * </RadioGroup>
  */
 
+// убрала лишние комментарии
+
 export const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
