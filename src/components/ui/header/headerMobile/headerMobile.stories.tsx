@@ -28,25 +28,23 @@ export const MobileLoggedIn: Story = {
     return (
       <>
         <HeaderMobile isLoggedIn onChangeLanguage={() => {}} notifications={[{}, {}]} />
-        <MobileMenu
-          children={[
-            <a href={'/'}>
-              <HomeOutline width={24} height={24} />
-            </a>,
-            <a href={'/'}>
-              <PlusSquareOutline width={24} height={24} />
-            </a>,
-            <a href={'/'}>
-              <MessageCircleOutline width={24} height={24} />
-            </a>,
-            <a href={'/'}>
-              <Search width={24} height={24} />
-            </a>,
-            <a href={'/'}>
-              <PersonOutline width={24} height={24} />
-            </a>,
-          ]}
-        />
+        <MobileMenu>
+          <a href={'/'}>
+            <HomeOutline width={24} height={24} />
+          </a>
+          <a href={'/'}>
+            <PlusSquareOutline width={24} height={24} />
+          </a>
+          <a href={'/'}>
+            <MessageCircleOutline width={24} height={24} />
+          </a>
+          <a href={'/'}>
+            <Search width={24} height={24} />
+          </a>
+          <a href={'/'}>
+            <PersonOutline width={24} height={24} />
+          </a>{' '}
+        </MobileMenu>
       </>
     )
   },
