@@ -5,34 +5,6 @@
   animation: overlay-show 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  color: var(--light-100);
-
-  &:hover {
-    color: var(--light-900);
-  }
-
-  &:active {
-    color: var(--light-100);
-  }
-}
-
-.closeButton {
-  all: unset;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.withoutHeader {
-  position: absolute;
-  z-index: 1;
-  top: -28px;
-  right: -32px;
-}
-
 .content {
   position: fixed;
   top: 50%;
@@ -46,14 +18,8 @@
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   height: fit-content;
-  margin: 0;
   padding: 12px 24px;
-
   border-bottom: 1px solid var(--dark-100);
 }
 

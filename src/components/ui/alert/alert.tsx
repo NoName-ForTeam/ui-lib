@@ -15,17 +15,18 @@ interface AlertProps {
 
 /**
  * Alert component for displaying messages with a specific type and a close button.
- * The alert can either show a success message or an error message and includes a close button.
+ * The alert can either show a success message or an error message
  *
  * @component
  * @example
- * // Example usage of the Alert component
  * <Alert
  *   type="success"
  *   message="Your settings have been saved!"
  *   onClose={() => console.log('Alert closed')}
  * />
  */
+
+// Взять за эталон оформления
 
 export const Alert = ({ type, message, onClose, className }: AlertProps) => {
   const classNames = {
