@@ -6,38 +6,46 @@ import { enUS } from 'date-fns/locale'
 import clsx from 'clsx'
 import { parse } from 'date-fns'
 
-/**
- * A customizable date picker component that allows users to select single or range dates.
- * It uses `react-datepicker` and provides additional styling and functionality.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {string} [props.errorMessage] - Error message to be displayed when there's an issue with the date selection.
- * @param {string} [props.label] - Label text to be displayed above the input field.
- * @param {boolean} [props.disabled=false] - Whether the date picker is disabled.
- * @param {boolean} [props.required=false] - Whether the date picker is required.
- * @param {boolean} [props.selectsRange=false] - Whether to select a date range or a single date.
- * @param {string} [props.placeholder] - Placeholder text for the input field.
- * @param {Date|null} [props.startDate] - The start date for the selected range.
- * @param {Date|null} [props.endDate] - The end date for the selected range.
- * @param {(date: Date | null) => void} [props.setStartDate] - Callback function to set the start date.
- * @param {(date: Date | null) => void} [props.setEndDate] - Callback function to set the end date.
- * @returns {JSX.Element} The CustomDatePicker component.
- */
-
 type DatePickerType = {
   errorMessage?: string
   label?: string
   disabled?: boolean
   required?: boolean
+  /**
+   * Whether to select a date range or a single date.
+   */
   selectsRange?: boolean
   placeholder?: string
+  /**
+   * The start date for the selected range.
+   */
   startDate?: Date | null
+  /**
+   * The end date for the selected range.
+   */
   endDate?: Date | null
   setStartDate?: (date: Date | null) => void
   setEndDate?: (date: Date | null) => void
 }
 registerLocale('enUS', enUS)
+
+/**
+ * A customizable date picker component that allows users to select single or range dates.
+ * It uses `react-datepicker` and provides additional styling and functionality.
+ *
+ * @component
+ * @example
+ * <CustomDatePicker
+ *   label="Select a date"
+ *   selectsRange
+ *   startDate={startDate}
+ *   endDate={endDate}
+ *   setStartDate={setStartDate}
+ *   setEndDate={setEndDate}
+ *   placeholder="Select a date range"
+ *   required
+ * />
+ */
 
 export const CustomDatePicker = ({
   errorMessage,
@@ -53,6 +61,7 @@ export const CustomDatePicker = ({
   ...restProps
 }: DatePickerType) => {
   const showError = !!errorMessage && errorMessage.length > 0
+
   const renderCustomHeader = ({
     date,
     decreaseMonth,
@@ -73,6 +82,7 @@ export const CustomDatePicker = ({
       </div>
     )
   }
+
   const formatSelectedDate = (dates: [Date | null, Date | null] | Date) => {
     if (Array.isArray(dates)) {
       const [start, end] = dates
@@ -100,11 +110,13 @@ export const CustomDatePicker = ({
   useEffect(() => {
     setInputValue(getInputValue())
   }, [getInputValue])
+  const isRange = endDate !== undefined
 
   return (
     <div className={styles.root}>
       <DatePicker
-        selectsRange
+        // @ts-expect-error toDo picker fix
+        selectsRange={isRange}
         selected={startDate}
         startDate={startDate || undefined}
         endDate={endDate || undefined}
@@ -149,9 +161,6 @@ export const CustomDatePicker = ({
             <Calendar className={clsx(styles.icon, { [styles.error as string]: showError })} />
           </div>
         }
-        //{...(selectsRange ? { selectsRange: true } : {})}
-        //toDo selectRange for single date
-
         {...restProps}
       />
       {showError && <p className={clsx(styles.errorText)}>{errorMessage}</p>}

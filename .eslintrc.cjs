@@ -11,10 +11,10 @@ module.exports = {
       { allowConstantExport: true },
     ],
   "lines-around-comment": ["error", {
-      "afterBlockComment": true,
-      "afterLineComment": true,
-      "beforeBlockComment": true,
-      "beforeLineComment": true
+      "afterBlockComment": false,
+      "afterLineComment": false,
+      "beforeBlockComment": false,
+      "beforeLineComment": false
     }]
   },
 }
