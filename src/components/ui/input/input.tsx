@@ -17,16 +17,9 @@ export type InputProps = {
  *
  * @component
  * @param {Object} props - The component props.
- * @param {string} [props.className] - Additional class name for styling the component.
  * @param {string} [props.errorMessage] - Error message displayed below the input field.
  * @param {string} [props.label] - Label text for the input field.
  * @param {boolean} [props.search] - If true, a search icon is displayed inside the input field.
- * @param {boolean} [props.disabled] - If true, the input field is disabled.
- * @param {string} [props.type] - The type of the input field (e.g., 'text' or 'password').
- * @param {string | number} [props.value] - The current value of the input field.
- * @param {function(ChangeEvent<HTMLInputElement>): void} [props.onChange] - Callback function invoked when the input value changes.
- * @param {React.Ref<HTMLInputElement>} ref - Reference to the input element.
- * @returns {JSX.Element} The Input component.
  */
 
 export const Input = forwardRef<ElementRef<'input'>, InputProps>(
@@ -105,7 +98,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
               type={'button'}
             >
               {showPassword ? (
-                <EyeOffOutline height={24} width={24} />
+                <EyeOffOutline height={24} width={24} /> //убрать стили
               ) : (
                 <EyeOutline height={24} width={24} />
               )}
