@@ -8,8 +8,22 @@ type SelectProps = {
   label?: string
   className?: string
   placeholder?: string
+  /**
+   * Enables pagination styling if set to true.
+   */
   pagination?: boolean
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
+
+/**
+ * Select component that wraps Radix UI's Select functionality.
+ *
+ * @component
+ * @example
+ * <Select label="Choose an option" placeholder="Select..." onValueChange={(value) => console.log(value)}>
+ *   <SelectItem value="option1">Option 1</SelectItem>
+ *   <SelectItem value="option2">Option 2</SelectItem>
+ * </Select>
+ */
 
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectProps>((props, ref) => {
   const {
