@@ -1,7 +1,7 @@
 {
   "name": "@photo-fiesta/ui-lib",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,10 +16,12 @@
     "renameSvgFiles": "node scripts/renameSvgIcons.js",
     "updateSvg": "node scripts/updateSvgFill.js",
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
+    "deleteDubleImp": "node scripts/deleteDubleImp.mjs",
     "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
     "pre-push": "pnpm run build",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -29,8 +31,7 @@
     "*.{css,less,scss,sass,sss}": [
       "prettier --write",
       "stylelint --fix"
-    ],
-    "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
+    ]
   },
   "comments": {
     "//": "script description",

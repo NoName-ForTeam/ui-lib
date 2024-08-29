@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import styles from './Alert.module.scss'
+import styles from './alert.module.scss'
 import { CloseOutline } from '@/assets'
 import { Button, Card, Typography } from '@/components'
 
