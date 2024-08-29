@@ -5,13 +5,14 @@ import { ComponentPropsWithoutRef, forwardRef } from 'react'
 type ScrollbarType = ComponentPropsWithoutRef<typeof ScrollArea.Root>
 
 /**
-
  Scroll component, allowing creation of scroll areas with customizable styles.
- @component
- @param {Object} props - Component properties.
- @param {ScrollbarType['type']} [props.type] - Scroll type.
- @param {React.Ref<HTMLDivElement>} ref - Reference to the scroll area element.
- @returns {JSX.Element} The scroll area element. */
+
+ * @example
+ *  <Scroll type="auto" className="custom-scroll">
+ *  <h1>Title</h1>
+ *  <p>This is some content inside the scroll area.</p>
+ *  </Scroll>
+ */
 
 export const Scroll = forwardRef<HTMLDivElement, ScrollbarType>(
   ({ children, type = 'auto', ...restProps }, ref) => {
