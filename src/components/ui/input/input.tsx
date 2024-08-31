@@ -104,9 +104,9 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
               type={'button'}
             >
               {showPassword ? (
-                <EyeOffOutline className={classNames.icon} /> //убрать стили
-              ) : (
                 <EyeOutline className={classNames.icon} />
+              ) : (
+                <EyeOffOutline className={classNames.icon} />
               )}
             </button>
           )}
