@@ -90,3 +90,18 @@ export const AsLink: Story = {
     </Button>
   ),
 }
+export const AsLinkDisabled: Story = {
+  args: {
+    variant: 'link',
+    children: 'Link',
+    asChild: true,
+    disabled: true,
+  },
+  render: args => (
+    <Button {...args}>
+      <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        Go to Google
+      </a>
+    </Button>
+  ),
+}
