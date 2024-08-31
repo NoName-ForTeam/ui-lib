@@ -25,12 +25,24 @@ type ButtonProps = {
  */
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'primary', asChild = false, fullWidth, ...rest }, ref) => {
+  ({ className, variant = 'primary', asChild = false, fullWidth, disabled, ...rest }, ref) => {
     const Comp = asChild ? Slot : 'button'
     const classNames = {
-      button: clsx(styles[variant], fullWidth && styles.fullWidth, className),
+      button: clsx(
+        styles[variant],
+        fullWidth && styles.fullWidth,
+        className,
+        disabled && styles.disabled
+      ),
     } as const
-    return <Comp className={classNames.button} ref={ref} {...rest} />
+    return (
+      <Comp
+        className={classNames.button}
+        ref={ref}
+        {...(asChild ? { 'aria-disabled': disabled ? true : undefined } : { disabled })}
+        {...rest}
+      />
+    )
   }
 )
 Button.displayName = 'Button'

@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Button } from './button'
@@ -10,6 +11,7 @@ const meta = {
   title: 'Components/Button',
   args: {
     disabled: false,
+    onClick: action('onClick'),
   },
   argTypes: {
     variant: {
@@ -81,6 +83,21 @@ export const AsLink: Story = {
     variant: 'link',
     children: 'Link',
     asChild: true,
+  },
+  render: args => (
+    <Button {...args}>
+      <a href="https://google.com" target="_blank" rel="noopener noreferrer">
+        Go to Google
+      </a>
+    </Button>
+  ),
+}
+export const AsLinkDisabled: Story = {
+  args: {
+    variant: 'link',
+    children: 'Link',
+    asChild: true,
+    disabled: true,
   },
   render: args => (
     <Button {...args}>

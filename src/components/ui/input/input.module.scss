@@ -53,28 +53,28 @@
   text-align: left;
 
   background-color: var(--dark-700);
-  border: 1px solid var(--dark-100);
   border-radius: 2px;
+  outline: 1px solid var(--dark-100);
 
   transition: border-color 0.3s ease;
 
   &:disabled {
     cursor: default;
     color: var(--dark-100);
-    border: 1px solid var(--dark-100);
+    outline: 1px solid var(--dark-100);
   }
 
   &:hover:not(&:disabled) {
-    border: 1px solid var(--light-900);
+    outline: 1px solid var(--light-900);
   }
 
   &:focus:not(&:disabled) {
-    border: 2px solid var(--accent-500);
+    outline: 2px solid var(--accent-500);
   }
 
   &:active:not(&:disabled) {
     color: var(--light-100);
-    border: 1px solid var(--light-100);
+    outline: 1px solid var(--light-100);
 
     .searchIcon {
       color: var(--light-100);
@@ -116,5 +116,5 @@
 
 .error {
   color: var(--light-100);
-  border: 1px solid var(--danger-500);
+  outline: 1px solid var(--danger-500);
 }

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Input } from './input'
 import { useState } from 'react'
+import React from 'react'
 
 const meta = {
   component: Input,
@@ -77,5 +78,37 @@ export const Search: Story = {
 export const InputWithError: Story = {
   args: {
     errorMessage: 'Error',
+  },
+}
+
+export const EmailAndPassword: Story = {
+  args: {},
+
+  render: args => {
+    const { disabled, errorMessage } = args
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    return (
+      <div>
+        <Input
+          label="Email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          disabled={disabled}
+          errorMessage={errorMessage}
+        />
+        <Input
+          label="Password"
+          placeholder="Enter your password"
+          variant="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          disabled={disabled}
+          errorMessage={errorMessage}
+        />
+      </div>
+    )
   },
 }
