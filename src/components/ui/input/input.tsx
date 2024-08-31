@@ -16,10 +16,15 @@ export type InputProps = {
  * Input component with optional search and password toggle functionality.
  *
  * @component
- * @param {Object} props - The component props.
- * @param {string} [props.errorMessage] - Error message displayed below the input field.
- * @param {string} [props.label] - Label text for the input field.
- * @param {boolean} [props.search] - If true, a search icon is displayed inside the input field.
+ * @example
+ *  <Input
+ *         placeholder={'Password'}
+ *         variant={'password'}
+ *         label={'Enter Password'}
+ *         errorMessage={'Invalid password'}
+ *         value={value}
+ *         onChange={e => setValue(e.target.value)}
+ *       />
  */
 
 export const Input = forwardRef<ElementRef<'input'>, InputProps>(
@@ -60,6 +65,7 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
         disabled && styles.disabledSearch,
         errorMessage && styles.errorSearch
       ),
+      icon: styles.icon,
     } as const
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -98,9 +104,9 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
               type={'button'}
             >
               {showPassword ? (
-                <EyeOffOutline height={24} width={24} /> //убрать стили
+                <EyeOutline className={classNames.icon} />
               ) : (
-                <EyeOutline height={24} width={24} />
+                <EyeOffOutline className={classNames.icon} />
               )}
             </button>
           )}

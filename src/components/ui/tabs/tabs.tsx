@@ -6,16 +6,19 @@ import styles from './tabs.module.scss'
 type TabsProps = ComponentPropsWithoutRef<typeof TabsRadix.Root>
 
 /**
- * The main Tabs component that provides the container for all tab-related elements.
- * It wraps around Radix UI's Tabs.Root component and applies custom styles.
+ * Tabs component that serves as a container for tabbed navigation.
+ * Wraps Radix UI's TabsRoot component.
  *
  * @component
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The tab triggers and contents.
- * @param {string} [props.className] - Additional class name for styling the component.
- * @param {function} [props.onValueChange] - Callback function that is triggered when the active tab value changes.
- * @param {React.Ref<HTMLDivElement>} ref - Reference to the underlying Radix Tabs Root element.
- * @returns {JSX.Element} The Tabs component.
+ * @example
+ * <Tabs onValueChange={(value) => console.log(value)}>
+ *   <TabsList>
+ *     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+ *     <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+ *   </TabsList>
+ *   <TabsContent value="tab1">Content 1</TabsContent>
+ *   <TabsContent value="tab2">Content 2</TabsContent>
+ * </Tabs>
  */
 
 export const Tabs = forwardRef<ElementRef<typeof TabsRadix.Root>, TabsProps>(
@@ -35,14 +38,15 @@ export const Tabs = forwardRef<ElementRef<typeof TabsRadix.Root>, TabsProps>(
 export type TabsListProps = ComponentPropsWithoutRef<typeof TabsRadix.List>
 
 /**
- * The TabsList component represents a container for TabsTrigger elements.
- * It wraps around Radix UI's Tabs.List component and can be used to group tab triggers.
+ * TabsList component that serves as a container for TabsTrigger components.
+ * Wraps Radix UI's TabsList component.
  *
  * @component
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The tab triggers to be contained within the list.
- * @param {React.Ref<HTMLDivElement>} ref - Reference to the underlying Radix Tabs List element.
- * @returns {JSX.Element} The TabsList component.
+ * @example
+ * <TabsList>
+ *   <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+ *   <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+ * </TabsList>
  */
 
 export const TabsList = forwardRef<ElementRef<typeof TabsRadix.List>, TabsListProps>(
@@ -58,14 +62,8 @@ export const TabsList = forwardRef<ElementRef<typeof TabsRadix.List>, TabsListPr
 export type TabsTriggerProps = ComponentPropsWithoutRef<typeof TabsRadix.Trigger>
 
 /**
- * The TabsTrigger component represents a clickable tab trigger element.
- * It wraps around Radix UI's Tabs.Trigger component and applies custom styles.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {string} props.value - The value that will be assigned to this trigger. This value will be passed to onValueChange when the tab is selected.
- * @param {React.Ref<HTMLButtonElement>} ref - Reference to the underlying Radix Tabs Trigger element.
- * @returns {JSX.Element} The TabsTrigger component.
+ * TabsTrigger component represents a clickable tab that triggers a content change.
+ * Wraps Radix UI's TabsTrigger component.
  */
 
 export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, TabsTriggerProps>(
@@ -80,14 +78,8 @@ export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, Tabs
 export type TabsContentProps = ComponentPropsWithoutRef<typeof TabsRadix.Content>
 
 /**
- * The TabsContent component represents the content associated with a particular tab.
- * It wraps around Radix UI's Tabs.Content component and applies custom styles.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The content to be displayed when the associated tab is active.
- * @param {React.Ref<HTMLDivElement>} ref - Reference to the underlying Radix Tabs Content element.
- * @returns {JSX.Element} The TabsContent component.
+ * TabsContent component represents the content associated with a specific tab.
+ * Wraps Radix UI's TabsContent component.
  */
 
 export const TabsContent = forwardRef<ElementRef<typeof TabsRadix.Content>, TabsContentProps>(
