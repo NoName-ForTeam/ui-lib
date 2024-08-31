@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Button } from './button'
@@ -10,6 +11,7 @@ const meta = {
   title: 'Components/Button',
   args: {
     disabled: false,
+    onClick: action('onClick'),
   },
   argTypes: {
     variant: {

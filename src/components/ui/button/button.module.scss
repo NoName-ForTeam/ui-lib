@@ -24,6 +24,7 @@
   }
 
   &:disabled {
+    cursor: default;
     color: var(--light-900);
     background-color: var(--accent-900);
   }
@@ -43,6 +44,7 @@
   }
 
   &:disabled {
+    cursor: default;
     color: var(--light-900);
     background-color: var(--dark-500);
   }
@@ -65,6 +67,7 @@
   }
 
   &:disabled {
+    cursor: default;
     color: var(--accent-900);
     outline: 1px solid var(--accent-900);
   }
@@ -84,6 +87,7 @@
   }
 
   &:disabled {
+    cursor: default;
     color: var(--accent-900);
   }
 }
