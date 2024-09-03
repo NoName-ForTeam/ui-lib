@@ -18,7 +18,7 @@ export type ModalProps = ComponentPropsWithoutRef<typeof ModalRadix.Root>
  *     </ModalTrigger>
  *     <ModalContent>
  *       <ModalHeader>
- *         <h2>Modal Title</h2>
+ *         <ModalTitle>Modal Title</ModalTitle>
  *       </ModalHeader>
  *       <div>
  *         <p>This is the content of the modal.</p>
@@ -103,5 +103,13 @@ export type ModalCloseProps = ComponentPropsWithoutRef<typeof ModalRadix.Close>
 export const ModalClose = forwardRef<ElementRef<typeof ModalRadix.Close>, ModalCloseProps>(
   ({ ...rest }, ref) => {
     return <ModalRadix.Close ref={ref} {...rest} />
+  }
+)
+
+export type ModalTitleProps = ComponentPropsWithoutRef<typeof ModalRadix.Title>
+
+export const ModalTitle = forwardRef<ElementRef<typeof ModalRadix.Title>, ModalTitleProps>(
+  ({ ...rest }, ref) => {
+    return <ModalRadix.Title ref={ref} {...rest} />
   }
 )
