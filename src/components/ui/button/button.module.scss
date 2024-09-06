@@ -119,6 +119,13 @@ a.link.disabled {
   color: var(--accent-900);
 }
 
+button.icon-link {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 .fullWidth {
   width: 100%;
 }
