@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextArea } from './textArea'
+import { TextArea, TextAreaProps } from './textArea'
+import { useState } from 'react'
+import React from 'react'
 
 const meta = {
   component: TextArea,
@@ -44,6 +46,16 @@ export const WithoutLabel: Story = {
   args: {
     placeholder: 'TextArea without label',
   },
+}
+export const ControlledTextArea = (args: TextAreaProps) => {
+  const [value, setValue] = useState('')
+
+  return (
+    <div>
+      <TextArea {...args} value={value} onChangeValue={setValue} />
+      <p>Текущее значение: {value}</p>
+    </div>
+  )
 }
 
 export const LongPlaceholder: Story = {
