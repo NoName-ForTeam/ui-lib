@@ -1,9 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react'
 import { Select, SelectItem } from './select'
+import React, { useState } from 'react'
 
 const meta = {
   component: Select,
+  tags: ['autodocs'],
   title: 'Components/Select',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "A customizable Select component that wraps Radix UI's Select functionality. It allows users to select an option from a dropdown list and supports pagination styling.",
+      },
+    },
+  },
 } satisfies Meta<typeof Select>
 
 export default meta
@@ -61,5 +71,26 @@ export const Disabled: Story = {
   args: {
     placeholder: 'Disabled',
     disabled: true,
+  },
+}
+
+export const Controlled: Story = {
+  render: () => {
+    const [value, setValue] = useState('1')
+
+    return (
+      <Select
+        value={value}
+        onValueChange={setValue}
+        placeholder="Controlled Select"
+        label="Controlled Select"
+      >
+        <SelectItem value="1">One</SelectItem>
+        <SelectItem value="2">Two</SelectItem>
+        <SelectItem value="3">Three</SelectItem>
+        <SelectItem value="4">Four</SelectItem>
+        <SelectItem value="5">Five</SelectItem>
+      </Select>
+    )
   },
 }
