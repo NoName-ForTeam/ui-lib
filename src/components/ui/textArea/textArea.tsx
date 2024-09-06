@@ -3,31 +3,46 @@ import clsx from 'clsx'
 import { ComponentPropsWithoutRef, forwardRef, useId } from 'react'
 import styles from './textArea.module.scss'
 
-/**
- * Props for the TextArea component.
- *
- * @typedef {Object} TextAreaProps
- * @property {string} [label] - The label for the textarea.
- * @property {string} [error] - Error message to display below the textarea.
- * @property {string} [placeholder] - Placeholder text inside the textarea.
- * @property {boolean} [disabled] - Whether the textarea is disabled.
- */
-
 export type TextAreaProps = {
+  /**
+   * The label text to be displayed above the textarea.
+   */
   label?: string
+  /**
+   * Error message to be displayed below the textarea.
+   */
   error?: string
+  /**
+   * Callback function that is called when the textarea's value changes.
+   * It receives the new value as a string parameter.
+   * @param value - The current value of the textarea
+   */
+  onChangeValue?: (value: string) => void
 } & ComponentPropsWithoutRef<'textarea'>
 
 /**
- * A forward-ref TextArea component that supports labels, error messages, and various props.
+ * A customizable textarea component with support for labels and error messages.
  *
- * @param {TextAreaProps} props - The props for the TextArea component.
- * @param {React.Ref<HTMLTextAreaElement>} ref - A forwarded ref to the textarea element.
- * @returns {JSX.Element} The rendered TextArea component.
+ * @component
+ * @example
+ **Basic usage
+ * <TextArea
+ *   label="Description"
+ *   placeholder="Enter your description here"
+ *   onChange={(e) => console.log(e.target.value)}
+ * />
+ *
+ ** With error message and disabled state
+ * <TextArea
+ *   label="Feedback"
+ *   error="Please provide your feedback"
+ *   value={feedback}
+ *   disabled={true}
+ *   onChange={(e) => setFeedback(e.target.value)}
+ * />
  */
-
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  ({ className, label, id, error, placeholder = '', disabled, ...rest }, ref) => {
+  ({ className, label, id, error, placeholder = '', disabled, onChangeValue, ...rest }, ref) => {
     const innerId = useId()
     const finalId = id ?? innerId
     const errorId = `${finalId}-error`
@@ -36,6 +51,9 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       error: styles.error,
       textarea: clsx(styles.textarea, error && styles.error),
       label: clsx(styles.label, disabled && styles.disabled),
+    }
+    const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      onChangeValue?.(e.target.value)
     }
     return (
       <div className={classNames.root}>
@@ -51,6 +69,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
           id={finalId}
           className={clsx(classNames.textarea, className)}
           ref={ref}
+          onChange={handleChange}
           {...rest}
         />
         {error && (
