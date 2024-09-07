@@ -4,7 +4,7 @@ import { ArrowIosDownOutline } from '@/assets'
 import clsx from 'clsx'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-type SelectProps = {
+export type SelectProps = {
   label?: string
   className?: string
   placeholder?: string
