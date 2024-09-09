@@ -113,3 +113,8 @@ export const ModalTitle = forwardRef<ElementRef<typeof ModalRadix.Title>, ModalT
     return <ModalRadix.Title ref={ref} {...rest} />
   }
 )
+
+export type ModalDescriptionProps = ComponentPropsWithoutRef<typeof ModalRadix.Description>
+export const ModalDescription = ({ ...rest }: ModalDescriptionProps) => (
+  <ModalRadix.Description asChild {...rest} />
+)
