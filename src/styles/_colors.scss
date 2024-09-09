@@ -1,3 +1,5 @@
+/* stylelint-disable scss/double-slash-comment-whitespace-inside */
+/* stylelint-disable custom-property-empty-line-before */
 // _colors.scss
 
 :root {
@@ -18,6 +20,7 @@
   /* Danger Colors */
   --danger-100: #ff8099;
   --danger-300: #f23d61;
+  --danger-400: #f00; //error captcha color
   --danger-500: #cc1439;
   --danger-700: #990f2b;
   --danger-900: #660a1d;
@@ -33,6 +36,7 @@
   --dark-100: #4c4c4c;
   --dark-300: #333;
   --dark-500: #171717;
+  --dark-600: #212121; //button secondary active
   --dark-700: #0d0d0d;
   --dark-900: #000;
 
@@ -42,4 +46,6 @@
   --light-500: #edf3fa;
   --light-700: #d5dae0;
   --light-900: #8d9094;
+
+  --overlay-color: rgba(0 0 0 / 60%);
 }

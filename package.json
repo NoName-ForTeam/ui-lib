@@ -1,25 +1,55 @@
 {
-  "name": "ui-kit",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@photo-fiesta/ui-lib",
+  "private": false,
+  "version": "0.0.8",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "rimraf dist",
     "build": "tsc -b && vite build ",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --no-error-on-unmatched-pattern --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss}\" && stylelint --fix \"src/**/*.{css,less,scss,sass,sss}\"",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
+    "sb": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "renameSvgFiles": "node scripts/renameSvgIcons.js",
     "updateSvg": "node scripts/updateSvgFill.js",
     "generate-svg-components": "npx @svgr/cli --out-dir src/assets/icons/components --typescript  --icon --memo --ref --jsx-runtime automatic --replace-attr-values 'black=currentColor' -- src/assets/icons/svg && pnpm updateSvg && pnpm lint && pnpm format",
+    "deleteDubleImp": "node scripts/deleteDubleImp.mjs",
+    "comp": "node scripts/create-component.mjs",
     "prepare": "husky install",
-    "pre-push": "pnpm format && pnpm run lint && pnpm run build"
+    "pre-push": "pnpm run build",
+    "lint-staged": "lint-staged",
+    "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less,scss,sass,sss}": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
+  },
+  "comments": {
+    "//": "script description",
+    "scripts": {
+      "sb": "storybook",
+      "/": "usage: pnpm comp <folderName> <componentName> true",
+      "comp": "generate folder with tsx,stories,scss templates",
+      "generate-svg-components": "generate tsx from svg",
+      "bump": "npm version patch -m \"@photo-fiesta/ui-lib version updated to v%s\""
+    }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "dist/style.css"
+  ],
   "exports": {
     ".": {
       "import": {
@@ -33,37 +63,47 @@
     },
     "./style.css": "./dist/style.css"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "dependencies": {
     "@fontsource/inter": "^5.0.20",
-    "@radix-ui/react-popover": "^1.1.1",
+    "@types/react-datepicker": "^7.0.0",
+    "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-radio-group": "^1.2.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
-    "@types/react-datepicker": "^7.0.0",
+    "@radix-ui/react-tabs": "^1.1.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
     "moment": "^2.30.1",
     "react": "^18.3.1",
     "react-datepicker": "^7.3.0",
-    "react-day-picker": "^9.0.8",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0"
+    "react-google-recaptcha": "^3.1.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
     "@it-incubator/eslint-config": "^1.0.3",
     "@it-incubator/prettier-config": "^0.1.2",
     "@it-incubator/stylelint-config": "^2.0.0",
+    "@storybook/addon-actions": "^8.2.9",
     "@storybook/addon-essentials": "^8.2.7",
     "@storybook/addon-interactions": "^8.2.7",
     "@storybook/addon-links": "^8.2.7",
     "@storybook/addon-onboarding": "^8.2.7",
     "@storybook/blocks": "^8.2.7",
-    "@storybook/react": "^8.2.7",
-    "@storybook/react-vite": "^8.2.7",
+    "@storybook/react": "^8.2.9",
+    "@storybook/react-vite": "^8.2.9",
     "@storybook/test": "^8.2.7",
     "@types/node": "^22.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@types/react-google-recaptcha": "^2.1.9",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -72,12 +112,14 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "eslint-plugin-storybook": "^0.8.0",
     "husky": "^8.0.0",
+    "lint-staged": "^15.2.9",
     "prettier": "^3.3.3",
+    "rimraf": "^6.0.1",
     "sass": "^1.77.8",
     "storybook": "^8.2.7",
     "stylelint": "^16.8.1",
-    "typescript": "5.4.2",
-    "vite": "^5.3.4",
-    "vite-plugin-dts": "4.0.0-beta.2"
+    "typescript": "5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "4.0.3"
   }
 }

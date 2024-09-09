@@ -1,0 +1,120 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  width: var(--svg-size);
+  height: var(--svg-size);
+}
+
+.label {
+  color: var(--light-900);
+}
+
+.disabledLabel {
+  color: var(--dark-100);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+
+.searchIcon {
+  all: unset;
+
+  position: absolute;
+  top: 6px;
+  left: 12px;
+
+  color: var(--light-900);
+}
+
+.disabledSearch {
+  color: var(--dark-100);
+}
+
+.errorSearch {
+  color: var(--light-100);
+}
+
+.input {
+  all: unset;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 12px;
+
+  color: var(--light-900);
+  text-align: left;
+
+  background-color: var(--dark-700);
+  border-radius: 2px;
+  outline: 1px solid var(--dark-100);
+
+  transition: border-color 0.3s ease;
+
+  &:disabled {
+    cursor: default;
+    color: var(--dark-100);
+    outline: 1px solid var(--dark-100);
+  }
+
+  &:hover:not(&:disabled) {
+    outline: 1px solid var(--light-900);
+  }
+
+  &:focus:not(&:disabled) {
+    outline: 2px solid var(--accent-500);
+  }
+
+  &:active:not(&:disabled) {
+    color: var(--light-100);
+    outline: 1px solid var(--light-100);
+
+    .searchIcon {
+      color: var(--light-100);
+      fill: var(--light-100);
+    }
+  }
+}
+
+.password {
+  padding-right: 40px;
+}
+
+.eyeButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 6px;
+  right: 12px;
+
+  width: 24px;
+  height: 24px;
+
+  &:disabled {
+    cursor: unset;
+    color: var(--dark-100);
+  }
+}
+
+.search {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.activeSearch {
+  color: var(--light-100);
+}
+
+.error {
+  color: var(--light-100);
+  outline: 1px solid var(--danger-500);
+}

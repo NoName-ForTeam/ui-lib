@@ -9,20 +9,9 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
-       
-      // don`t let me build the project
-
       rollupTypes: true,
 
       insertTypesEntry: true,
-      include: ['src'],
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx'],
-      beforeWriteFile: (filePath, content) => {
-        return {
-          filePath: filePath.replace(/dist\/src/, 'dist'),
-          content,
-        }
-      },
     }),
   ],
   resolve: {
@@ -31,6 +20,8 @@ export default defineConfig({
     },
   },
   build: {
+    emptyOutDir: true,
+    outDir: './dist',
     target: 'esnext',
     minify: false,
     lib: {

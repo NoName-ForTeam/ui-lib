@@ -1,0 +1,117 @@
+.label {
+  color: var(--light-100);
+}
+
+.icon {
+  fill: var(--light-100);
+  transition: 0.2s;
+}
+
+.pagination {
+  color: var(--light-100) !important;
+}
+
+.trigger {
+  cursor: pointer;
+
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 12px;
+
+  color: var(--light-100);
+
+  background-color: var(--dark-700);
+  border: 2px solid var(--dark-100);
+  border-radius: 2px;
+  outline: none;
+
+  &.pagination {
+    column-gap: 6px;
+    padding: 0 2px 0 6px;
+    font-size: var(--font-size-s);
+  }
+
+  .icon {
+    transform: none;
+    color: var(--light-100);
+  }
+
+  &:focus-visible:not([data-disabled]) {
+    color: var(--light-900);
+    border: 2px solid var(--accent-500);
+    outline: none;
+  }
+
+  &[data-state='open'] {
+    border-color: var(--light-100);
+    border-radius: 2px 2px 0 0;
+
+    .icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  &:hover:not([data-disabled]) {
+    cursor: pointer;
+    background-color: var(--dark-500);
+  }
+
+  &[data-disabled] {
+    cursor: initial;
+    color: var(--dark-300);
+    border-color: var(--dark-300);
+  }
+}
+
+.triggerDisabled {
+  cursor: auto;
+  color: var(--dark-100);
+  border: 1px solid var(--dark-100);
+
+  .iconDisabled {
+    color: var(--light-100);
+    fill: var(--light-100);
+  }
+}
+
+.withoutLabel {
+  color: var(--light-900);
+  /* stylelint-disable-next-line */
+  .icon {
+    color: var(--light-100);
+  }
+}
+
+.content {
+  width: var(--radix-select-trigger-width);
+
+  color: var(--light-900);
+
+  background-color: var(--dark-700);
+  border: 2px solid var(--light-100);
+  border-radius: 0 0 2px 2px;
+
+  .item {
+    cursor: pointer;
+    padding: 6px 12px;
+    outline: none;
+    transition: 0.2s;
+
+    &.pagination {
+      padding: 0 6px;
+      font-size: var(--font-size-s);
+    }
+
+    &:hover,
+    &:focus-visible,
+    &[data-state='checked'] {
+      color: var(--accent-500);
+      background-color: var(--dark-300);
+    }
+  }
+}
