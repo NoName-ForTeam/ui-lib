@@ -6,7 +6,7 @@ import { enUS } from 'date-fns/locale'
 import clsx from 'clsx'
 import { parse } from 'date-fns'
 
-type DatePickerType = {
+export type DatePickerType = {
   errorMessage?: string
   label?: string
   disabled?: boolean
@@ -26,6 +26,10 @@ type DatePickerType = {
   endDate?: Date | null
   setStartDate?: (date: Date | null) => void
   setEndDate?: (date: Date | null) => void
+  onBlur?: () => void
+  date?: Date | null
+  onSelect?: (date: Date | null) => void
+  inputRef?: React.RefCallback<HTMLInputElement>
 }
 registerLocale('enUS', enUS)
 
@@ -58,6 +62,7 @@ export const CustomDatePicker = ({
   setStartDate,
   selectsRange = false,
   placeholder,
+  inputRef,
   ...restProps
 }: DatePickerType) => {
   const showError = !!errorMessage && errorMessage.length > 0
@@ -140,6 +145,7 @@ export const CustomDatePicker = ({
               </label>
             )}
             <input
+              ref={inputRef}
               className={clsx(styles.input, { [styles.error as string]: showError })}
               type="text"
               value={inputValue}
