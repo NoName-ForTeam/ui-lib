@@ -89,7 +89,7 @@
 
 .content {
   width: var(--radix-select-trigger-width);
-  height: var(--radix-select-content-available-height);
+  max-height: var(--radix-select-content-available-height);
   color: var(--light-900);
 
   background-color: var(--dark-700);
