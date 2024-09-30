@@ -12,6 +12,7 @@
 
     color: var(--dark-100);
 
+    opacity: 0.9;
     background-color: transparent;
 
     transition: all 0.3s;
@@ -48,11 +49,11 @@
     }
 
     &:hover {
-      color: var(--accent-500);
-      background-color: var(--accent-900);
+      color: var(--light-100);
+      background-color: var(--accent-100);
 
       &::before {
-        background-color: var(--accent-500);
+        background-color: var(--light-100);
       }
     }
 
@@ -62,9 +63,18 @@
 
     &[data-state='active'] {
       color: var(--accent-500);
+      opacity: 1;
 
       &::before {
         background-color: var(--accent-500);
+      }
+
+      &:hover {
+        background-color: var(--accent-900);
+      }
+
+      &:active {
+        background-color: var(--accent-100);
       }
 
       &[data-disabled] {
