@@ -36,7 +36,12 @@
     }
 
     &:hover {
+      color: var(--accent-500);
       background-color: var(--accent-900);
+
+      &::before {
+        background-color: var(--accent-500);
+      }
     }
 
     &:active {
