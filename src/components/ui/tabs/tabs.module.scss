@@ -27,6 +27,18 @@
       height: 2px;
 
       background-color: var(--dark-100);
+
+      &[data-state='active'] {
+        &::before {
+          background-color: var(--accent-500);
+        }
+
+        &[data-disabled] {
+          &::before {
+            background-color: var(--accent-900);
+          }
+        }
+      }
     }
 
     &:focus-visible {
