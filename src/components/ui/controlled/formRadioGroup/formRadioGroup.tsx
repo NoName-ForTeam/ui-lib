@@ -15,9 +15,6 @@ export type FormRadioGroupProps<TFieldValues extends FieldValues> =
 /**
  * A controlled radio group component that integrates with react-hook-form.
  *
- * This component allows you to create a group of radio buttons that can be controlled
- * through react-hook-form's controller.
- *
  * @example
  * <FormRadioGroup control={control} name={"radioOption"} defaultValue={"option1"} disabled={'false'}>
  *   <RadioGroupItem value="option1" />
@@ -34,7 +31,7 @@ export const FormRadioGroup = <TFieldValues extends FieldValues>({
   ...restProps
 }: FormRadioGroupProps<TFieldValues>) => {
   const {
-    field: { onChange, ...restField },
+    field: { onChange, ref, value,...restField },
   } = useController({
     control,
     name,
@@ -43,7 +40,7 @@ export const FormRadioGroup = <TFieldValues extends FieldValues>({
   })
 
   return (
-    <RadioGroup {...restProps} {...restField} onValueChange={onChange}>
+    <RadioGroup {...restProps} {...restField} ref={ref} value={value} onValueChange={onChange}>
       {children}
     </RadioGroup>
   )
