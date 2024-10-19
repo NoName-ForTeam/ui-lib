@@ -78,7 +78,7 @@ export const PaginationWithSelect: Story = {
         pageSize={pageSize}
         totalCount={args.totalCount}
       >
-        <SelectContainer content={['Show', 'on page']}>
+        <SelectContainer content={['Show', 'on page'] as string[] & string}>
           <Select pagination onValueChange={handleOptionChange} value={option}>
             {options.map(option => (
               <SelectItem key={option.id} value={option.value}>
