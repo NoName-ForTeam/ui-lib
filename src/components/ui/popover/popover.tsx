@@ -45,21 +45,18 @@ export const PopoverTrigger = ({ className, children, ...rest }: PopoverTriggerP
 
 export type PopoverContentProps = ComponentPropsWithoutRef<typeof Popover.Content>
 
-export const PopoverContent =
-  forwardRef<ElementRef<typeof Popover.Content>, PopoverContentProps>(
-    ({ children, className, ...rest }, ref) => {
-      const classNames = {
-        content: clsx(styles.content, className),
-      } as const
-      return (
-        <Popover.Portal>
-          <Popover.Content className={classNames.content} sideOffset={5} {...rest} ref={ref}>
-            {children}
-          </Popover.Content>
-        </Popover.Portal>
-      )
-    }
-  )
+export const PopoverContent = forwardRef<ElementRef<typeof Popover.Content>, PopoverContentProps>(
+  ({ children, className, ...rest }, ref) => {
+    const classNames = {
+      content: clsx(styles.content, className),
+    } as const
+    return (
+      <Popover.Content className={classNames.content} sideOffset={5} {...rest} ref={ref}>
+        {children}
+      </Popover.Content>
+    )
+  }
+)
 
 PopoverRoot.displayName = 'PopoverRoot'
 PopoverTrigger.displayName = 'PopoverTrigger'
