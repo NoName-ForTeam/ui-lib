@@ -9,14 +9,34 @@ import { Typography } from '../typography'
 import { usePagination } from './usePagination'
 
 /**
- * Props for the Pagination component.
- * @typedef {Object} PaginationProps
- * @property {ReactNode} [children] - The child elements of the pagination component.
- * @property {number} currentPage - The current active page number.
- * @property {function(number): void} onChangePage - Callback function when the page changes.
- * @property {number} pageSize - The number of items per page.
- * @property {number} [siblingCount=1] - The number of sibling pages to show around the current page.
- * @property {number} totalCount - The total number of items.
+ *  A custom Pagination component.
+ * Source: www.freecodecamp.org/news/*build-a-custom-pagination-component-in-react/
+ * @component
+ * @example
+ * <PaginationComponent
+ * disabledPrevBtn={currentPage === 1}
+ * disabledNextBtn={currentPage === totalPages}
+ * handleClickPrevBtn={() => {
+ *   if (currentPage > 1) {
+ *     setCurrentPage(currentPage - 1);
+ *   }
+ * }}
+ * handleClickNextBtn={() => {
+ *   if (currentPage < totalPages) {
+ *     setCurrentPage(currentPage + 1);
+ *   }
+ * }}
+ * mainButtons={Array.from({ length: totalPages }, (_, index) => (
+ *   <PaginationButton
+ *     key={index}
+ *     onClick={() => setCurrentPage(index + 1)}
+ *     disabled={currentPage === index + 1}
+ *   >
+ *     {index + 1}
+ *   </PaginationButton>
+ * ))}
+ * children={<div>Additional content here</div>}
+/>
  */
 
 type PaginationProps = {
@@ -26,13 +46,6 @@ type PaginationProps = {
   siblingCount?: number
   totalCount: number
 } & ComponentPropsWithoutRef<'div'>
-
-/**
- * A custom Pagination component.
- * Source: www.freecodecamp.org/news/*build-a-custom-pagination-component-in-react/
- * @param {PaginationProps} props - The props for the Pagination component.
- * @returns {JSX.Element} - The rendered Pagination component.
- */
 
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   (
@@ -102,24 +115,10 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>(
   }
 )
 
-/**
- * Props for the PaginationButton component.
- * @typedef {Object} PaginationButtonProps
- * @property {boolean} [disabled] - Whether the button is disabled.
- * @property {boolean} [isSelected] - Whether the button is selected.
- * @property {function(): void} [onClick] - Callback function when the button is clicked.
- */
-
 type PaginationButtonProps = {
   isSelected?: boolean
   onClick?: () => void
 } & ComponentPropsWithoutRef<'button'>
-
-/**
- * A custom PaginationButton component.
- * @param {PaginationButtonProps} props - The props for the PaginationButton component.
- * @returns {JSX.Element} - The rendered PaginationButton component.
- */
 
 const PaginationButton = ({
   children,
@@ -139,23 +138,10 @@ const PaginationButton = ({
   )
 }
 
-/**
- * Props for the SelectContainer component.
- * @typedef {Object} SelectContainerProps
- * @property {ReactNode} children - The child elements of the select container.
- * @property {string[]} content - The content to display before and after the children.
- */
-
 type SelectContainerProps = {
   children: ReactNode
   content: string[]
 } & ComponentPropsWithoutRef<'div'>
-
-/**
- * A custom SelectContainer component.
- * @param {SelectContainerProps} props - The props for the SelectContainer component.
- * @returns {JSX.Element} - The rendered SelectContainer component.
- */
 
 export const SelectContainer = ({
   children,
