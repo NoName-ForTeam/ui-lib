@@ -18,26 +18,31 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: () => (
     <PopoverRoot>
-      <PopoverTrigger>
-        <MoreHorizontal  color='blue' />
-      </PopoverTrigger>
-
-      <PopoverContent>
-
-          <div           style={{
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <PopoverTrigger>
+          <button>
+            <MoreHorizontal width={24} height={24} color="violet" />
+          </button>
+        </PopoverTrigger>
+      </div>
+      <PopoverContent align="end">
+        <div
+          style={{
             display: 'flex',
-            gap: '12px'
-          }}>
-            <Edit2Outline width={24} height={24}/> Edit Post
-          </div>
-          <div style={{
+            gap: '12px',
+          }}
+        >
+          <Edit2Outline width={24} height={24} /> Edit Post
+        </div>
+        <div
+          style={{
             display: 'flex',
-            gap: '12px'
-          }}>
-            <TrashOutline  width={24} height={24}/> Delete Post
-          </div>
-        
-              </PopoverContent>
+            gap: '12px',
+          }}
+        >
+          <TrashOutline width={24} height={24} /> Delete Post
+        </div>
+      </PopoverContent>
     </PopoverRoot>
   ),
 }
