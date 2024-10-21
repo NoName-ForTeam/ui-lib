@@ -5,7 +5,6 @@ import clsx from 'clsx'
 
 /**
  * PopoverComponent that displays a popover with a trigger and content.
- * Wraps the Radix UI's PopoverRoot, PopoverTrigger, and PopoverContent components.
  *
  * @component
  * @example
