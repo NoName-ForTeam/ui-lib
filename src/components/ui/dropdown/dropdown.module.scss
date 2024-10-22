@@ -1,0 +1,71 @@
+@use '@/styles/mixins' as *;
+
+button {
+  all: unset;
+}
+
+.dropdownMenuTrigger {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdownMenuArrow {
+  width: 16px;
+  height: 8px;
+
+  &.backArrow {
+    fill: var(--dark-100);
+  }
+
+  &.frontArrow {
+    transform: translateY(-1.4px);
+    fill: var(--dark-500);
+  }
+}
+
+.dropdownMenuContent {
+  width: 355px;
+  height: fit-content;
+  padding: 3px 0 15px 15px;
+
+  background-color: var(--dark-500);
+  border: 1px solid var(--dark-100);
+  border-radius: 4px;
+}
+
+.dropdownMenuLabel {
+  @include font(var(--font-size-m), var(--line-height-m), var(--font-weight-medium));
+
+  user-select: none;
+  padding-block: 12px;
+}
+
+.scroll {
+  height: 367px;
+  margin-right: 7px;
+}
+
+.dropdownMenuItem {
+  user-select: none;
+
+  padding: 12px 12px 12px 0;
+
+  color: inherit;
+  text-decoration: none;
+
+  outline: none;
+}
+
+.dropdownMenuSeparator {
+  height: 1px;
+  margin-right: 12px;
+  background-color: var(--dark-100);
+
+  &.labelSeparator {
+    margin-right: 19px;
+  }
+
+  &:last-child {
+    display: none;
+  }
+}
