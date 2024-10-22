@@ -113,7 +113,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
  * @example
  * <DropdownMenuLabel inset> Label </DropdownMenuLabel>
  */
-export const DropdownMenuLabel = forwardRef<
+const DropdownMenuLabel = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Label>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
     inset?: boolean
@@ -170,7 +170,7 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
  * @example
  * <DropdownMenuSeparator />
  */
-export const DropdownMenuSeparator = forwardRef<
+const DropdownMenuSeparator = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Separator>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
 >(({ className, ...props }, ref) => {
