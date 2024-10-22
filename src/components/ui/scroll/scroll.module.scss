@@ -16,12 +16,15 @@
   max-width: 100%;
   max-height: 100%;
 
+  background: var(--dark-300);
+  border-radius: 2px;
+
   transition: background-color 300ms ease-out;
 }
 
 .scrollbar[data-orientation='vertical'] {
   width: 4px;
-  padding: 4px 0;
+  padding: 0;
 }
 
 .scrollbar[data-orientation='horizontal'] {
@@ -37,8 +40,8 @@
 
   flex-grow: 1;
 
-  background-color: var(--dark-300);
-  border-radius: 3px;
+  background-color: var(--dark-100);
+  border-radius: 2px;
 
   transition: background-color 300ms ease-out;
 }
