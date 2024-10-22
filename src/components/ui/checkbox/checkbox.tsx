@@ -13,17 +13,19 @@ export type CheckboxProps = {
 } & ComponentPropsWithoutRef<typeof CheckboxRadix.Root>
 
 /**
- * Custom checkbox component using Radix UI
- *
+ * The Checkbox component is a custom checkbox component built using Radix UI.
+ * It provides a flexible and customizable checkbox that can be easily integrated into any React application.
+ * The component supports various props to control its behavior and appearance,
+ * including checked, disabled, id, label, and onChange.
  * @component
- * @param {Object} props - The component props
- * @param {CheckboxRadix.CheckedState} [props.checked] - The checked state of the checkbox
- * @param {boolean} [props.disabled] - Whether the checkbox is disabled
- * @param {string} [props.id] - The id for the checkbox input
- * @param {string|null} [props.label] - The label text for the checkbox
- * @param {(checked: CheckboxRadix.CheckedState) => void} [props.onChange] - Callback function when the checkbox state changes
- * @param {React.Ref<HTMLButtonElement>} ref - The ref to the underlying button element
- * @returns {JSX.Element} The Checkbox component
+ * @example
+ * <Checkbox
+ *   checked={checked}
+ *   onCheckedChange={setChecked}
+ *   label={'Accept Terms and Conditions'}
+ *   id={'terms-checkbox'}
+ *   disabled={false}
+ * />
  */
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxProps>(
@@ -67,9 +69,5 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
     )
   }
 )
-
-/**
- *This will help when debugging in React DevTools.
- **/
 
 Checkbox.displayName = 'Checkbox'
