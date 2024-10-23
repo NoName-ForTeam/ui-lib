@@ -2,7 +2,7 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import styles from './dropdown.module.scss'
 import { clsx } from 'clsx'
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-import s from '@/components/ui/dropdown/dropdown.module.scss'
+import s from './dropdown.module.scss'
 import { Scroll } from '@/components'
 
 /**
@@ -30,7 +30,7 @@ export const DropdownMenu = DropdownMenuPrimitive.Root
 export const DropdownMenuTrigger = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Trigger>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger>
->(({ className, children, ...restProps }, forwardedRef) => {
+>(({ className, children, ...restProps }, ref) => {
   const classNames = {
     dropdownMenuTrigger: clsx(styles.dropdownMenuTrigger, className),
   } as const
@@ -38,7 +38,7 @@ export const DropdownMenuTrigger = forwardRef<
   return (
     <DropdownMenuPrimitive.Trigger
       asChild
-      ref={forwardedRef}
+      ref={ref}
       className={classNames.dropdownMenuTrigger}
       {...restProps}
     >
@@ -64,8 +64,8 @@ type DropdownMenuContent = {
  * ! Attention: label should be set as props of DropdownMenuItem
  *
  * @example
- * <DropdownMenuContent>
- *   <DropdownMenuItem label={'Label'}> Item1 </DropdownMenuItem>
+ * <DropdownMenuContent label={'Label'}>
+ *   <DropdownMenuItem> Item1 </DropdownMenuItem>
  *   <DropdownMenuItem> Item2 </DropdownMenuItem>
  *   <DropdownMenuItem> Item3 </DropdownMenuItem>
  * </DropdownMenuContent>
@@ -73,7 +73,7 @@ type DropdownMenuContent = {
 export const DropdownMenuContent = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Content>,
   DropdownMenuContent
->(({ label, className, sideOffset = 3, children, ...restProps }, forwardedRef) => {
+>(({ label, className, sideOffset = 3, children, ...restProps }, ref) => {
   const classNames = {
     dropdownMenuContent: clsx(styles.dropdownMenuContent, className),
     dropdownMenuArrowBack: clsx(styles.dropdownMenuArrow, styles.backArrow),
@@ -85,20 +85,14 @@ export const DropdownMenuContent = forwardRef<
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
-        ref={forwardedRef}
+        ref={ref}
         sideOffset={sideOffset}
         className={classNames.dropdownMenuContent}
         {...restProps}
       >
         <DropdownMenuPrimitive.Arrow className={classNames.dropdownMenuArrowBack} />
         <DropdownMenuPrimitive.Arrow className={classNames.dropdownMenuArrowFront} />
-        <DropdownMenuPrimitive.Label
-          ref={forwardedRef}
-          className={classNames.dropdownMenuLabel}
-          {...restProps}
-        >
-          {label}
-        </DropdownMenuPrimitive.Label>
+        <DropdownMenuLabel className={classNames.dropdownMenuLabel}>{label}</DropdownMenuLabel>
         <DropdownMenuSeparator className={classNames.labelSeparator} />
         <Scroll className={s.scroll}>{children}</Scroll>
       </DropdownMenuPrimitive.Content>
@@ -118,7 +112,7 @@ const DropdownMenuLabel = forwardRef<
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
     inset?: boolean
   }
->(({ className, ...restProps }, forwardedRef) => {
+>(({ className, ...restProps }, ref) => {
   const classNames = {
     dropdownMenuLabel: clsx(styles.dropdownMenuLabel, className),
     labelSeparator: styles.labelSeparator,
@@ -127,7 +121,7 @@ const DropdownMenuLabel = forwardRef<
   return (
     <>
       <DropdownMenuPrimitive.Label
-        ref={forwardedRef}
+        ref={ref}
         className={classNames.dropdownMenuLabel}
         {...restProps}
       />
