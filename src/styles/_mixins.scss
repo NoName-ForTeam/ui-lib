@@ -49,3 +49,7 @@
 
   @include font(var(--font-size-m), var(--line-height-m), var(--font-weight-semibold));
 }
+
+@mixin background-transition {
+  transition: background-color 300ms ease-out;
+}

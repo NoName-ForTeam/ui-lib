@@ -35,6 +35,10 @@
     color: var(--dark-900);
     background-color: var(--light-100);
   }
+
+  &:disabled {
+    color: var(--dark-100);
+  }
 }
 
 .select {
