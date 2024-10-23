@@ -25,6 +25,7 @@ button {
 
 .dropdownMenuContent {
   width: 100%;
+  min-width: 173px;
   max-width: 355px;
   height: fit-content;
   padding: 3px 0 15px 15px;
@@ -42,7 +43,6 @@ button {
 }
 
 .scroll {
-  height: 367px;
   margin-right: 7px;
 }
 
