@@ -8,6 +8,8 @@
   gap: 12px;
   align-items: flex-start;
 
+  width: max-content;
+  max-width: 140px;
   padding: 12px;
 
   color: var(--light-100);
@@ -18,5 +20,7 @@
 }
 
 .trigger {
+  cursor: pointer;
   position: relative;
+  color: var(--accent-500);
 }
