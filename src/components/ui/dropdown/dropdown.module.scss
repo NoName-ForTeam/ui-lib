@@ -24,7 +24,8 @@ button {
 }
 
 .dropdownMenuContent {
-  width: 355px;
+  width: 100%;
+  max-width: 355px;
   height: fit-content;
   padding: 3px 0 15px 15px;
 
