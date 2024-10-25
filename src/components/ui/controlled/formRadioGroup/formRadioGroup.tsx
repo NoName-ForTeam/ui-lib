@@ -31,7 +31,7 @@ export const FormRadioGroup = <TFieldValues extends FieldValues>({
   ...restProps
 }: FormRadioGroupProps<TFieldValues>) => {
   const {
-    field: { onChange, ref, value,...restField },
+    field: { onChange, ref, value, ...restField },
   } = useController({
     control,
     name,
