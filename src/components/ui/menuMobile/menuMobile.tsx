@@ -16,7 +16,7 @@ import clsx from 'clsx'
  * </MenuMobile>
  */
 export const MenuMobile = forwardRef<ElementRef<'div'>, ComponentPropsWithRef<'div'>>(
-  ({ children, className }, ref, ...rest) => {
+  ({ children, className , ...rest}, ref ) => {
     const classNames = {
       menuMobileContainer: clsx(styles.menuMobileContainer, className),
     } as const
