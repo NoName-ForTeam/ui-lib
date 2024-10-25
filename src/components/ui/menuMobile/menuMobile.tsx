@@ -19,7 +19,7 @@ export const MenuMobile = forwardRef<ElementRef<'div'>, ComponentPropsWithRef<'d
   ({ children, className }, ref, ...rest) => {
     const classNames = {
       menuMobileContainer: clsx(styles.menuMobileContainer, className),
-    }
+    } as const
 
     return (
       <div className={classNames.menuMobileContainer} ref={ref} {...rest}>
