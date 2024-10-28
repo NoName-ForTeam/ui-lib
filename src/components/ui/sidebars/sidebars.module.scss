@@ -8,10 +8,6 @@
   width: 100%;
   max-width: 220px;
   height: 100%;
-
-  /* stylelint-disable-next-line scss/double-slash-comment-whitespace-inside */
-  //todo extract 60px as header-height to _variables.scss
-
   min-height: calc(100vh - 60px);
   padding: 72px 0 36px 60px;
 
