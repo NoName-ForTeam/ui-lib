@@ -5,7 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from './dropdown'
-import { FillBell } from '../../../assets'
+import { FillBell } from '@/assets'
 import { Typography } from '../typography'
 
 const meta = {

@@ -11,13 +11,6 @@ type CardProps = ComponentPropsWithoutRef<'div'>
  * in a styled `div` element. The card can be customized with additional
  * CSS classes and all standard `div` element props.
  *
- * @component
- * @param {Object} props - The component props.
- * @param {React.ReactNode} props.children - The content to be rendered inside the card.
- * @param {string} [props.className] - Additional class names to customize the card's styling.
- * @param {React.Ref<HTMLDivElement>} ref - The ref to the underlying `div` element.
- * @returns {JSX.Element} The rendered card component.
- *
  * @example
  * // Basic usage:
  * <Cards>
@@ -42,3 +35,5 @@ export const Card = forwardRef<ElementRef<'div'>, CardProps>(
     )
   }
 )
+
+Card.displayName = 'Card'

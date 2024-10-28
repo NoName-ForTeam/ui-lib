@@ -4,7 +4,7 @@ import { Modal, ModalClose, ModalContent, ModalFooter, ModalHeader, ModalTrigger
 import { Button } from '../button'
 import { CSSProperties, useState } from 'react'
 import { Typography } from '../typography'
-import { CloseOutline, ArrowIosBack } from '../../../assets/icons/components'
+import { CloseOutline, ArrowIosBack } from '@/assets'
 
 const meta = {
   component: Modal,

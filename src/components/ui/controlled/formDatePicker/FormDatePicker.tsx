@@ -4,6 +4,18 @@ import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 export type FormDatePickerProps<TFieldValues extends FieldValues> =
   UseControllerProps<TFieldValues> & Omit<DatePickerType, 'date'>
 
+/**
+ * A form-specific DatePicker component that integrates with React Hook Form.
+ *
+ * @example
+ * <FormDatePicker
+ *   control={control}
+ *   name="startDate"
+ *   rules={{ required: 'Start date is required' }}
+ *   disabled={isEditing}
+ * />
+ */
+
 export const FormDatePicker = <T extends FieldValues>({
   control,
   disabled,

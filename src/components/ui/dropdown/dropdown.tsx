@@ -21,12 +21,6 @@ import { Scroll } from '@/components'
 
 export const DropdownMenu = DropdownMenuPrimitive.Root
 
-/**
- * Trigger component for the dropdown menu.
- *
- * @example
- * <DropdownMenuTrigger className="custom-class"> Trigger </DropdownMenuTrigger>
- */
 export const DropdownMenuTrigger = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Trigger>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger>
@@ -48,28 +42,11 @@ export const DropdownMenuTrigger = forwardRef<
 })
 DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName
 
-/**
- * Type definition for the `DropdownMenuContent` component
- *
- * @property {string} [label] - An optional label for the dropdown content.
- * @extends {ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>}
- */
 type DropdownMenuContent = {
   label?: string
 } & ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 
-/**
- * Content component for the dropdown menu.
- *
- * ! Attention: label should be set as props of DropdownMenuItem
- *
- * @example
- * <DropdownMenuContent label={'Label'}>
- *   <DropdownMenuItem> Item1 </DropdownMenuItem>
- *   <DropdownMenuItem> Item2 </DropdownMenuItem>
- *   <DropdownMenuItem> Item3 </DropdownMenuItem>
- * </DropdownMenuContent>
- */
+/* ! Attention: label should be set as props of DropdownMenuItem */
 export const DropdownMenuContent = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Content>,
   DropdownMenuContent
@@ -101,12 +78,6 @@ export const DropdownMenuContent = forwardRef<
 })
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName
 
-/**
- * Label component for the dropdown menu.
- *
- * @example
- * <DropdownMenuLabel inset> Label </DropdownMenuLabel>
- */
 const DropdownMenuLabel = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Label>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
@@ -131,12 +102,6 @@ const DropdownMenuLabel = forwardRef<
 })
 DropdownMenuLabel.displayName = DropdownMenuPrimitive.Label.displayName
 
-/**
- * Item component for the dropdown menu.
- *
- * @example
- * <DropdownMenuItem> Item </DropdownMenuItem>
- */
 export const DropdownMenuItem = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Item>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>
@@ -158,12 +123,6 @@ export const DropdownMenuItem = forwardRef<
 })
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName
 
-/**
- * Separator component for the dropdown menu.
- *
- * @example
- * <DropdownMenuSeparator />
- */
 const DropdownMenuSeparator = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Separator>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>

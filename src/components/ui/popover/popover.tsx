@@ -6,7 +6,6 @@ import clsx from 'clsx'
 /**
  * PopoverComponent that displays a popover with a trigger and content.
  *
- * @component
  * @example
  * <PopoverRoot>
  *    <PopoverTrigger>

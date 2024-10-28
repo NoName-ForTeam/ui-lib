@@ -6,7 +6,7 @@ import { Button, Card, Typography } from '@/components'
 
 type AlertType = 'success' | 'error'
 
-interface AlertProps {
+type AlertProps = {
   className?: string
   type: AlertType
   message: React.ReactNode
@@ -17,7 +17,6 @@ interface AlertProps {
  * Alert component for displaying messages with a specific type and a close button.
  * The alert can either show a success message or an error message
  *
- * @component
  * @example
  * <Alert
  *   type="success"
@@ -26,13 +25,11 @@ interface AlertProps {
  * />
  */
 
-// Взять за эталон оформления
-
 export const Alert = ({ type, message, onClose, className }: AlertProps) => {
   const classNames = {
     card: clsx(styles.alert, styles[type], className),
     icon: styles.icon,
-  }
+  } as const
   return (
     <Card className={classNames.card}>
       <Typography variant={'text16'}>{message}</Typography>
@@ -42,3 +39,5 @@ export const Alert = ({ type, message, onClose, className }: AlertProps) => {
     </Card>
   )
 }
+
+Alert.displayName = 'Alert'

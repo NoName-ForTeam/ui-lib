@@ -19,7 +19,7 @@ export type FormInputProps<TFieldValues extends FieldValues> = UseControllerProp
  * function MyForm() {
  *   const { control } = useForm();
  *
- *   return (
+ *   return '(
  *     <form>
  *       <FormInput
  *         name="username"

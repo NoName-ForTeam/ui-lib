@@ -53,7 +53,7 @@ export const Default: Story = {
   },
 }
 
-export const ActiveDisabled = {
+export const ActiveDisabled: Story = {
   args: {
     children: (
       <TabsList>
