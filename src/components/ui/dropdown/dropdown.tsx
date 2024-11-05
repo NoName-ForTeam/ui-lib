@@ -71,7 +71,9 @@ export const DropdownMenuContent = forwardRef<
         <DropdownMenuPrimitive.Arrow className={classNames.dropdownMenuArrowFront} />
         <DropdownMenuLabel className={classNames.dropdownMenuLabel}>{label}</DropdownMenuLabel>
         <DropdownMenuSeparator className={classNames.labelSeparator} />
-        <Scroll className={s.scroll}>{children}</Scroll>
+        <Scroll className={s.scroll} maxHeight={357}>
+          {children}
+        </Scroll>
       </DropdownMenuPrimitive.Content>
     </DropdownMenuPrimitive.Portal>
   )
