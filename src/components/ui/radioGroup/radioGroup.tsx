@@ -4,19 +4,14 @@ import * as React from 'react'
 import styles from './radioGroup.module.scss'
 
 /**
- * RadioGroup component
+ * RadioGroup component allows users to select a single option from a list of choices.
  *
- * A component that allows users to select a single option from a list of choices.
- *
- * @component
  * @example
  * <RadioGroup defaultValue="option1">
  *   <RadioGroupItem value="option1" id="option1" />
  *   <RadioGroupItem value="option2" id="option2" />
  * </RadioGroup>
  */
-
-// убрала лишние комментарии
 
 export const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -33,16 +28,6 @@ export const RadioGroup = React.forwardRef<
 
 RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
-/**
- * RadioGroupItem component
- *
- * An individual radio button within a RadioGroup.
- *
- * @component
- * @example
- * <RadioGroupItem value="option1" id="option1" />
- */
-
 export const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
@@ -57,4 +42,5 @@ export const RadioGroupItem = React.forwardRef<
     </RadioGroupPrimitive.Item>
   )
 })
+
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName

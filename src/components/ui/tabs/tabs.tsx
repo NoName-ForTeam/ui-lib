@@ -5,11 +5,9 @@ import styles from './tabs.module.scss'
 
 type TabsProps = ComponentPropsWithoutRef<typeof TabsRadix.Root>
 
-/**
- * Tabs component that serves as a container for tabbed navigation.
+/* Tabs component that serves as a container for tabbed navigation.
  * Wraps Radix UI's TabsRoot component.
  *
- * @component
  * @example
  * <Tabs onValueChange={(value) => console.log(value)}>
  *   <TabsList>
@@ -37,18 +35,6 @@ export const Tabs = forwardRef<ElementRef<typeof TabsRadix.Root>, TabsProps>(
 
 export type TabsListProps = ComponentPropsWithoutRef<typeof TabsRadix.List>
 
-/**
- * TabsList component that serves as a container for TabsTrigger components.
- * Wraps Radix UI's TabsList component.
- *
- * @component
- * @example
- * <TabsList>
- *   <TabsTrigger value="tab1">Tab 1</TabsTrigger>
- *   <TabsTrigger value="tab2">Tab 2</TabsTrigger>
- * </TabsList>
- */
-
 export const TabsList = forwardRef<ElementRef<typeof TabsRadix.List>, TabsListProps>(
   ({ children, ...rest }, ref) => {
     return (
@@ -61,11 +47,6 @@ export const TabsList = forwardRef<ElementRef<typeof TabsRadix.List>, TabsListPr
 
 export type TabsTriggerProps = ComponentPropsWithoutRef<typeof TabsRadix.Trigger>
 
-/**
- * TabsTrigger component represents a clickable tab that triggers a content change.
- * Wraps Radix UI's TabsTrigger component.
- */
-
 export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, TabsTriggerProps>(
   ({ value, className, ...rest }, ref) => {
     const classNames = {
@@ -76,11 +57,6 @@ export const TabsTrigger = forwardRef<ElementRef<typeof TabsRadix.Trigger>, Tabs
 )
 
 export type TabsContentProps = ComponentPropsWithoutRef<typeof TabsRadix.Content>
-
-/**
- * TabsContent component represents the content associated with a specific tab.
- * Wraps Radix UI's TabsContent component.
- */
 
 export const TabsContent = forwardRef<ElementRef<typeof TabsRadix.Content>, TabsContentProps>(
   ({ children, className, ...rest }, ref) => {
@@ -98,4 +74,5 @@ export const TabsContent = forwardRef<ElementRef<typeof TabsRadix.Content>, Tabs
 
 Tabs.displayName = 'Tabs'
 TabsList.displayName = 'TabsList'
+TabsTrigger.displayName = 'TabsTrigger'
 TabsContent.displayName = 'TabsContent'

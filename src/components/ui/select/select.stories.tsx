@@ -10,7 +10,8 @@ const meta = {
     docs: {
       description: {
         component:
-          "A customizable Select component that wraps Radix UI's Select functionality. It allows users to select an option from a dropdown list and supports pagination styling.",
+          "A customizable Select component that wraps Radix UI's Select functionality. " +
+          'It allows users to select an option from a dropdown list and supports pagination styling.',
       },
     },
   },

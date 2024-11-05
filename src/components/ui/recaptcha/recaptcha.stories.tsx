@@ -33,6 +33,7 @@ export const WithError: Story = {
 export const Interactive: Story = {
   args: {
     siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', // Это тестовый ключ
+    onVerify: token => console.log('Verified:', token),
   },
   render: args => {
     const [isError, setIsError] = useState(false)

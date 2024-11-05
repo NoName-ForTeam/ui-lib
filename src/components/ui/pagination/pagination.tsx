@@ -5,13 +5,13 @@ import { clsx } from 'clsx'
 
 import styles from './pagination.module.scss'
 
-import { Typography } from '../typography'
+import { Typography } from '@/components'
 import { usePagination } from './usePagination'
 
 /**
  *  A custom Pagination component.
  * Source: www.freecodecamp.org/news/*build-a-custom-pagination-component-in-react/
- * @component
+ *
  * @example
  * <PaginationComponent
  * disabledPrevBtn={currentPage === 1}
@@ -36,7 +36,7 @@ import { usePagination } from './usePagination'
  *   </PaginationButton>
  * ))}
  * children={<div>Additional content here</div>}
-/>
+ * />
  */
 
 type PaginationProps = {
@@ -151,7 +151,7 @@ export const SelectContainer = ({
 }: SelectContainerProps) => {
   const classNames = {
     select: clsx(styles.select, className),
-  }
+  } as const
 
   return (
     <div className={classNames.select} {...rest}>

@@ -4,28 +4,19 @@ import { ComponentPropsWithoutRef, forwardRef, useId } from 'react'
 import styles from './textArea.module.scss'
 
 export type TextAreaProps = {
-  /**
-   * The label text to be displayed above the textarea.
-   */
+  /* The label text to be displayed above the textarea. */
   label?: string
-  /**
-   * Error message to be displayed below the textarea.
-   */
+  /* Error message to be displayed below the textarea. */
   error?: string
-  /**
-   * Callback function that is called when the textarea's value changes.
-   * It receives the new value as a string parameter.
-   * @param value - The current value of the textarea
-   */
+  /* Callback function that is called when the textarea's value changes.
+   * It receives the new value as a string parameter. */
   onChangeValue?: (value: string) => void
 } & ComponentPropsWithoutRef<'textarea'>
 
-/**
- * A customizable textarea component with support for labels and error messages.
+/* A customizable textarea component with support for labels and error messages.
  *
- * @component
  * @example
- **Basic usage
+ ** Basic usage
  * <TextArea
  *   label="Description"
  *   placeholder="Enter your description here"
@@ -51,10 +42,12 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       error: styles.error,
       textarea: clsx(styles.textarea, error && styles.error),
       label: clsx(styles.label, disabled && styles.disabled),
-    }
+    } as const
+
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       onChangeValue?.(e.target.value)
     }
+
     return (
       <div className={classNames.root}>
         {label && (
@@ -81,4 +74,5 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
     )
   }
 )
+
 TextArea.displayName = 'Textarea'

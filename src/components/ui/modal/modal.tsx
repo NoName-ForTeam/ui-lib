@@ -10,7 +10,6 @@ export type ModalProps = ComponentPropsWithoutRef<typeof ModalRadix.Root>
  * Modal component that serves as a wrapper for modal dialogs.
  * Utilizes Radix UI's ModalRadix component under the hood.
  *
- * @component
  * @example
  * <Modal>
  *     <ModalTrigger>
@@ -36,6 +35,8 @@ export const Modal = ({ ...rest }: ModalProps) => {
   return <ModalRadix.Root {...rest} />
 }
 
+Modal.displayName = ModalRadix.Root.displayName
+
 export type ModalTriggerProps = ComponentPropsWithoutRef<typeof ModalRadix.Trigger>
 
 /**
@@ -54,6 +55,8 @@ export const ModalTrigger = ({ className, children, ...rest }: ModalTriggerProps
   )
 }
 
+ModalTrigger.displayName = ModalRadix.Trigger.displayName
+
 export type ModalHeaderProps = ComponentPropsWithoutRef<'div'>
 
 export const ModalHeader = ({ className, ...rest }: ModalHeaderProps) => {
@@ -64,6 +67,8 @@ export const ModalHeader = ({ className, ...rest }: ModalHeaderProps) => {
   return <div className={classNames.header} {...rest} />
 }
 
+ModalHeader.displayName = 'Modal Header'
+
 export type ModalFooterProps = ComponentPropsWithoutRef<'div'>
 
 export const ModalFooter = ({ className, ...rest }: ModalFooterProps) => {
@@ -72,6 +77,8 @@ export const ModalFooter = ({ className, ...rest }: ModalFooterProps) => {
   } as const
   return <div className={classNames.footer} {...rest} />
 }
+
+ModalFooter.displayName = 'Modal Footer'
 
 export type ModalContentProps = ComponentPropsWithoutRef<typeof ModalRadix.Content>
 
@@ -93,6 +100,8 @@ export const ModalContent = forwardRef<ElementRef<typeof ModalRadix.Content>, Mo
   }
 )
 
+ModalContent.displayName = ModalRadix.Content.displayName
+
 export type ModalCloseProps = ComponentPropsWithoutRef<typeof ModalRadix.Close>
 
 /**
@@ -106,6 +115,8 @@ export const ModalClose = forwardRef<ElementRef<typeof ModalRadix.Close>, ModalC
   }
 )
 
+ModalClose.displayName = ModalRadix.Close.displayName
+
 export type ModalTitleProps = ComponentPropsWithoutRef<typeof ModalRadix.Title>
 
 export const ModalTitle = forwardRef<ElementRef<typeof ModalRadix.Title>, ModalTitleProps>(
@@ -114,7 +125,11 @@ export const ModalTitle = forwardRef<ElementRef<typeof ModalRadix.Title>, ModalT
   }
 )
 
+ModalTitle.displayName = ModalRadix.Title.displayName
+
 export type ModalDescriptionProps = ComponentPropsWithoutRef<typeof ModalRadix.Description>
 export const ModalDescription = ({ ...rest }: ModalDescriptionProps) => (
   <ModalRadix.Description asChild {...rest} />
 )
+
+ModalDescription.displayName = ModalRadix.Description.displayName

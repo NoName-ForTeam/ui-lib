@@ -27,7 +27,6 @@ export type ButtonProps = {
 
 /**
  * A customizable button component with various style variants
- * @component
  * @example
  *Primary button
  * <Button onClick={() => console.log('Clicked!')}>Click me</Button>

@@ -27,11 +27,10 @@ export type TypographyProps<T extends ElementType = 'p'> = {
   variant?: TypographyType
 }
 
-/**
- * The `Typography` component is a flexible and reusable component for rendering text content with predefined styles.
- * It allows you to specify the semantic HTML element (e.g., 'p', 'h1', 'span') and the desired text variant (e.g., 'textLarge', 'h1', 'link').
+/* The `Typography` component is a flexible and reusable component for rendering text content with predefined styles.
+ * It allows you to specify the semantic HTML element (e.g., 'p', 'h1', 'span')
+ * and the desired text variant (e.g., 'textLarge', 'h1', 'link').
  *
- * @component
  * @example
  * <Typography variant={'h1'} as={'h1'} className={classNames.tutle}>Text</Typography>
  */
@@ -56,4 +55,5 @@ export const Typography = <T extends ElementType = 'p'>({
     </Component>
   )
 }
+
 Typography.displayName = 'Typography'

@@ -15,16 +15,15 @@ export type InputProps = {
 /**
  * Input component with optional search and password toggle functionality.
  *
- * @component
  * @example
  *  <Input
- *         placeholder={'Password'}
- *         variant={'password'}
- *         label={'Enter Password'}
- *         errorMessage={'Invalid password'}
- *         value={value}
- *         onChange={e => setValue(e.target.value)}
- *       />
+ *   placeholder={'Password'}
+ *   variant={'password'}
+ *   label={'Enter Password'}
+ *   errorMessage={'Invalid password'}
+ *   value={value}
+ *   onChange={e => setValue(e.target.value)}
+ *  />
  */
 
 export const Input = forwardRef<ElementRef<'input'>, InputProps>(
@@ -120,3 +119,5 @@ export const Input = forwardRef<ElementRef<'input'>, InputProps>(
     )
   }
 )
+
+Input.displayName = 'Input'

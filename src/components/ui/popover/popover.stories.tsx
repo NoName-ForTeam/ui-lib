@@ -2,10 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import React from 'react'
 import { PopoverRoot, PopoverTrigger, PopoverContent } from './popover'
-import MoreHorizontal from '../../../assets/icons/components/MoreHorizontal'
-import Edit2Outline from '../../../assets/icons/components/Edit2Outline'
-import TrashOutline from '../../../assets/icons/components/TrashOutline'
-import { Typography } from '../typography/typography'
+import { TrashOutline, Edit2Outline, MoreHorizontal } from '@/assets'
+import { Typography } from '../typography'
 
 const meta = {
   component: PopoverRoot,

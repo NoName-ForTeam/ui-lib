@@ -17,7 +17,6 @@ export type CheckboxProps = {
  * It provides a flexible and customizable checkbox that can be easily integrated into any React application.
  * The component supports various props to control its behavior and appearance,
  * including checked, disabled, id, label, and onChange.
- * @component
  * @example
  * <Checkbox
  *   checked={checked}
@@ -39,7 +38,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
       root: clsx(styles.root, disabled && styles.disabled),
       wrapper: clsx(styles.wrapper, disabled && styles.disabled),
       icon: clsx(styles.icon, disabled && styles.disabled),
-    }
+    } as const
 
     return (
       <div className={clsx(classNames.container)}>

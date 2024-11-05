@@ -5,13 +5,16 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 export type SidebarsProps = ComponentPropsWithoutRef<'div'>
 
-/**
- * Sidebars component.
- * Renders a customizable sidebar container.
- *
- * @param {SidebarsProps} props - The component props.
- * @param {React.Ref<HTMLDivElement>} ref - The forwarded ref.
- * @returns {JSX.Element} The rendered Sidebars component.
+/* Sidebars component render a customizable sidebar container.
+ *@example
+ * <Sidebars>
+ * <SidebarsElement>
+ * This is a customizable sidebar element.
+ * </SidebarsElement>
+ * <SidebarsElement disabled={isDisabled}>
+ * This sidebar element is disabled.
+ * </SidebarsElement>
+ * </Sidebars>
  */
 
 export const Sidebars = forwardRef<ElementRef<'div'>, SidebarsProps>(
@@ -30,15 +33,6 @@ export const Sidebars = forwardRef<ElementRef<'div'>, SidebarsProps>(
 
 type SidebarsElementProps = { disabled?: boolean } & ComponentPropsWithoutRef<'div'>
 
-/**
- * SidebarsElement component.
- * Renders a customizable element within the sidebar.
- *
- * @param {SidebarsElementProps} props - The component props.
- * @param {React.Ref<HTMLDivElement>} ref - The forwarded ref.
- * @returns {JSX.Element} The rendered SidebarsElement component.
- */
-
 export const SidebarsElement = forwardRef<ElementRef<'div'>, SidebarsElementProps>(
   ({ children, className, disabled, ...rest }, ref) => {
     const classNames = {
@@ -51,8 +45,6 @@ export const SidebarsElement = forwardRef<ElementRef<'div'>, SidebarsElementProp
     )
   }
 )
-
-// Set display names for debugging
 
 Sidebars.displayName = 'Sidebars'
 SidebarsElement.displayName = 'SidebarsElement'

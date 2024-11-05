@@ -11,18 +11,12 @@ export type DatePickerType = {
   label?: string
   disabled?: boolean
   required?: boolean
-  /**
-   * Whether to select a date range or a single date.
-   */
+  /* Whether to select a date range or a single date. */
   selectsRange?: boolean
   placeholder?: string
-  /**
-   * The start date for the selected range.
-   */
+  /* The start date for the selected range. */
   startDate?: Date | null
-  /**
-   * The end date for the selected range.
-   */
+  /* The end date for the selected range. */
   endDate?: Date | null
   setStartDate?: (date: Date | null) => void
   setEndDate?: (date: Date | null) => void
@@ -33,11 +27,9 @@ export type DatePickerType = {
 }
 registerLocale('enUS', enUS)
 
-/**
- * A customizable date picker component that allows users to select single or range dates.
+/* A customizable date picker component that allows users to select single or range dates.
  * It uses `react-datepicker` and provides additional styling and functionality.
  *
- * @component
  * @example
  * <CustomDatePicker
  *   label="Select a date"
@@ -74,13 +66,13 @@ export const CustomDatePicker = ({
     locale = 'en',
   }: ReactDatePickerCustomHeaderProps & { locale?: string }) => {
     return (
-      <div className={styles.header}>
+      <div className={classNames.header}>
         <span>{date.toLocaleString(locale, { month: 'long', year: 'numeric' })}</span>
-        <div className={styles.buttonBox}>
-          <button className={styles.button} onClick={decreaseMonth} type="button">
+        <div className={classNames.buttonBox}>
+          <button className={classNames.button} onClick={decreaseMonth} type="button">
             <ArrowIosBackOutline />
           </button>
-          <button className={styles.button} onClick={increaseMonth} type="button">
+          <button className={classNames.button} onClick={increaseMonth} type="button">
             <ArrowIosForwardOutline />
           </button>
         </div>
@@ -117,8 +109,24 @@ export const CustomDatePicker = ({
   }, [getInputValue])
   const isRange = endDate !== undefined
 
+  const classNames = {
+    header: styles.header,
+    buttonBox: styles.buttonBox,
+    button: styles.button,
+    root: styles.root,
+    calendar: styles.calendar,
+    day: (): string => styles.day || '',
+    inputContainer: styles.inputContainer,
+    required: styles.required,
+    label: styles.label,
+    input: styles.input,
+    error: styles.error,
+    icon: styles.icon,
+    errorText: styles.errorText,
+  } as const
+
   return (
-    <div className={styles.root}>
+    <div className={classNames.root}>
       <DatePicker
         // @ts-expect-error toDo picker fix
         selectsRange={isRange}
@@ -133,20 +141,20 @@ export const CustomDatePicker = ({
         renderCustomHeader={renderCustomHeader}
         popperPlacement="bottom-start"
         showPopperArrow={false}
-        calendarClassName={styles.calendar}
-        dayClassName={(): string => styles.day || ''}
+        calendarClassName={classNames.calendar}
+        dayClassName={classNames.day}
         required={required}
         disabled={disabled}
         customInput={
-          <div className={clsx(styles.inputContainer)}>
+          <div className={classNames.inputContainer}>
             {label && (
-              <label className={styles.label}>
-                {label} {required && <span className={styles.required}>*</span>}
+              <label className={classNames.label}>
+                {label} {required && <span className={classNames.required}>*</span>}
               </label>
             )}
             <input
               ref={inputRef}
-              className={clsx(styles.input, { [styles.error as string]: showError })}
+              className={clsx(classNames.input, { [classNames.error as string]: showError })}
               type="text"
               value={inputValue}
               disabled={disabled}
@@ -164,12 +172,16 @@ export const CustomDatePicker = ({
                 }
               }}
             />
-            <Calendar className={clsx(styles.icon, { [styles.error as string]: showError })} />
+            <Calendar
+              className={clsx(classNames.icon, { [classNames.error as string]: showError })}
+            />
           </div>
         }
         {...restProps}
       />
-      {showError && <p className={clsx(styles.errorText)}>{errorMessage}</p>}
+      {showError && <p className={classNames.errorText}>{errorMessage}</p>}
     </div>
   )
 }
+
+CustomDatePicker.displayName = 'CustomDatePicker'

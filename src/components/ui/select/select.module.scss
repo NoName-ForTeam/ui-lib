@@ -11,6 +11,14 @@
   color: var(--light-100) !important;
 }
 
+.withoutLabel {
+  color: var(--light-900);
+
+  .icon {
+    color: var(--light-100);
+  }
+}
+
 .trigger {
   cursor: pointer;
 
@@ -79,17 +87,10 @@
   }
 }
 
-.withoutLabel {
-  color: var(--light-900);
-  /* stylelint-disable-next-line */
-  .icon {
-    color: var(--light-100);
-  }
-}
-
 .content {
   width: var(--radix-select-trigger-width);
   max-height: var(--radix-select-content-available-height);
+
   color: var(--light-900);
 
   background-color: var(--dark-700);
