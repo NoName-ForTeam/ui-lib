@@ -17,6 +17,7 @@
 
     transition: all 0.3s;
 
+    // Основной ::before для триггера
     &::before {
       content: '';
 
@@ -29,19 +30,19 @@
 
       background-color: var(--dark-100);
 
-      &[data-state='active'] {
-        &::before {
-          background-color: var(--accent-500);
-        }
-
-        &[data-disabled] {
-          &::before {
-            background-color: var(--accent-900);
-          }
-        }
-      }
+      transition: background-color 0.3s;
     }
 
+    // Состояния для основного ::before
+    &[data-state='active']::before {
+      background-color: var(--accent-500);
+    }
+
+    &[data-state='active'][data-disabled]::before {
+      background-color: var(--accent-900);
+    }
+
+    // Интерактивные состояния
     &:focus-visible {
       border-radius: 2px;
       outline: 2px solid var(--accent-700);
@@ -61,13 +62,10 @@
       background-color: var(--accent-100);
     }
 
+    // Активное состояние
     &[data-state='active'] {
       color: var(--accent-500);
       opacity: 1;
-
-      &::before {
-        background-color: var(--accent-500);
-      }
 
       &:hover {
         background-color: var(--accent-900);
@@ -81,10 +79,6 @@
         cursor: initial;
         color: var(--accent-900);
 
-        &::before {
-          background-color: var(--accent-900);
-        }
-
         &:hover {
           background-color: transparent;
         }
@@ -95,6 +89,7 @@
       }
     }
 
+    // Отключенное состояние
     &[data-disabled] {
       cursor: initial;
       color: var(--dark-300);
